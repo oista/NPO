@@ -1,0 +1,43 @@
+unit JOBSCHEDULEDITUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, PKDBTable, ComCtrls, StdCtrls, ExtCtrls, PKDBEdit,
+  PKDBDictEdit, Grids, DBGrids, VrDbGrid, PKDBEditButtons;
+
+type
+  TJOBSCHEDULEDIT = class(TEditDialog)
+    PKDBLabelEdit1: TPKDBLabelEdit;
+    PKDBLabelEdit2: TPKDBLabelEdit;
+    PKDBLabelEdit3: TPKDBLabelEdit;
+    PKDBLabelEdit4: TPKDBLabelEdit;
+    PKDBLabelEdit5: TPKDBLabelEdit;
+    PKDBLabelEdit6: TPKDBLabelEdit;
+    PKDBLabelEdit7: TPKDBLabelEdit;
+    Label1: TLabel;
+    PKDBDictEdit1: TPKDBDictEdit;
+    TabSheet2: TTabSheet;
+    GridPanel1: TGridPanel;
+    PKDBEditButtons1: TPKDBEditButtons;
+    VrDbGrid1: TVrDbGrid;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  JOBSCHEDULEDIT: TJOBSCHEDULEDIT;
+
+implementation
+
+uses DMUnit;
+
+{$R *.dfm}
+
+initialization
+
+  RegisterClasses([TJOBSCHEDULEDIT]);
+end.

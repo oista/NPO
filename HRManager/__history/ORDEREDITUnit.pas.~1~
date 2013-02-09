@@ -1,0 +1,27 @@
+unit ORDEREDITUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, PKDBTable, ComCtrls, StdCtrls, ExtCtrls, PKDBDictEdit;
+
+type
+  TORDEREDIT = class(TEditDialog)
+    PKDBDictLabelEdit1: TPKDBDictLabelEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ORDEREDIT: TORDEREDIT;
+
+implementation
+uses DM, MainUnit;
+{$R *.dfm}
+initialization
+
+RegisterClasses([TORDEREDIT]);
+end.

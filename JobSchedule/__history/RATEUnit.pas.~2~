@@ -1,0 +1,38 @@
+unit RATEUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DictUnit, daADStanIntf, daADDatSManager, daADStanOption,
+  daADStanParam, daADPhysIntf, daADDAptIntf, DB, daADCompDataSet,
+  daADCompClient, PKDBEditButtons, ExtCtrls, Grids, DBGrids, VrDbGrid, ComCtrls,
+  StdCtrls;
+
+type
+  TRATE= class(TDictForm)
+    MainQueryID: TFloatField;
+    MainQueryKVAL: TStringField;
+    MainQueryCODE: TStringField;
+    MainQueryRATE: TFloatField;
+    MainQuerySALARY: TFloatField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  RATE: TRATE;
+
+implementation
+
+uses DMUnit;
+
+{$R *.dfm}
+
+initialization
+
+  RegisterClasses([TRATE]);
+
+end.

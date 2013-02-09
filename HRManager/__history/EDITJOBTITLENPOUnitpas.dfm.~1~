@@ -1,0 +1,26 @@
+inherited EDITJOBTITLENPO: TEDITJOBTITLENPO
+  Caption = #1044#1086#1083#1078#1085#1086#1089#1090#1080' '#1085#1072' '#1087#1088#1077#1076#1087#1088#1080#1103#1090#1080#1080
+  ClientWidth = 640
+  ExplicitWidth = 646
+  ExplicitHeight = 443
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Left = 549
+  end
+  inherited PageControl1: TPageControl
+    Width = 543
+    ExplicitWidth = 543
+    inherited TabSheet1: TTabSheet
+      Caption = #1044#1086#1083#1078#1085#1086#1089#1090#1080
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 356
+      ExplicitHeight = 385
+    end
+  end
+  inherited PKDBTable1: TPKDBTable
+    Left = 560
+    Top = 88
+  end
+end

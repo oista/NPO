@@ -1,0 +1,484 @@
+inherited JOBSCHEDULEDIT: TJOBSCHEDULEDIT
+  Caption = #1064#1090#1072#1090#1085#1099#1077' '#1088#1072#1087#1080#1089#1072#1085#1080#1103'    '
+  ClientHeight = 423
+  ClientWidth = 963
+  ExplicitWidth = 969
+  ExplicitHeight = 447
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Left = 872
+    Height = 423
+    ExplicitLeft = 872
+    ExplicitHeight = 423
+  end
+  inherited PageControl1: TPageControl
+    Width = 866
+    Height = 417
+    ExplicitWidth = 866
+    ExplicitHeight = 417
+    inherited TabSheet1: TTabSheet
+      Caption = #1064#1090#1072#1090#1085#1086#1077' '#1088#1072#1089#1087#1080#1089#1072#1085#1080#1077'   '
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 858
+      ExplicitHeight = 389
+      object Label1: TLabel
+        Left = 15
+        Top = 6
+        Width = 80
+        Height = 13
+        Caption = #1055#1086#1076#1088#1072#1079#1076#1077#1083#1077#1085#1080#1077
+      end
+      object PKDBLabelEdit1: TPKDBLabelEdit
+        Left = 15
+        Top = 70
+        Width = 330
+        Height = 21
+        TabOrder = 0
+        Text = #1053#1072#1079#1074#1072#1085#1080#1077' '#1088#1072#1089#1087#1080#1089#1072#1085#1080#1103
+        Table = PKDBTable1
+        TableField = 'SCHEDULENAME'
+        EditLabel.Width = 109
+        EditLabel.Height = 13
+        EditLabel.Caption = #1053#1072#1079#1074#1072#1085#1080#1077' '#1088#1072#1089#1087#1080#1089#1072#1085#1080#1103
+      end
+      object PKDBLabelEdit2: TPKDBLabelEdit
+        Left = 15
+        Top = 115
+        Width = 330
+        Height = 21
+        TabOrder = 1
+        Text = #1057#1090#1072#1090#1091#1089' '#1088#1072#1089#1087#1080#1089#1072#1085#1080#1103
+        Table = PKDBTable1
+        TableField = 'STATUS'
+        EditLabel.Width = 97
+        EditLabel.Height = 13
+        EditLabel.Caption = #1057#1090#1072#1090#1091#1089' '#1088#1072#1089#1087#1080#1089#1072#1085#1080#1103
+      end
+      object PKDBLabelEdit3: TPKDBLabelEdit
+        Left = 15
+        Top = 160
+        Width = 330
+        Height = 21
+        TabOrder = 2
+        Text = #1044#1072#1090#1072' '#1089#1086#1079#1076#1072#1085#1080#1103
+        EditKind = ekDateEdit
+        Table = PKDBTable1
+        TableField = 'CREATIONDATE'
+        EditLabel.Width = 76
+        EditLabel.Height = 13
+        EditLabel.Caption = #1044#1072#1090#1072' '#1089#1086#1079#1076#1072#1085#1080#1103
+      end
+      object PKDBLabelEdit4: TPKDBLabelEdit
+        Left = 15
+        Top = 205
+        Width = 330
+        Height = 21
+        TabOrder = 3
+        Text = #1055#1086#1083#1077' '#1087#1088#1080#1082#1072#1079#1072' '#8470'1'
+        Table = PKDBTable1
+        TableField = 'ORDER1'
+        EditLabel.Width = 91
+        EditLabel.Height = 13
+        EditLabel.Caption = #1055#1086#1083#1077' '#1087#1088#1080#1082#1072#1079#1072' '#8470'1'
+      end
+      object PKDBLabelEdit5: TPKDBLabelEdit
+        Left = 15
+        Top = 250
+        Width = 330
+        Height = 21
+        TabOrder = 4
+        Text = #1055#1086#1083#1077' '#1087#1088#1080#1082#1072#1079#1072' '#8470'2'
+        Table = PKDBTable1
+        TableField = 'ORDER2'
+        EditLabel.Width = 91
+        EditLabel.Height = 13
+        EditLabel.Caption = #1055#1086#1083#1077' '#1087#1088#1080#1082#1072#1079#1072' '#8470'2'
+      end
+      object PKDBLabelEdit6: TPKDBLabelEdit
+        Left = 15
+        Top = 295
+        Width = 330
+        Height = 21
+        TabOrder = 5
+        Text = #1055#1086#1083#1077' '#1087#1077#1088#1080#1086#1076#1072' '#8470'1'
+        Table = PKDBTable1
+        TableField = 'PERIOD1'
+        EditLabel.Width = 93
+        EditLabel.Height = 13
+        EditLabel.Caption = #1055#1086#1083#1077' '#1087#1077#1088#1080#1086#1076#1072' '#8470'1'
+      end
+      object PKDBLabelEdit7: TPKDBLabelEdit
+        Left = 15
+        Top = 340
+        Width = 330
+        Height = 21
+        TabOrder = 6
+        Text = #1055#1086#1083#1077' '#1087#1077#1088#1080#1086#1076#1072' '#8470'2'
+        Table = PKDBTable1
+        TableField = 'PERIOD2'
+        EditLabel.Width = 93
+        EditLabel.Height = 13
+        EditLabel.Caption = #1055#1086#1083#1077' '#1087#1077#1088#1080#1086#1076#1072' '#8470'2'
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = #1057#1086#1089#1090#1072#1074' '#1088#1072#1089#1087#1080#1089#1072#1085#1080#1103
+      ImageIndex = 1
+      object GridPanel1: TGridPanel
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 852
+        Height = 28
+        Align = alTop
+        BevelOuter = bvNone
+        ColumnCollection = <
+          item
+            SizeStyle = ssAbsolute
+            Value = 152.000000000000000000
+          end
+          item
+            Value = 100.000000000000000000
+          end>
+        ControlCollection = <
+          item
+            Column = -1
+            Row = -1
+          end
+          item
+            Column = 0
+            Control = PKDBEditButtons1
+            Row = 0
+          end>
+        RowCollection = <
+          item
+            Value = 100.000000000000000000
+          end>
+        TabOrder = 0
+        object PKDBEditButtons1: TPKDBEditButtons
+          Left = 0
+          Top = 0
+          Width = 150
+          Height = 28
+          TableName = 'CS_SCHEDULE_STRUCTURE'
+          PrimaryFieldName = 'ID'
+          ParentFieldName = 'SCHEDULEID'
+          Grid = VrDbGrid1
+          Connection = DataModule2.Conn
+          UseTempTable = False
+          EditDialogClassName = 'TSTRUCTUREDIT'
+          DesignSize = (
+            150
+            28)
+        end
+      end
+      object VrDbGrid1: TVrDbGrid
+        Left = 0
+        Top = 34
+        Width = 858
+        Height = 355
+        ScrollBars = ssHorizontal
+        ShowCheckBoxes = False
+        CheckFieldName = 'ID'
+        CheckedRowsColoured = False
+        CheckedRowsColour = clBlack
+        MultiSelect = False
+        ColouredRows = True
+        CrmEvnColor = clInfoBk
+        CrmOddColor = clWindow
+        SortChangeEnable = True
+        Align = alClient
+        DataSource = DataSource1
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'CATEGORYNUMB'
+            Width = 28
+            Visible = True
+            SortMode = smNone
+          end
+          item
+            Expanded = False
+            FieldName = 'ID'
+            Visible = False
+            SortMode = smNone
+          end
+          item
+            Expanded = False
+            FieldName = 'JOBTITLE'
+            Width = 266
+            Visible = True
+            SortMode = smNone
+          end
+          item
+            Expanded = False
+            FieldName = 'QUALIFICATION'
+            Width = 67
+            Visible = True
+            SortMode = smNone
+          end
+          item
+            Expanded = False
+            FieldName = 'AMOUNT'
+            Width = 44
+            Visible = True
+            SortMode = smNone
+          end
+          item
+            Expanded = False
+            FieldName = 'SALARY'
+            Width = 84
+            Visible = True
+            SortMode = smNone
+          end
+          item
+            Expanded = False
+            FieldName = 'ADDITIONHARM'
+            Width = 83
+            Visible = True
+            SortMode = smNone
+          end
+          item
+            Expanded = False
+            FieldName = 'ADDITIONSECRET'
+            Width = 92
+            Visible = True
+            SortMode = smNone
+          end
+          item
+            Expanded = False
+            FieldName = 'ADDITIONOTHER'
+            Width = 88
+            Visible = True
+            SortMode = smNone
+          end
+          item
+            Expanded = False
+            FieldName = 'DESCRIPTION'
+            Visible = True
+            SortMode = smNone
+          end
+          item
+            Expanded = False
+            FieldName = 'SCHEDULEID'
+            Visible = True
+            SortMode = smNone
+          end
+          item
+            Expanded = False
+            FieldName = 'SALID'
+            Visible = False
+            SortMode = smNone
+          end
+          item
+            Expanded = False
+            FieldName = 'JOBTITLEID'
+            Visible = False
+            SortMode = smNone
+          end
+          item
+            Expanded = False
+            FieldName = 'QUALIFICATIONID'
+            Visible = False
+            SortMode = smNone
+          end
+          item
+            Expanded = False
+            FieldName = 'RATEID'
+            Visible = False
+            SortMode = smNone
+          end
+          item
+            Expanded = False
+            FieldName = 'ALONESALARY'
+            Visible = True
+            SortMode = smNone
+          end
+          item
+            Expanded = False
+            FieldName = 'OCCUPIED'
+            Visible = True
+            SortMode = smNone
+          end
+          item
+            Expanded = False
+            FieldName = 'SUBORDINATIONID'
+            Visible = True
+            SortMode = smNone
+          end>
+      end
+    end
+  end
+  inherited PKDBTable1: TPKDBTable
+    Fields = <
+      item
+        FieldName = 'ID'
+        FieldLabel = 'ID'
+        Nullable = False
+        FieldType = ftsNumber
+        IsPrimaryKey = True
+        DisplayName = 'ID'
+      end
+      item
+        FieldName = 'CREATIONDATE'
+        FieldLabel = #1044#1072#1090#1072' '#1089#1086#1079#1076#1072#1085#1080#1103
+        Nullable = True
+        FieldType = ftsDate
+        DisplayName = 'CREATIONDATE'
+      end
+      item
+        FieldName = 'PERIOD1'
+        FieldLabel = #1055#1086#1083#1077' '#1087#1077#1088#1080#1086#1076#1072' '#8470'1'
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'PERIOD1'
+      end
+      item
+        FieldName = 'SCHEDULENAME'
+        FieldLabel = #1053#1072#1079#1074#1072#1085#1080#1077' '#1088#1072#1089#1087#1080#1089#1072#1085#1080#1103
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'SCHEDULENAME'
+      end
+      item
+        FieldName = 'PERIOD2'
+        FieldLabel = #1055#1086#1083#1077' '#1087#1077#1088#1080#1086#1076#1072' '#8470'2'
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'PERIOD2'
+      end
+      item
+        FieldName = 'ORDER1'
+        FieldLabel = #1055#1086#1083#1077' '#1087#1088#1080#1082#1072#1079#1072' '#8470'1'
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'ORDER1'
+      end
+      item
+        FieldName = 'DEPARTMENTID'
+        FieldLabel = 'ID '#1089#1090#1088#1091#1082#1090#1091#1088#1085#1086#1075#1086' '#1087#1086#1076#1088#1072#1079#1076#1077#1083#1077#1085#1080#1103
+        Nullable = True
+        FieldType = ftsNumber
+        ReferencingTable = 'PK_V_DEPT'
+        ReferencingColumn = 'ID'
+        DisplayName = 'DEPARTMENTID'
+      end
+      item
+        FieldName = 'STATUS'
+        FieldLabel = #1057#1090#1072#1090#1091#1089' '#1088#1072#1089#1087#1080#1089#1072#1085#1080#1103
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'STATUS'
+      end
+      item
+        FieldName = 'ORDER2'
+        FieldLabel = #1055#1086#1083#1077' '#1087#1088#1080#1082#1072#1079#1072' '#8470'2'
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'ORDER2'
+      end>
+    TableName = 'CS_JOBSCHEDULE'
+    NeedGenPrimaryKey = True
+    Connection = DataModule2.Conn
+    PrimaryKeySeq = 'AE_TEMPIDSEQ'
+    Left = 472
+    Top = 8
+  end
+  object ADQuery1: TADQuery
+    Connection = DataModule2.Conn
+    SQL.Strings = (
+      'select * from CS_V_SCHEDULE_STRUCTURE'
+      'where SCHEDULEID=:ID')
+    Left = 520
+    Top = 8
+    ParamData = <
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = 125896
+      end>
+    object ADQuery1ID: TFloatField
+      FieldName = 'ID'
+      Required = True
+    end
+    object ADQuery1JOBTITLE: TStringField
+      DisplayLabel = #1057#1087#1077#1094#1080#1072#1083#1100#1085#1086#1089#1090#1100
+      FieldName = 'JOBTITLE'
+      Size = 200
+    end
+    object ADQuery1CATEGORYNUMB: TFloatField
+      DisplayLabel = #1050#1072#1090'.'
+      FieldName = 'CATEGORYNUMB'
+    end
+    object ADQuery1AMOUNT: TFloatField
+      DisplayLabel = #1050#1086#1083'-'#1074#1086'.'
+      FieldName = 'AMOUNT'
+    end
+    object ADQuery1SALARY: TFloatField
+      DisplayLabel = #1054#1082#1083#1072#1076'('#1057#1090#1072#1074#1082#1072')'
+      FieldName = 'SALARY'
+    end
+    object ADQuery1ADDITIONHARM: TFloatField
+      DisplayLabel = #1053#1072#1076#1073'. '#1079#1072' '#1074#1088#1077#1076'.'
+      FieldName = 'ADDITIONHARM'
+    end
+    object ADQuery1ADDITIONSECRET: TFloatField
+      DisplayLabel = #1053#1072#1076#1073'. '#1079#1072' '#1089#1077#1082#1088#1077#1090'.'
+      FieldName = 'ADDITIONSECRET'
+    end
+    object ADQuery1ADDITIONOTHER: TFloatField
+      DisplayLabel = #1053#1072#1076#1073'. '#1079#1072' '#1087#1088#1086#1095#1077#1077
+      FieldName = 'ADDITIONOTHER'
+    end
+    object ADQuery1DESCRIPTION: TStringField
+      DisplayLabel = #1055#1088#1080#1084#1077#1095#1072#1085#1080#1103
+      FieldName = 'DESCRIPTION'
+      Size = 200
+    end
+    object ADQuery1SCHEDULEID: TFloatField
+      FieldName = 'SCHEDULEID'
+      Visible = False
+    end
+    object ADQuery1SALID: TFloatField
+      FieldName = 'SALID'
+      Required = True
+    end
+    object ADQuery1JOBTITLEID: TFloatField
+      FieldName = 'JOBTITLEID'
+    end
+    object ADQuery1QUALIFICATIONID: TFloatField
+      FieldName = 'QUALIFICATIONID'
+    end
+    object ADQuery1RATEID: TFloatField
+      FieldName = 'RATEID'
+    end
+    object ADQuery1ALONESALARY: TFloatField
+      FieldName = 'ALONESALARY'
+    end
+    object ADQuery1OCCUPIED: TFloatField
+      FieldName = 'OCCUPIED'
+    end
+    object ADQuery1SUBORDINATIONID: TFloatField
+      FieldName = 'SUBORDINATIONID'
+    end
+    object ADQuery1QUALIFICATION: TStringField
+      DisplayLabel = #1050#1074#1072#1083#1080#1092'.'
+      FieldName = 'QUALIFICATION'
+      Size = 241
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = ADQuery1
+    Left = 552
+    Top = 8
+  end
+end

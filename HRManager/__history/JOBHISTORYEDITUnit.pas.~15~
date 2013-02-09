@@ -1,0 +1,197 @@
+unit JOBHISTORYEDITUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, PKDBTable, ComCtrls, StdCtrls, ExtCtrls, PKDBDictEdit,
+  PKDBEdit, DB, uADStanIntf, uADStanOption, uADStanParam, uADStanError,
+  uADDatSManager, uADPhysIntf, uADDAptIntf, uADStanAsync, uADDAptManager,
+  uADCompDataSet, uADCompClient, PKDBBBaseComboBox;
+
+type
+  TJOBHISTORYEDIT = class(TEditDialog)
+    PKDBTable2: TPKDBTable;
+    PKDBDictLabelEdit2: TPKDBDictLabelEdit;
+    PKDBDictEdit1: TPKDBDictEdit;
+    Label1: TLabel;
+    PKDBLabelEdit1: TPKDBLabelEdit;
+    PKDBLabelEdit2: TPKDBLabelEdit;
+    Label2: TLabel;
+    PKDBTable3: TPKDBTable;
+    PKDBDictEdit2: TPKDBDictEdit;
+    ADQuery2: TADQuery;
+    ADQuery2ORDERID: TFMTBCDField;
+    RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton;
+    PKDBTable4: TPKDBTable;
+    ADQuery1: TADQuery;
+    FMTBCDField1: TFMTBCDField;
+    PKDBBaseEdit1: TPKDBBaseEdit;
+    PKDBDictEdit3: TPKDBDictEdit;
+    procedure Open; override;
+    function FindErrors: Boolean; override;
+    procedure RunCommand(); override;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  JOBHISTORYEDIT: TJOBHISTORYEDIT;
+
+implementation
+uses DM, MainUnit;
+
+{$R *.dfm}
+
+procedure TJOBHISTORYEDIT.Open;
+begin
+  inherited;
+
+  case CommandType of
+    tcInsert:
+      begin
+        Caption := Caption + ': Добавление';
+        if PKDBTable1.NeedGenPrimaryKey then PKDBTable1.GetTempPrimarykey;
+        if PKDBTable2.NeedGenPrimaryKey then PKDBTable2.GetTempPrimarykey;
+        if PKDBTable3.NeedGenPrimaryKey then PKDBTable3.GetTempPrimarykey;
+        if PKDBTable4.NeedGenPrimaryKey then PKDBTable4.GetTempPrimarykey;
+
+        PKDBTable1.Fields.FieldByName('STRUCTUREID').FieldVal:= PKDBTable2.Fields.PrimaryKey.FieldVal;
+        PKDBTable1.Fields.FieldByName('DESCR').FieldVal:=       'СЛУЖЕБНАЯ ИСТОРИЯ';
+        PKDBTable2.Fields.FieldByName('DESCRIPTION').FieldVal:= 'СЛУЖЕБНАЯ ИСТОРИЯ';
+        PKDBTable3.Fields.FieldByName('DESCR').FieldVal:=       'СЛУЖЕБНАЯ ИСТОРИЯ';
+        PKDBTable4.Fields.FieldByName('DESCR').FieldVal:=       'СЛУЖЕБНАЯ ИСТОРИЯ';
+      end;
+    tcUpdate:
+      Begin
+        Caption := Caption + ': Изменение';
+
+        if PKDBTable1.Fields.PrimaryKey.FieldVal<>'' then
+         begin
+          // запрос штат ед.
+          PKDBTable2.Fields.PrimaryKey.FieldVal:=  PKDBTable1.Fields.FieldByName('STRUCTUREID').FieldVal;
+
+          // запрос приказа
+          ADQuery2.Params[0].Value:= PKDBTable1.Fields.PrimaryKey.FieldVal;
+          ADQuery2.Open;
+          PKDBTable3.Fields.PrimaryKey.FieldVal:= ADQuery2ORDERID.asstring;
+          ADQuery2.Close;
+         end;
+      End;
+    tcCopy:
+      Begin
+        Caption := Caption + ': Копирование';
+        self.Button1.Enabled:=false;
+      End;
+    tcView:
+      Begin
+        Caption := Caption + ': Просмотр';
+        PKDBTable1.Fields.PrimaryKey.FieldVal:= PrimaryKey;
+        PKDBTable2.Fields.PrimaryKey.FieldVal:= PrimaryKey;
+      end;
+  end;
+  if CommandType <> tcInsert then
+   begin
+    PKDBTable1.ReadFromDB(PrimaryKey);
+    PKDBTable2.ReadFromDB(PKDBTable2.Fields.PrimaryKey.FieldVal);
+    PKDBTable3.ReadFromDB(PKDBTable3.Fields.PrimaryKey.FieldVal);
+   end;
+   
+  if PKDBTable1.Fields.ParentKey <> nil then
+    begin
+     PKDBTable1.Fields.ParentKey.FieldVal := ParentKey;
+    end;
+  if CommandType = tcView then
+    Begin
+      Button1.Enabled := false;
+    End;
+end;
+
+
+
+procedure TJOBHISTORYEDIT.RunCommand;
+begin
+  case CommandType of
+    tcInsert:
+     begin
+      PKDBTable2.Fields.PrimaryKey.FieldVal:= PKDBTable2.Insert;
+      PKDBTable1.Fields.FieldByName('STRUCTUREID').FieldVal:= PKDBTable2.Fields.PrimaryKey.FieldVal;
+      PKDBTable1.Insert;
+
+      if RadioButton2.Checked  then
+         begin
+          // приказ о приеме
+          PKDBTable3.Fields.FieldByName('DESCR').FieldVal:=       'СЛУЖЕБНАЯ ИСТОРИЯ';
+          PKDBTable3.Fields.FieldByName('ORDERNUMB').FieldVal:= PKDBBaseEdit1.Text;
+          PKDBTable3.Fields.FieldByName('ORDERTYPE').FieldVal:= '4137362';
+          PKDBDictEdit2.DictionaryValue:= PKDBTable1.Fields.PrimaryKey.FieldVal;
+          PkDBTable3.Insert;
+         end
+        else
+         begin
+          // приказ о переводе
+          PKDBTable4.Fields.FieldByName('ORDERNUMB').FieldVal:= PKDBBaseEdit1.Text;
+          PKDBDictEdit3.DictionaryValue:= PKDBTable1.Fields.PrimaryKey.FieldVal;
+          PkDBTable4.Insert;
+         end;
+     end;
+
+    tcCopy:
+     begin
+      Button1.Enabled:=false;
+     end;
+
+    tcUpdate:
+     begin
+      PKDBTable1.Update;
+      PKDBTable2.Update;
+      PKDBTable3.Update;
+     end;
+  end;
+end;
+
+function TJOBHISTORYEDIT.FindErrors: Boolean;
+Var
+  i: integer;
+begin
+  Result := False;
+  for i := 0 to PKDBTable1.Fields.Count - 1 do
+    Begin
+      if (PKDBTable1.Fields.Items[i].Nullable = false) and
+         (PKDBTable1.Fields.Items[i].IsEmpty) then
+        Begin
+          if (PKDBTable1.Fields.Items[i].IsPrimaryKey = false) then
+               Result := True;
+        End;
+    End;
+  for i := 0 to PKDBTable2.Fields.Count - 1 do
+    Begin
+      if (PKDBTable2.Fields.Items[i].Nullable = false) and
+         (PKDBTable2.Fields.Items[i].IsEmpty) then
+        Begin
+          if (PKDBTable2.Fields.Items[i].IsPrimaryKey = false) then
+               Result := True;
+        End;
+    End;
+  for i := 0 to PKDBTable3.Fields.Count - 1 do
+    Begin
+      if (PKDBTable3.Fields.Items[i].Nullable = false) and
+         (PKDBTable3.Fields.Items[i].IsEmpty) then
+        Begin
+          if (PKDBTable3.Fields.Items[i].IsPrimaryKey = false) then
+               Result := True;
+        End;
+    End;
+  if Result then
+    ShowMessage('Не заполнены обязательные поля');
+end;
+
+
+initialization
+
+RegisterClasses([TJOBHISTORYEDIT]);
+end.
+

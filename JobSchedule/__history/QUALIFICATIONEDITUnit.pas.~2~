@@ -1,0 +1,29 @@
+unit QUALIFICATIONEDITUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, PKDBTable, ComCtrls, StdCtrls, ExtCtrls, PKDBDictEdit;
+
+type
+  TQUALIFICATIONEDIT = class(TEditDialog)
+    PKDBDictEdit1: TPKDBDictEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  QUALIFICATIONEDIT: TQUALIFICATIONEDIT;
+
+implementation
+
+uses DMUnit;
+
+{$R *.dfm}
+initialization
+
+RegisterClasses([TQUALIFICATIONEDIT]);
+end.

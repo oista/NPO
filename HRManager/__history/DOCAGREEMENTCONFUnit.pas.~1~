@@ -1,0 +1,28 @@
+unit DOCAGREEMENTCONFUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, reportunit, EditDialogUnit, PKDBTable, ComCtrls, StdCtrls, ExtCtrls;
+
+type
+  TDOCAGREEMENTCONF = class(TEditDialog)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DOCAGREEMENTCONF: TDOCAGREEMENTCONF;
+  Cform: TWREPORT;
+
+implementation
+  uses DM,EMPLOYEEUnit;
+{$R *.dfm}
+
+initialization
+
+RegisterClasses([TDOCAGREEMENTCONF]);
+end.

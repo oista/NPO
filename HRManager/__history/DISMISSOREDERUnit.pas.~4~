@@ -1,0 +1,68 @@
+unit DISMISSOREDERUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, PKDBTable, ComCtrls, StdCtrls, ExtCtrls, PKDBEdit,
+  PKDBBBaseComboBox, PKDBDictEdit, DB, uADStanIntf, uADStanOption, uADStanParam,
+  uADStanError, uADDatSManager, uADPhysIntf, uADDAptIntf, uADStanAsync,
+  uADDAptManager, uADCompDataSet, uADCompClient, ReportUnit ;
+
+type
+  TDISMISSORDER = class(TEditDialog)
+    PKDBDictLabelEdit1: TPKDBDictLabelEdit;
+    PKDBBLabelComboBox1: TPKDBBLabelComboBox;
+    PKDBLabelEdit1: TPKDBLabelEdit;
+    PKDBLabelEdit2: TPKDBLabelEdit;
+    PKDBLabelEdit3: TPKDBLabelEdit;
+    ADStoredProc2: TADStoredProc;
+    CheckBox2: TCheckBox;
+    procedure Button1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure runcommand; override;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DISMISSORDER: TDISMISSORDER;
+  Cform : TWREPORT;
+
+implementation
+uses DM,EMPLOYEEUnit;
+{$R *.dfm}
+
+procedure TDISMISSORDER.Button1Click(Sender: TObject);
+begin // перевод в архивный статус
+  ADStoredProc2.Params[0].Value:= PKDBTable1.Fields.ParentKey.FieldVal; // сотрудник
+  ADStoredProc2.Params[1].Value:= strtodate(PKDBLabelEdit1.Text); // дата увольнения
+  ADStoredProc2.ExecProc;
+  inherited;
+end;
+                                                          
+procedure TDISMISSORDER.FormShow(Sender: TObject);
+begin
+  inherited;
+  // передаем значение компоненту
+  self.PKDBDictLabelEdit1.SetValue(PKDBTable1.Fields.ParentKey.FieldVal);
+end;
+
+procedure TDISMISSORDER.runcommand;
+begin
+  inherited;
+  if CheckBox2.Checked then    // если надо вывести форму СОГЛАШЕНИЯ после "ОК"
+   begin
+      Cform := TWREPORT.Create(EMPLOYEE);
+      Cform.madeExtAgreement(strtofloat(PKDBTable1.Fields.PrimaryKey.FieldVal));
+   end;
+
+end;
+
+initialization
+
+RegisterClasses([TDISMISSORDER]);
+end.
+

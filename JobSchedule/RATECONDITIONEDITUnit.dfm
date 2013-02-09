@@ -1,0 +1,131 @@
+inherited RATECONDITIONEDIT: TRATECONDITIONEDIT
+  Caption = #1059#1089#1083#1086#1074#1080#1103' '#1090#1088#1091#1076#1072' '
+  ClientHeight = 239
+  ClientWidth = 607
+  ExplicitWidth = 613
+  ExplicitHeight = 263
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Left = 516
+    Height = 239
+    ExplicitLeft = 516
+    ExplicitHeight = 239
+  end
+  inherited PageControl1: TPageControl
+    Width = 510
+    Height = 233
+    ExplicitWidth = 510
+    ExplicitHeight = 233
+    inherited TabSheet1: TTabSheet
+      Caption = #1059#1089#1083#1086#1074#1080#1103' '#1090#1088#1091#1076#1072'    '
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 502
+      ExplicitHeight = 205
+      object PKDBLabelEdit1: TPKDBLabelEdit
+        Left = 15
+        Top = 25
+        Width = 442
+        Height = 21
+        TabOrder = 0
+        Text = #1059#1089#1083#1086#1074#1080#1103' '#1090#1088#1091#1076#1072
+        Table = PKDBTable1
+        TableField = 'CONDITION'
+        EditLabel.Width = 76
+        EditLabel.Height = 13
+        EditLabel.Caption = #1059#1089#1083#1086#1074#1080#1103' '#1090#1088#1091#1076#1072
+      end
+      object PKDBLabelEdit2: TPKDBLabelEdit
+        Left = 15
+        Top = 70
+        Width = 442
+        Height = 21
+        TabOrder = 1
+        Text = #1056#1072#1073#1086#1095#1077#1077' '#1074#1088#1077#1084#1103' '#1079#1072' '#1084#1077#1089#1103#1094
+        EditKind = ekNumberEdit
+        Table = PKDBTable1
+        TableField = 'MONTHTIME'
+        EditLabel.Width = 121
+        EditLabel.Height = 13
+        EditLabel.Caption = #1056#1072#1073#1086#1095#1077#1077' '#1074#1088#1077#1084#1103' '#1079#1072' '#1084#1077#1089#1103#1094
+      end
+      object PKDBLabelEdit3: TPKDBLabelEdit
+        Left = 15
+        Top = 115
+        Width = 442
+        Height = 21
+        TabOrder = 2
+        Text = 'C'#1090#1077#1087#1077#1085#1100' '#1082#1074#1072#1083#1080#1092#1080#1082#1072#1094#1080#1080
+        EditKind = ekNumberEdit
+        Table = PKDBTable1
+        TableField = 'QUALIFICATION'
+        EditLabel.Width = 120
+        EditLabel.Height = 13
+        EditLabel.Caption = 'C'#1090#1077#1087#1077#1085#1100' '#1082#1074#1072#1083#1080#1092#1080#1082#1072#1094#1080#1080
+      end
+      object PKDBLabelEdit4: TPKDBLabelEdit
+        Left = 15
+        Top = 160
+        Width = 442
+        Height = 21
+        TabOrder = 3
+        Text = #1058#1080#1087' '#1088#1072#1073#1086#1090#1099'('#1089#1076#1077#1083#1100#1085#1072#1103'/'#1087#1086#1074#1088#1077#1084#1077#1085#1085#1072#1103')'
+        Table = PKDBTable1
+        TableField = 'WORKTYPE'
+        EditLabel.Width = 185
+        EditLabel.Height = 13
+        EditLabel.Caption = #1058#1080#1087' '#1088#1072#1073#1086#1090#1099'('#1089#1076#1077#1083#1100#1085#1072#1103'/'#1087#1086#1074#1088#1077#1084#1077#1085#1085#1072#1103')'
+      end
+    end
+  end
+  inherited PKDBTable1: TPKDBTable
+    Fields = <
+      item
+        FieldName = 'ID'
+        FieldLabel = 'ID'
+        Nullable = False
+        FieldType = ftsNumber
+        IsPrimaryKey = True
+        DisplayName = 'ID'
+      end
+      item
+        FieldName = 'CONDITION'
+        FieldLabel = #1059#1089#1083#1086#1074#1080#1103' '#1090#1088#1091#1076#1072
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'CONDITION'
+      end
+      item
+        FieldName = 'QUALIFICATION'
+        FieldLabel = 'C'#1090#1077#1087#1077#1085#1100' '#1082#1074#1072#1083#1080#1092#1080#1082#1072#1094#1080#1080
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'QUALIFICATION'
+      end
+      item
+        FieldName = 'MONTHTIME'
+        FieldLabel = #1056#1072#1073#1086#1095#1077#1077' '#1074#1088#1077#1084#1103' '#1079#1072' '#1084#1077#1089#1103#1094
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'MONTHTIME'
+      end
+      item
+        FieldName = 'WORKTYPE'
+        FieldLabel = #1058#1080#1087' '#1088#1072#1073#1086#1090#1099'('#1089#1076#1077#1083#1100#1085#1072#1103'/'#1087#1086#1074#1088#1077#1084#1077#1085#1085#1072#1103')'
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'WORKTYPE'
+      end
+      item
+        FieldName = 'CODE'
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'CODE'
+      end>
+    TableName = 'CS_RATECONDITION'
+    Connection = DataModule2.Conn
+    Left = 632
+    Top = 104
+  end
+end

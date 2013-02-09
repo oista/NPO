@@ -1,0 +1,46 @@
+unit DOCREFERENCEUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, PKDBTable, ComCtrls, StdCtrls, ExtCtrls, PKDBEdit,
+  PKDBBBaseComboBox, reportunit;
+
+type
+  TDOCREFERENCE= class(TEditDialog)
+    PKDBLabelEdit1: TPKDBLabelEdit;
+    PKDBBLabelComboBox1: TPKDBBLabelComboBox;
+    PKDBLabelEdit2: TPKDBLabelEdit;
+    procedure RunCommand; override;
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DOCREFERENCE: TDOCREFERENCE;
+  Cform: TWREPORT;
+
+implementation
+  uses DM,EMPLOYEEUnit;
+{$R *.dfm}
+
+
+{ TDOCREFERENCE }
+
+procedure TDOCREFERENCE.RunCommand;
+begin
+  Cform := TWREPORT.Create(EMPLOYEE);
+  PKDBTable1.GetTempPrimarykey;
+  PKDBTable1.Insert;
+  showmessage(PKDBTable1.Fields.PrimaryKey.FieldVal);
+  Cform.madeReference(strtofloat(PKDBTable1.Fields.PrimaryKey.FieldVal));
+end;
+
+initialization
+
+RegisterClasses([TDOCREFERENCE]);
+end.

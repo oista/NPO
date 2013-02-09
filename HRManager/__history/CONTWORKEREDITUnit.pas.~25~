@@ -1,0 +1,321 @@
+unit CONTWORKEREDITUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, StdCtrls, ExtCtrls, PKDBDictEdit, PKDBTable, ComCtrls,
+  PKDBEdit, PKDBBBaseComboBox, reportunit, uADStanIntf, uADStanOption,
+  uADStanParam, uADStanError, uADDatSManager, uADPhysIntf, uADDAptIntf,
+  uADStanAsync, uADDAptManager, DB, uADCompDataSet, uADCompClient;
+
+type
+  TContType = (podrad,uslugi);   // тип договора
+
+  TCONTWORKEREDIT = class(TEditDialog)
+    PKDBDictEdit1: TPKDBDictEdit;
+    PKDBDictEdit2: TPKDBDictEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    PKDBLabelEdit1: TPKDBLabelEdit;
+    PKDBLabelEdit2: TPKDBLabelEdit;
+    PKDBLabelEdit3: TPKDBLabelEdit;
+    PKDBLabelEdit4: TPKDBLabelEdit;
+    PKDBLabelEdit5: TPKDBLabelEdit;
+    GroupBox2: TGroupBox;
+    PKDBTable2: TPKDBTable;
+    PKDBLabelEdit6: TPKDBLabelEdit;
+    PKDBLabelEdit7: TPKDBLabelEdit;
+    PKDBLabelEdit8: TPKDBLabelEdit;
+    PKDBDictEdit4: TPKDBDictEdit;
+    CheckBox1: TCheckBox;
+    PKDBDictEdit5: TPKDBDictEdit;
+    ADQuery1: TADQuery;
+    ADQuery1WORKCONTRACTID: TFMTBCDField;
+    CheckBox2: TCheckBox;
+    PKDBTable3: TPKDBTable;
+    PKDBDictEdit6: TPKDBDictEdit;
+    PKDBDictEdit7: TPKDBDictEdit;
+    ADQuery2: TADQuery;
+    ADQuery2ID: TFMTBCDField;
+    PKDBDictEdit8: TPKDBDictEdit;
+    GroupBox1: TGroupBox;
+    PKDBLabelEdit9: TPKDBLabelEdit;
+    PKDBLabelEdit11: TPKDBLabelEdit;
+    PKDBDictEdit9: TPKDBDictEdit;
+    PKDBBLabelComboBox1: TPKDBBLabelComboBox;
+    PKDBBLabelComboBox5: TPKDBBLabelComboBox;
+    PKDBBLabelComboBox3: TPKDBBLabelComboBox;
+    PKDBLabelEdit10: TPKDBLabelEdit;
+    PKDBLabelEdit12: TPKDBLabelEdit;
+    PKDBLabelEdit13: TPKDBLabelEdit;
+    PKDBLabelEdit14: TPKDBLabelEdit;
+    PKDBBLabelComboBox2: TPKDBBLabelComboBox;
+    function finderrors:boolean; override;
+    procedure open; override;
+    procedure runcommand; override;
+    procedure PKDBBLabelComboBox5Change(Sender: TObject);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  CONTWORKEREDIT : TCONTWORKEREDIT;
+  Cform: TWREPORT;
+  ContType : TContType;
+
+implementation
+ uses DM, EMPLOYEEUnit, CONTWORKERUnit;
+
+{$R *.dfm}
+
+
+function TCONTWORKEREDIT.FindErrors: Boolean;
+Var
+  i: integer;
+begin
+  // присваем договору ID гражданина
+  PKDBDictEdit4.DictionaryValue:= PKDBDictEdit1.DictionaryValue;
+
+  // присваем договору ID создаваемого сотрудника
+  PKDBDictEdit5.DictionaryValue:= PKDBTable1.Fields.PrimaryKey.FieldVal;
+
+  // присваем приказу ID создаваемого сотрудника
+  PKDBDictEdit6.DictionaryValue:= PKDBTable1.Fields.PrimaryKey.FieldVal;
+
+  // присваем приказу ID договора
+  PKDBTable3.Fields.ParentKey.FieldVal:= PKDBTable2.Fields.PrimaryKey.FieldVal;
+
+  // присваеваем сотруднику ID договора
+  PKDBDictEdit7.DictionaryValue:=PKDBTable2.Fields.PrimaryKey.FieldVal;
+
+  // тип приказа=о приеме
+  PKDBDictEdit8.DictionaryValue:='4137362';
+
+  // тип сотрудника - по договору
+  PKDBDictEdit9.dictionaryvalue:='3009018';
+
+
+
+  Result := False;
+  for i := 0 to PKDBTable1.Fields.Count - 1 do
+    Begin
+      if (PKDBTable1.Fields.Items[i].Nullable = false) and
+         (PKDBTable1.Fields.Items[i].IsEmpty) then
+        Begin
+          if (PKDBTable1.Fields.Items[i].IsPrimaryKey = false) then
+               Result := True;
+        End;
+    End;
+  for i := 0 to PKDBTable2.Fields.Count - 1 do
+    Begin
+      if (PKDBTable2.Fields.Items[i].Nullable = false) and
+         (PKDBTable2.Fields.Items[i].IsEmpty) then
+        Begin
+          if (PKDBTable2.Fields.Items[i].IsPrimaryKey = false) then
+               Result := True;
+        End;
+    End;
+  for i := 0 to PKDBTable3.Fields.Count - 1 do
+    Begin
+      if (PKDBTable3.Fields.Items[i].Nullable = false) and
+         (PKDBTable3.Fields.Items[i].IsEmpty) then
+        Begin
+          if (PKDBTable3.Fields.Items[i].IsPrimaryKey = false) then
+               Result := True;
+        End;
+    End;
+  if Result then
+    ShowMessage('Не заполнены обязательные поля');
+  //else
+     // обработка вводимых данных
+ //  begin
+ //  nil;
+     // расчет испытательного срока
+   //  if ((PKDBBaseEdit1.Text<>'0') and (PKDBBaseEdit1.Text<>'')) then
+    // begin
+     // PKDBTable2.Fields.FieldByName('TESTPERIOD').FieldVal:=
+     //    datetostr(strtodate(PKDBLabelEdit4.Text)+strtoint(PKDBBaseEdit1.Text));
+   //  end;
+  // end;
+end;
+
+
+procedure TCONTWORKEREDIT.Open;
+begin
+
+  case CommandType of
+    tcInsert:
+      begin
+       Caption := Caption + ': Добавление';
+       // по умолчанию договор подряда
+       PKDBBLabelComboBox5.SetValue('6275939');
+
+       if PKDBTable1.NeedGenPrimaryKey then PKDBTable1.GetTempPrimarykey;
+       if PKDBTable2.NeedGenPrimaryKey then PKDBTable2.GetTempPrimarykey;
+       if PKDBTable3.NeedGenPrimaryKey then PKDBTable3.GetTempPrimarykey;
+
+      end;
+    tcUpdate:
+      Begin
+        // СОТРУДНИК
+        Caption := Caption + ': Изменение';
+        PKDBTable1.Fields.PrimaryKey.FieldVal := PrimaryKey;
+
+        // ДОГОВОР
+        // узнаем номер договора
+        ADQuery1.Params[0].Value:= PKDBTable1.Fields.PrimaryKey.FieldVal;
+        ADQuery1.Open;
+        PKDBTable2.Fields.PrimaryKey.FieldVal:= ADQuery1WORKCONTRACTID.AsString;
+        ADQuery1.Close;
+
+        // ПРИКАЗ
+        // узнаем номер приказа
+        ADQuery2.Params[0].Value:= PKDBTable2.Fields.PrimaryKey.FieldVal;
+        ADQuery2.Open;
+        PKDBTable3.Fields.PrimaryKey.FieldVal:= ADQuery2ID.AsString;
+        ADQuery2.Close;
+
+        // нельзя менять тип договора
+        PKDBBLabelComboBox5.Enabled:=false;
+      End;
+    tcCopy:
+      Begin
+        Caption := Caption + ': Копирование';
+        self.Button1.Enabled:=false;
+        showmessage('Копирование в данном контексте не поддерживается.');
+      End;
+    tcView:
+      Begin
+        Caption := Caption + ': Просмотр';
+        // СОТРУДНИК
+        Caption := Caption + ': Изменение';
+        PKDBTable1.Fields.PrimaryKey.FieldVal := PrimaryKey;
+
+        // ДОГОВОР
+        // узнаем номер договора
+        ADQuery1.Params[0].Value:= PKDBTable1.Fields.PrimaryKey.FieldVal;
+        ADQuery1.Open;
+        PKDBTable2.Fields.PrimaryKey.FieldVal:= ADQuery1WORKCONTRACTID.AsString;
+        ADQuery1.Close;
+
+        // ПРИКАЗ
+        // узнаем номер приказа
+        ADQuery2.Params[0].Value:= PKDBTable2.Fields.PrimaryKey.FieldVal;
+        ADQuery2.Open;
+        PKDBTable3.Fields.PrimaryKey.FieldVal:= ADQuery2ID.AsString;
+        ADQuery2.Close;
+      end;
+  end;
+
+  if CommandType <> tcInsert then
+   begin
+    // передаем компонентам сотрудника и ТД
+    PKDBTable1.ReadFromDB(PrimaryKey);
+    PKDBTable2.ReadFromDB(PKDBTable2.Fields.PrimaryKey.FieldVal);
+    PKDBTable3.ReadFromDB(PKDBTable3.Fields.PrimaryKey.FieldVal);
+   end;
+
+  if PKDBTable1.Fields.ParentKey <> nil then
+    begin
+     PKDBTable1.Fields.ParentKey.FieldVal := ParentKey;
+    end;
+
+  if CommandType = tcView then
+    Begin
+      Button1.Enabled := false;
+    End;
+
+   // проц обновления свойств контролов
+   PKDBBLabelComboBox5Change(self);
+end;
+
+procedure TCONTWORKEREDIT.PKDBBLabelComboBox5Change(Sender: TObject);
+ // проц обновления свойств контролов
+begin
+  // тип договора
+  case strtoint(PKDBBLabelComboBox5.selectid) of
+   6275939:
+     begin  // подряд
+       ContType:=podrad;
+       PKDBBLabelComboBox3.Enabled:= true;     // исполнитель
+       PKDBBLabelComboBox1.Enabled:= true;     // тип оплаты
+       PKDBLabelEdit12.Enabled    := true;     // гарантия
+       PKDBLabelEdit13.Enabled    := true;     // дни до оплаты
+       PKDBLabelEdit6.Enabled     := true;     // дата нач действия
+       PKDBLabelEdit7.Enabled     := true;     // дата конц действия
+     end;
+   6275940:
+     begin  // услуги
+       ContType:=uslugi;
+       PKDBBLabelComboBox3.Enabled:= false;
+       PKDBBLabelComboBox1.Enabled:= false;
+       PKDBLabelEdit12.Enabled    := false;     // гарантия
+       PKDBLabelEdit13.Enabled    := false;     // дни до оплаты
+       PKDBLabelEdit6.Enabled     := false;     // дата нач действия
+       PKDBLabelEdit7.Enabled     := false;     // дата конц действия
+     end;
+  end;
+end;
+
+
+
+procedure TCONTWORKEREDIT.RunCommand;
+begin
+  case CommandType of
+    tcInsert:
+     begin
+      begin  // дополнение данных
+       // дату начала и конца договора берем из даты прихода на должность
+       if (PKDBLabelEdit6.Text='') then
+          (PKDBLabelEdit6.Text:=PKDBLabelEdit4.Text);
+       if (PKDBLabelEdit7.Text='') then
+          (PKDBLabelEdit7.Text:=PKDBLabelEdit5.Text);
+       // дату начала и конца работ берем из даты прихода на должность
+       if (PKDBLabelEdit10.Text='') then
+          (PKDBLabelEdit10.Text:=PKDBLabelEdit4.Text);
+       if (PKDBLabelEdit14.Text='') then
+          (PKDBLabelEdit14.Text:=PKDBLabelEdit5.Text);
+      end;
+
+      PrimaryKey := PKDBTable1.Insert;
+      PKDBTable2.Insert;
+      PKDBTable3.Insert;
+     end;
+    tcCopy:
+     begin
+      // копирование не поддерживается в данном контексте
+     end;
+    tcUpdate:
+     begin
+      PKDBTable1.Update;
+      PKDBTable2.Update;
+      PKDBTable3.Update;
+     end;
+  end;
+
+  if CheckBox1.Checked then    // если надо вывести форму договора после "ОК"
+     begin
+      Cform := TWREPORT.Create(CONTWORKER);
+      if (ContType = podrad) then
+        // договор подряда
+         Cform.madeLaborContract(strtofloat(PKDBTable2.Fields.PrimaryKey.FieldVal));
+      if (ContType = uslugi) then
+        // договор услуг
+         Cform.madeServiceContract(strtofloat(PKDBTable2.Fields.PrimaryKey.FieldVal));
+     end;
+
+  if CheckBox2.Checked then    // если надо вывести форму приказа после "ОК"
+     begin
+      Cform := TWREPORT.Create(CONTWORKER);
+      Cform.madeOrderJoin(strtofloat(PKDBTable3.Fields.PrimaryKey.FieldVal));
+     end;
+end;
+
+initialization
+
+RegisterClasses([TCONTWORKEREDIT]);
+end.

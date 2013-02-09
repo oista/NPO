@@ -1,0 +1,5 @@
+inherited EditDialog1: TEditDialog1
+  Caption = 'EditDialog1'
+  PixelsPerInch = 96
+  TextHeight = 13
+end

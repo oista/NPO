@@ -1,0 +1,27 @@
+unit HISTORYUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DictUnit, daADStanIntf, daADDatSManager, daADStanOption,
+  daADStanParam, daADPhysIntf, daADDAptIntf, DB, daADCompDataSet,
+  daADCompClient, PKDBFindPanel, PKDBEditButtons, ExtCtrls, Grids, DBGrids,
+  VrDbGrid, ComCtrls, StdCtrls;
+
+type
+  THISTORY = class(TDictForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  HISTORY: THISTORY;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,204 @@
+inherited EDUCATIONORGS: TEDUCATIONORGS
+  Caption = #1054#1073#1088#1072#1079#1086#1074#1072#1090#1077#1083#1100#1085#1099#1077' '#1091#1095#1077#1088#1077#1078#1076#1077#1085#1080#1103
+  ExplicitWidth = 689
+  ExplicitHeight = 498
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel2: TPanel
+    Left = 25
+    Width = 656
+    ExplicitLeft = 25
+    ExplicitWidth = 656
+    inherited Panel3: TPanel
+      Width = 653
+      ExplicitWidth = 653
+      inherited Splitter2: TSplitter
+        Width = 653
+        ExplicitWidth = 653
+      end
+      inherited Panel5: TPanel
+        Width = 653
+        Visible = False
+        ExplicitWidth = 653
+      end
+      inherited PageControl1: TPageControl
+        Width = 653
+        ExplicitWidth = 653
+        inherited TabSheet1: TTabSheet
+          Caption = #1054#1073#1088#1072#1079'. '#1091#1095#1077#1088'-'#1080#1103'.'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 645
+          ExplicitHeight = 0
+          inherited Grid: TVrDbGrid
+            Width = 639
+            CheckFieldName = 'ID'
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'ID'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'ORGANISATIONTYPE'
+                Width = 97
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'NAME'
+                Width = 370
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'ADRESS'
+                Width = 300
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'PHONENUMB'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'PHONENUMB2'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'PHONENUMB3'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'PHONENUMB4'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'EMAIL'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'EMAIL2'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'WEBSITE'
+                Visible = False
+                SortMode = smNone
+              end>
+          end
+          inherited GridPanel1: TGridPanel
+            Width = 639
+            ExplicitWidth = 639
+            inherited PKDBEditButtons1: TPKDBEditButtons
+              PrimaryFieldName = 'ID'
+              ParentFieldName = 'ID'
+              Grid = Grid
+              Connection = DataModule1.ADConnection1
+              EditDialogClassName = 'TORGANISATION'
+            end
+            inherited PKDBFindPanel1: TPKDBFindPanel
+              Width = 487
+              QuerysCollection = <
+                item
+                  Query = MainQuery
+                  QueryCaption = #1054#1073#1088#1072#1079#1086#1074#1072#1090#1077#1083#1100#1085#1099#1077' '#1091#1095#1077#1088#1077#1078#1076#1077#1085#1080#1103
+                  MainQuery = True
+                  FieldList = <
+                    item
+                      FieldName = 'NAME'
+                      FieldCaption = #1053#1072#1079#1074#1072#1085#1080#1077' '#1091#1095#1077#1088#1077#1078#1076#1077#1085#1080#1103
+                      FieldType = ffString
+                      DisplayName = 'NAME'
+                    end
+                    item
+                      FieldName = 'ADRESS'
+                      FieldCaption = #1040#1076#1088#1077#1089
+                      FieldType = ffString
+                      DisplayName = 'ADRESS'
+                    end>
+                end>
+              ExplicitWidth = 487
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited Panel6: TPanel
+    Width = 25
+    Visible = False
+    ExplicitWidth = 25
+  end
+  inherited MainQuery: TADQuery
+    Connection = DataModule1.ADConnection1
+    SQL.Strings = (
+      'select * from HR_ORGANISATION t'
+      'where '
+      '   t.organisationtype=59791 '
+      'or t.organisationtype=59792')
+    Left = 408
+    Top = 0
+    object MainQueryID: TFMTBCDField
+      FieldName = 'ID'
+      Required = True
+    end
+    object MainQueryNAME: TStringField
+      DisplayLabel = #1053#1072#1079#1074#1072#1085#1080#1077' '#1091#1095#1077#1088#1077#1078#1076#1077#1085#1080#1103
+      FieldName = 'NAME'
+      Size = 200
+    end
+    object MainQueryADRESS: TStringField
+      DisplayLabel = #1040#1076#1088#1077#1089
+      FieldName = 'ADRESS'
+      Size = 600
+    end
+    object MainQueryPHONENUMB: TFMTBCDField
+      FieldName = 'PHONENUMB'
+    end
+    object MainQueryORGANISATIONTYPE: TFMTBCDField
+      DisplayLabel = #1058#1080#1087' '#1091#1095#1077#1088#1077#1078#1076#1077#1085#1080#1103
+      FieldName = 'ORGANISATIONTYPE'
+    end
+    object MainQueryPHONENUMB2: TFMTBCDField
+      FieldName = 'PHONENUMB2'
+    end
+    object MainQueryPHONENUMB3: TFMTBCDField
+      FieldName = 'PHONENUMB3'
+    end
+    object MainQueryPHONENUMB4: TFMTBCDField
+      FieldName = 'PHONENUMB4'
+    end
+    object MainQueryEMAIL: TFMTBCDField
+      FieldName = 'EMAIL'
+    end
+    object MainQueryEMAIL2: TFMTBCDField
+      FieldName = 'EMAIL2'
+    end
+    object MainQueryWEBSITE: TStringField
+      FieldName = 'WEBSITE'
+      Size = 200
+    end
+  end
+  inherited DataSource1: TDataSource
+    Left = 440
+    Top = 0
+  end
+end

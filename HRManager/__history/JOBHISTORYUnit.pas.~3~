@@ -1,0 +1,44 @@
+unit JOBHISTORYUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DictUnit, uADStanIntf, uADStanOption, uADStanParam, uADStanError,
+  uADDatSManager, uADPhysIntf, uADDAptIntf, uADStanAsync, uADDAptManager, DB,
+  uADCompDataSet, uADCompClient, PKDBFindPanel, PKDBEditButtons, ExtCtrls,
+  Grids, DBGrids, VrDbGrid, ComCtrls, StdCtrls;
+
+type
+  TJOBHISTORY = class(TDictForm)
+    MainQueryID: TFMTBCDField;
+    MainQueryCITEZENID: TFMTBCDField;
+    MainQueryINDATE: TDateTimeField;
+    MainQueryOUTDATE: TDateTimeField;
+    MainQueryCHANGESTATUSDATE: TDateTimeField;
+    MainQueryAGREEMENTNUMB: TStringField;
+    MainQueryAGREEMENTDATE: TDateTimeField;
+    MainQueryDEPT_NO: TStringField;
+    MainQueryJOBTITLE: TStringField;
+    MainQuerySTRUCTUREID: TFMTBCDField;
+    MainQuerySUMSAL: TFMTBCDField;
+    MainQueryREASON: TStringField;
+    MainQueryROWCONTENT: TStringField;
+    MainQuerySTATUS: TFMTBCDField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  JOBHISTORY: TJOBHISTORY;
+
+implementation
+  uses DM;
+{$R *.dfm}
+
+initialization
+
+RegisterClasses([TJOBHISTORY]);
+ end.

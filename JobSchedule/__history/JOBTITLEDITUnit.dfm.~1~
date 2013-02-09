@@ -1,0 +1,15 @@
+inherited JOBTITLEDIT: TJOBTITLEDIT
+  Caption = #1057#1087#1077#1094#1080#1072#1083#1100#1085#1086#1089#1090#1080
+  ExplicitWidth = 467
+  ExplicitHeight = 443
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited PageControl1: TPageControl
+    inherited TabSheet1: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 356
+      ExplicitHeight = 385
+    end
+  end
+end

@@ -1,0 +1,31 @@
+unit DOCREFERENCEUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, PKDBTable, ComCtrls, StdCtrls, ExtCtrls, PKDBEdit,
+  PKDBBBaseComboBox;
+
+type
+  TDOCREFERENCE= class(TEditDialog)
+    PKDBLabelEdit1: TPKDBLabelEdit;
+    PKDBLabelEdit2: TPKDBLabelEdit;
+    PKDBBLabelComboBox1: TPKDBBLabelComboBox;
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DOCREFERENCE: TDOCREFERENCE;
+
+implementation
+  uses DM;
+{$R *.dfm}
+initialization
+
+RegisterClasses([TDOCREFERENCE]);
+end.

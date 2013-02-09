@@ -1,0 +1,323 @@
+unit WORKCALENDARUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, ComCtrls, DB, DBClient, uADStanIntf, uADStanOption, uADStanParam,
+  uADStanError, uADDatSManager, uADPhysIntf, uADDAptIntf, uADStanAsync,
+  uADDAptManager, uADCompDataSet, uADCompClient;
+
+type
+  TWORKCALENDAR = class(TForm)
+    Label1: TLabel;
+    Button1: TButton;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Panel1: TPanel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Edit1: TEdit;
+    ADQuery1: TADQuery;
+    ADQuery2: TADQuery;
+    ComboBox1: TComboBox;
+    Button3: TButton;
+    ADQuery2CALENDAR_YEAR: TFloatField;
+    ADQuery1ID: TFMTBCDField;
+    ADQuery1DAYDATE: TDateTimeField;
+    ADQuery1DAYWORKTYPEID: TFMTBCDField;
+    ADQuery1DESCR: TStringField;
+    ADQuery1DAYTYPE: TStringField;
+    ADQuery1WORKTYPE: TStringField;
+    procedure rowrite(H:integer; N:integer; Day: integer);
+    procedure ComboBox1Change(Sender: TObject);
+    PROCEDURE table_cr();
+    procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  end;
+
+var
+  WORKCALENDAR:  TWORKCALENDAR;
+  dni:   integer;
+
+implementation
+
+uses DM;
+
+{$R *.dfm}
+
+procedure TWORKCALENDAR.Button1Click(Sender: TObject); {ÓÒÂÅÐÄÈÒÜ ÈÇÌÅÍÅÍÈß}
+var
+i,j,p:integer;
+
+begin
+
+for i:= 0 to panel3.ComponentCount -1  do
+ begin
+  if (panel3.Components[i] is Tpanel) then
+   for j := 0 to (panel3.Components[i] as Tpanel).ComponentCount -1  do
+
+    Begin
+     if (panel3.Components[i] as Tpanel).Components[j] is TCheckBox then
+      Begin
+       if ((panel3.Components[i] as Tpanel).Components[j] as TCheckBox).Checked = true then
+        begin
+      //  DM.UPD_MON.params[0].Value:= 1;
+        for p := 0 to (panel3.Components[i] as Tpanel).ComponentCount -1  do
+          begin
+          if ((panel3.Components[i] as Tpanel).Components[p]) is Tlabel then
+             if ((panel3.Components[i] as Tpanel).Components[p] as TLabel).tag= 3 then
+              ((panel3.Components[i] as Tpanel).Components[p] as TLabel).Font.Color:=clred;
+          if ((panel3.Components[i] as Tpanel).Components[p]) is TEdit then
+           begin
+            ((panel3.Components[i] as Tpanel).Components[p] as TEdit).text:='';
+         //   DM.UPD_MON.params[4].Value:='';
+         //   DM.UPD_MON.params[5].Value:='';
+           end;
+          end;
+        end
+       else
+      //  DM.UPD_MON.params[0].Value:= 0;
+      End;
+
+      if ((panel3.Components[i] as Tpanel).Components[j]) is TLabel then
+       if ((panel3.Components[i] as Tpanel).Components[j] as TLabel).tag= 3 then
+       begin
+      //  DM.UPD_MON.params[1].Value:=((panel3.Components[i] as Tpanel).Components[j] as TLabel).caption;
+     //   DM.UPD_MON.params[2].Value:= combobox1.Text;
+     //   DM.UPD_MON.params[3].Value:= Edit1.Text;
+       end;
+
+      if ((panel3.Components[i] as Tpanel).Components[j]) is TEdit then
+       if ((panel3.Components[i] as Tpanel).Components[j] as TEdit).tag= 1 then
+      //  DM.UPD_MON.params[4].Value:=((panel3.Components[i] as Tpanel).Components[j] as TEdit).text;
+
+      if ((panel3.Components[i] as Tpanel).Components[j]) is TEdit then
+       if ((panel3.Components[i] as Tpanel).Components[j] as TEdit).tag=2 then
+    //    DM.UPD_MON.params[5].Value:=((panel3.Components[i] as Tpanel).Components[j] as TEdit).text;
+    end;
+
+   //   DM.UPD_MON.ExecProc;
+    end;
+end;
+
+
+procedure  TWORKCALENDAR.ComboBox1Change(Sender: TObject); {ÎÁÍÎÂËÅÍÈß ÝÊÐÀÍÀ}
+var
+i:integer;
+begin
+    ADQuery1.Params[0].Value:= strToint(edit1.Text);
+    ADQuery1.Params[1].Value:= ComboBox1.text;
+    i:=1;
+    while i<> 0 do
+      begin
+        if panel3.ComponentCount <> 0  then
+          begin
+           if panel3.Components[panel3.ComponentCount-1] is Tpanel then
+             (panel3.Components[panel3.ComponentCount-1] as tPanel).Free
+          end
+         else
+           i := 0;
+      end;
+    table_cr;
+end;
+
+
+
+procedure  TWORKCALENDAR.FormCreate(Sender: TObject); {ÑÎÇÄÀÍÈÅ ÔÎÐÌÛ}
+var
+ year,mon,day: word;
+ i: integer;
+begin
+      decodedate(now,year,mon,day);
+      Edit1.Text:= intTostr(year);
+      case mon of
+      01: ComboBox1.Text:='ÿíâàðü';
+      02: ComboBox1.Text:='ôåâðàëü';
+      03: ComboBox1.Text:='ìàðò';
+      04: ComboBox1.Text:='àïðåëü';
+      05: ComboBox1.Text:='ìàé';
+      06: ComboBox1.Text:='èþíü';
+      07: ComboBox1.Text:='èþëü';
+      08: ComboBox1.Text:='àâãóñò';
+      09: ComboBox1.Text:='ñåíòÿáðü';
+      10: ComboBox1.Text:='îêòÿáðü';
+      11: ComboBox1.Text:='íîÿáðü';
+      12: ComboBox1.Text:='äåêàáðü';
+      end;
+
+    ADQuery1.Params[0].Value:= strToint(edit1.Text);
+    ADQuery1.Params[1].Value:= ComboBox1.text;
+    i:=1;
+    while i<> 0 do
+      begin
+        if panel3.ComponentCount <> 0  then
+          begin
+           if panel3.Components[panel3.ComponentCount-1] is Tpanel then
+             (panel3.Components[panel3.ComponentCount-1] as tPanel).Free
+          end
+         else
+           i := 0;
+      end;
+    table_cr;
+end;
+
+procedure  TWORKCALENDAR.rowrite(H:integer; N:integer; Day: integer);
+Var
+  pan: TPanel;
+  lab, vih: Tlabel;
+  Ed, ed2: Tedit;
+  box: TCheckbox;
+
+begin
+  pan := TPanel.Create(Panel3);
+  pan.Parent := Panel3;
+  pan.Height:=65;
+  pan.Width:=73;
+  pan.Left:=N;
+  pan.Top:=H;
+
+  lab:= Tlabel.Create(pan);
+  lab.Parent:=pan;
+  lab.Tag:=3;
+  lab.Left:=25;
+  lab.Top:=3;
+  lab.Align:=altop;
+  lab.Alignment:=tacenter;
+  lab.AlignWithMargins:=true;
+  lab.Caption:=IntToStr(Day);
+  lab.Font.Size:=11;
+  lab.Font.Style:=[fsBold];
+  lab.Margins.Left:=3;
+  lab.Margins.Right:=3;
+  lab.Margins.Top:=1;
+
+  box:=Tcheckbox.Create(pan);
+  box.Parent:=pan;
+  box.left:=47;
+  box.top:=27;
+  box.AlignWithMargins:=true;
+  box.Margins.Left:=5;
+  box.Margins.Right:=3;
+  box.Margins.top:=3;
+  box.Margins.Bottom:=0;
+  if ADQuery1DAYWORKTYPEID.AsInteger=6244183 then begin
+   box.Checked:=true;
+   lab.Font.Color:=clred;
+  end;
+
+  vih:=Tlabel.Create(pan);
+  vih.Parent:=pan;
+  vih.Caption:= 'âûõ.';
+  vih.left:=44;
+  vih.top:=43;
+
+ { ed2:= Tedit.Create(pan);
+  ed2.Tag := 2;
+  ed2.Parent:=pan;
+  ed2.left:=2;
+  ed2.top:=20;
+  ed2.Width:=35;
+  ed2.AlignWithMargins:=true;
+  ed2.Margins.Left:=3;
+  ed2.Margins.Right:=3;
+  ed2.Margins.top:=3;
+  ed2.Margins.Bottom:=5;
+
+
+  ed:= Tedit.Create(pan);
+  ed.Tag := 1;
+  ed.Parent:=pan;
+  ed.left:=2;
+  ed.top:=40;
+  ed.Width:=35;
+  ed.AlignWithMargins:=true;
+  ed.Margins.Left:=3;
+  ed.Margins.Right:=3;
+  ed.Margins.top:=3;
+  ed.Margins.Bottom:=5;
+
+  ed2.Text:=ADQuery1DAY_LENGTH_H.AsString +':' +ADQuery1DAY_LENGTH_M.AsString;
+  ed.Text :=ADQuery1DAY_LENGTH_SHORT_H.AsString +':' +ADQuery1DAY_LENGTH_SHORT_M.AsString;
+
+  if (ed2.Text=':') or (ed2.Text='0:0') then ed2.Text:='';
+  if (ed.Text=':') or (ed.Text='0:0') then ed.Text:='';      }
+end;
+
+
+PROCEDURE  TWORKCALENDAR.table_cr();
+var
+  i,n,h,k:integer;
+
+begin
+  begin
+  ADQuery1.Open;
+  ADQuery1.FindFirst;
+
+  if ADQuery1DAYTYPE.AsString ='ÏÍ' then
+  begin
+  h := 6;
+  n := 4;
+  k := 8;
+  end;
+  if ADQuery1DAYTYPE.AsString ='ÂÒ' then
+  begin
+  h := 6;
+  n := 81;
+  k := 7;
+  end;
+  if ADQuery1DAYTYPE.AsString ='ÑÐ' then
+  begin
+  h := 6;
+  n := 158;
+  k := 6;
+  end;
+  if ADQuery1DAYTYPE.AsString ='×Ò' then
+  begin
+  h := 6;
+  n := 235;
+  k := 5;
+  end;
+  if ADQuery1DAYTYPE.AsString ='ÏÒ' then
+  begin
+  h := 4;
+  n := 312;
+  k := 4;
+  end;
+  if ADQuery1DAYTYPE.AsString ='ÑÁ' then
+  begin
+  h := 4;
+  n := 389;
+  k := 3;
+  end;
+  if ADQuery1DAYTYPE.AsString ='ÂÑ' then
+  begin
+  h := 4;
+  n := 466;
+  k := 2;
+  end;
+  end;
+
+ i:=1;
+ while not ADQuery1.Eof do
+    Begin
+      if i in [k,k+7,k+14,k+21,k+28] then
+        begin
+          h := h+71;
+          n := 4;
+        end;
+      rowrite(H,N,I);
+      n := n+77;
+      i:=i+1;
+      ADQuery1.Next;
+    End;
+  ADQuery1.Close  
+end;
+end.

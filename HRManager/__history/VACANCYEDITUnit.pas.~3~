@@ -1,0 +1,42 @@
+unit VACANCYEDITUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, PKDBTable, ComCtrls, StdCtrls, ExtCtrls, PKDBDictEdit
+  ,HISTORYSCHEDUnit;
+
+type
+  TVACANCYEDIT = class(TEditDialog)
+    Label1: TLabel;
+    PKDBDictEdit1: TPKDBDictEdit;
+    PKDBDictLabelEdit2: TPKDBDictLabelEdit;
+    procedure PKDBDictEdit1AfterOpenButtonClick(Sender: TObject;
+      Form: THISTORYSCHED);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  VACANCYEDIT: TVACANCYEDIT;
+
+
+implementation
+uses DM;
+{$R *.dfm}
+
+
+procedure TVACANCYEDIT.PKDBDictEdit1AfterOpenButtonClick(Sender: TObject;
+  Form: THISTORYSCHED);
+begin
+  inherited;
+  form.MainQuery.SQL.Clear;
+  form.MainQuery.SQL.Text:='select * from HR_V_OUT_SCHEDULE t';
+end;
+
+initialization
+RegisterClasses([TVACANCYEDIT]);
+end.

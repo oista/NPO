@@ -1,0 +1,143 @@
+inherited QUALIFICATION: TQUALIFICATION
+  Caption = #1050#1074#1072#1083#1080#1092#1080#1082#1072#1094#1080#1103'    '
+  ExplicitWidth = 689
+  ExplicitHeight = 498
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel2: TPanel
+    Left = 17
+    Width = 664
+    ExplicitLeft = 17
+    ExplicitWidth = 664
+    inherited Panel3: TPanel
+      Width = 661
+      ExplicitWidth = 661
+      inherited Splitter2: TSplitter
+        Top = 381
+        Width = 661
+        ExplicitTop = 381
+        ExplicitWidth = 661
+      end
+      inherited Panel5: TPanel
+        Top = 384
+        Width = 661
+        Height = 39
+        Visible = False
+        ExplicitTop = 384
+        ExplicitWidth = 661
+        ExplicitHeight = 39
+      end
+      inherited PageControl1: TPageControl
+        Width = 661
+        Height = 381
+        ExplicitWidth = 661
+        ExplicitHeight = 381
+        inherited TabSheet1: TTabSheet
+          Caption = #1050#1074#1072#1083#1080#1092#1080#1082#1072#1094#1080#1103
+          ExplicitWidth = 653
+          ExplicitHeight = 353
+          inherited Grid: TVrDbGrid
+            Width = 647
+            Height = 316
+            CheckFieldName = 'ID'
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'ID'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'CATEGORYNUMB'
+                Width = 59
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'DEGREE'
+                Width = 85
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'DESCRIPTION'
+                Visible = True
+                SortMode = smNone
+              end>
+          end
+          inherited GridPanel1: TGridPanel
+            Width = 647
+            ExplicitWidth = 647
+            inherited PKDBEditButtons1: TPKDBEditButtons
+              TableName = 'CS_select * from CS_QUALIFICATION'
+              PrimaryFieldName = 'ID'
+              Grid = Grid
+              Connection = DataModule2.Conn
+              EditDialogClassName = 'TQUALIFICATIONEDIT'
+            end
+            inherited PKDBFindPanel1: TPKDBFindPanel
+              Width = 495
+              QuerysCollection = <
+                item
+                  Query = MainQuery
+                  QueryCaption = #1050#1074#1072#1083#1080#1092#1080#1082#1072#1094#1080#1103
+                  MainQuery = True
+                  FieldList = <
+                    item
+                      FieldName = 'DEGREE'
+                      FieldCaption = #1057#1090#1077#1087#1077#1085#1100'. '#1082#1074#1072#1083'.'
+                      FieldType = ffNumber
+                      DisplayName = 'DEGREE'
+                    end
+                    item
+                      FieldName = 'DESCRIPTION'
+                      FieldCaption = #1050#1072#1090'. '#1082#1074#1072#1083'.'
+                      FieldType = ffString
+                      DisplayName = 'DESCRIPTION'
+                    end
+                    item
+                      FieldName = 'CATEGORYNUMB'
+                      FieldCaption = #1050#1072#1090'. '#1087#1077#1088#1089'.'
+                      FieldType = ffNumber
+                      DisplayName = 'CATEGORYNUMB'
+                    end>
+                end>
+              ExplicitWidth = 495
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited Panel6: TPanel
+    Width = 17
+    Visible = False
+    ExplicitWidth = 17
+  end
+  inherited MainQuery: TADQuery
+    Connection = DataModule2.Conn
+    SQL.Strings = (
+      'select * from CS_V_QUALIFICATION t')
+    object MainQueryID: TFloatField
+      FieldName = 'ID'
+      Required = True
+      Visible = False
+    end
+    object MainQueryDEGREE: TFloatField
+      DisplayLabel = #1057#1090#1077#1087#1077#1085#1100'. '#1082#1074#1072#1083'.'
+      FieldName = 'DEGREE'
+    end
+    object MainQueryDESCRIPTION: TStringField
+      DisplayLabel = #1050#1072#1090'. '#1082#1074#1072#1083'.'
+      FieldName = 'DESCRIPTION'
+      Size = 200
+    end
+    object MainQueryCATEGORYNUMB: TFloatField
+      DisplayLabel = #1050#1072#1090'. '#1087#1077#1088#1089'.'
+      FieldName = 'CATEGORYNUMB'
+    end
+  end
+end

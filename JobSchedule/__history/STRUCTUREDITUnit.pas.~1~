@@ -1,0 +1,31 @@
+unit STRUCTUREDITUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, PKDBTable, ComCtrls, StdCtrls, ExtCtrls;
+
+type
+  TSTRUCTUREDIT = class(TEditDialog)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  TSTRUCTUREDIT: TSTRUCTUREDIT;
+
+implementation
+
+uses DMUnit;
+
+{$R *.dfm}
+
+initialization
+
+  RegisterClasses([TSTRUCTUREDIT]);
+
+
+end.

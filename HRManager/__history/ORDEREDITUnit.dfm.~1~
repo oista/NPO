@@ -1,0 +1,81 @@
+inherited ORDEREDIT: TORDEREDIT
+  Caption = #1055#1088#1080#1082#1072#1079
+  ClientWidth = 629
+  ExplicitWidth = 635
+  ExplicitHeight = 443
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Left = 538
+  end
+  inherited PageControl1: TPageControl
+    Width = 532
+    inherited TabSheet1: TTabSheet
+      Caption = #1055#1088#1080#1082#1072#1079
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 356
+      ExplicitHeight = 385
+      object PKDBDictLabelEdit1: TPKDBDictLabelEdit
+        Left = 15
+        Top = 25
+        Width = 378
+        Height = 21
+        Connection = DataModule1.ADConnection1
+        Table = PKDBTable1
+        TableField = 'ORDERTYPE'
+        WithoutTable = False
+        EditLabel.Width = 62
+        EditLabel.Height = 13
+        EditLabel.Caption = #1058#1080#1087' '#1087#1088#1080#1082#1072#1079#1072
+        DesignSize = (
+          378
+          21)
+      end
+    end
+  end
+  inherited PKDBTable1: TPKDBTable
+    Fields = <
+      item
+        FieldName = 'ORDERTYPE'
+        FieldLabel = #1058#1080#1087' '#1087#1088#1080#1082#1072#1079#1072
+        Nullable = True
+        FieldType = ftsNumber
+        ReferencingTable = 'HR_FACETCONTENT'
+        ReferencingColumn = 'ID'
+        DisplayName = 'ORDERTYPE'
+      end
+      item
+        FieldName = 'ORDERDATE'
+        FieldLabel = #1044#1072#1090#1072' '#1087#1088#1080#1082#1072#1079#1072
+        Nullable = True
+        FieldType = ftsDate
+        DisplayName = 'ORDERDATE'
+      end
+      item
+        FieldName = 'ORDERTITLE'
+        FieldLabel = #1047#1072#1075#1086#1083#1086#1074#1086#1082
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'ORDERTITLE'
+      end
+      item
+        FieldName = 'ID'
+        Nullable = False
+        FieldType = ftsNumber
+        IsPrimaryKey = True
+        DisplayName = 'ID'
+      end
+      item
+        FieldName = 'ORDERNUMB'
+        FieldLabel = #1053#1086#1084#1077#1088' '#1087#1088#1080#1082#1072#1079#1072
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'ORDERNUMB'
+      end>
+    TableName = 'HR_ORDER'
+    Connection = DataModule1.ADConnection1
+    Left = 544
+    Top = 88
+  end
+end

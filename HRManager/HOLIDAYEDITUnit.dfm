@@ -1,0 +1,363 @@
+inherited HOLIDAYEDIT: THOLIDAYEDIT
+  Caption = #1054#1090#1087#1091#1089#1082
+  ClientHeight = 338
+  ClientWidth = 693
+  ExplicitWidth = 699
+  ExplicitHeight = 362
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Left = 602
+    Height = 338
+    ExplicitLeft = 602
+    ExplicitHeight = 338
+    object PKDBDictEdit1: TPKDBDictEdit
+      Left = 3
+      Top = 158
+      Width = 1
+      Height = 1
+      Connection = DataModule1.ADConnection1
+      Table = PKDBTable2
+      TableField = 'HOLIDAYID'
+      LookUpRool = ' id'
+      WithoutTable = False
+      DesignSize = (
+        1
+        1)
+    end
+  end
+  inherited PageControl1: TPageControl
+    Width = 596
+    Height = 332
+    ExplicitWidth = 596
+    ExplicitHeight = 332
+    inherited TabSheet1: TTabSheet
+      Caption = #1054#1090#1087#1091#1089#1082
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 588
+      ExplicitHeight = 304
+      object PKDBBLabelComboBox1: TPKDBBLabelComboBox
+        Left = 15
+        Top = 25
+        Width = 338
+        Height = 21
+        ItemHeight = 13
+        TabOrder = 0
+        Text = #1058#1080#1087' '#1086#1090#1087#1091#1089#1082#1072
+        OnChange = PKDBBLabelComboBox1Change
+        DBTable = 'HR_FACETCONTENT'
+        PrimaryKey = 'ID'
+        content = 'rowcontent'
+        constraint = ' facetid=1492'
+        Table = PKDBTable1
+        TableField = 'HOLIDAYTYPEID'
+        EditLabel.Width = 62
+        EditLabel.Height = 13
+        EditLabel.Caption = #1058#1080#1087' '#1086#1090#1087#1091#1089#1082#1072
+      end
+      object PKDBLabelEdit1: TPKDBLabelEdit
+        Left = 15
+        Top = 70
+        Width = 154
+        Height = 21
+        TabOrder = 1
+        Text = #1055#1077#1088#1080#1086#1076' '#1088#1072#1073#1086#1090#1099' ('#1085#1072#1095#1072#1083#1086')'
+        EditKind = ekDateEdit
+        Table = PKDBTable1
+        TableField = 'WORKDATE1'
+        EditLabel.Width = 126
+        EditLabel.Height = 13
+        EditLabel.Caption = #1055#1077#1088#1080#1086#1076' '#1088#1072#1073#1086#1090#1099' ('#1085#1072#1095#1072#1083#1086')'
+      end
+      object PKDBLabelEdit2: TPKDBLabelEdit
+        Left = 208
+        Top = 70
+        Width = 145
+        Height = 21
+        TabOrder = 2
+        Text = #1055#1077#1088#1080#1086#1076' '#1088#1072#1073#1086#1090#1099' ('#1082#1086#1085#1077#1094')'
+        EditKind = ekDateEdit
+        Table = PKDBTable1
+        TableField = 'WORKDATE2'
+        EditLabel.Width = 120
+        EditLabel.Height = 13
+        EditLabel.Caption = #1055#1077#1088#1080#1086#1076' '#1088#1072#1073#1086#1090#1099' ('#1082#1086#1085#1077#1094')'
+      end
+      object PKDBLabelEdit3: TPKDBLabelEdit
+        Left = 15
+        Top = 115
+        Width = 154
+        Height = 21
+        TabOrder = 3
+        Text = #1044#1072#1090#1072' '#1085#1072#1095#1072#1083#1072' '#1086#1090#1087#1089#1082#1072
+        EditKind = ekDateEdit
+        Table = PKDBTable1
+        TableField = 'INDATE'
+        EditLabel.Width = 103
+        EditLabel.Height = 13
+        EditLabel.Caption = #1044#1072#1090#1072' '#1085#1072#1095#1072#1083#1072' '#1086#1090#1087#1089#1082#1072
+      end
+      object PKDBLabelEdit4: TPKDBLabelEdit
+        Left = 208
+        Top = 115
+        Width = 145
+        Height = 21
+        TabOrder = 4
+        Text = #1044#1072#1090#1072' '#1082#1086#1085#1094#1072' '#1086#1090#1087#1091#1089#1082#1072
+        EditKind = ekDateEdit
+        Table = PKDBTable1
+        TableField = 'OUTDATE'
+        EditLabel.Width = 103
+        EditLabel.Height = 13
+        EditLabel.Caption = #1044#1072#1090#1072' '#1082#1086#1085#1094#1072' '#1086#1090#1087#1091#1089#1082#1072
+      end
+      object GroupBox1: TGroupBox
+        Left = 0
+        Top = 191
+        Width = 369
+        Height = 80
+        Caption = '  '#1057#1091#1084#1084#1080#1088#1091#1102#1097#1080#1077' '#1079#1072#1087#1080#1089#1080' '#1079#1072' '#1088#1072#1073#1086#1095#1080#1081' '#1075#1086#1076' '
+        TabOrder = 5
+        object PKDBLabelEdit5: TPKDBLabelEdit
+          Left = 15
+          Top = 36
+          Width = 154
+          Height = 21
+          Color = clWhite
+          TabOrder = 0
+          Text = #1053#1072#1095#1080#1089#1083#1077#1085#1085#1099#1077' '#1076#1085#1080
+          Table = PKDBTable1
+          TableField = 'HOLDAYS'
+          EditLabel.Width = 90
+          EditLabel.Height = 13
+          EditLabel.Caption = #1053#1072#1095#1080#1089#1083#1077#1085#1085#1099#1077' '#1076#1085#1080
+        end
+        object PKDBLabelEdit7: TPKDBLabelEdit
+          Left = 208
+          Top = 36
+          Width = 145
+          Height = 21
+          Color = clWhite
+          TabOrder = 1
+          Text = #1053#1077#1080#1089#1087#1086#1083#1100#1079#1086#1074#1072#1085#1085#1099#1077' '#1076#1085#1080
+          Table = PKDBTable1
+          TableField = 'UNUSEDAYS'
+          EditLabel.Width = 119
+          EditLabel.Height = 13
+          EditLabel.Caption = #1053#1077#1080#1089#1087#1086#1083#1100#1079#1086#1074#1072#1085#1085#1099#1077' '#1076#1085#1080
+        end
+      end
+      object PKDBLabelEdit6: TPKDBLabelEdit
+        Left = 15
+        Top = 160
+        Width = 338
+        Height = 21
+        TabOrder = 6
+        Text = #1054#1089#1085#1086#1074#1072#1085#1080#1077
+        Table = PKDBTable1
+        TableField = 'REASON'
+        EditLabel.Width = 55
+        EditLabel.Height = 13
+        EditLabel.Caption = #1054#1089#1085#1086#1074#1072#1085#1080#1077
+      end
+      object CheckBox1: TCheckBox
+        Left = 17
+        Top = 279
+        Width = 288
+        Height = 17
+        Caption = #1042#1099#1074#1077#1089#1090#1080' '#1092#1086#1088#1084#1091' '#1087#1088#1080#1082#1072#1079#1072
+        TabOrder = 7
+      end
+      object GroupBox2: TGroupBox
+        Left = 375
+        Top = 26
+        Width = 186
+        Height = 132
+        Caption = '  '#1055#1088#1080#1082#1072#1079' '#1086#1073' '#1086#1090#1087#1091#1089#1082#1077'  '
+        TabOrder = 8
+        object PKDBLabelEdit8: TPKDBLabelEdit
+          Left = 16
+          Top = 44
+          Width = 153
+          Height = 21
+          TabOrder = 0
+          Text = #1053#1086#1084#1077#1088' '#1087#1088#1080#1082#1072#1079#1072
+          Table = PKDBTable2
+          TableField = 'ORDERNUMB'
+          EditLabel.Width = 75
+          EditLabel.Height = 13
+          EditLabel.Caption = #1053#1086#1084#1077#1088' '#1087#1088#1080#1082#1072#1079#1072
+        end
+        object PKDBLabelEdit9: TPKDBLabelEdit
+          Left = 16
+          Top = 89
+          Width = 153
+          Height = 21
+          TabOrder = 1
+          Text = #1044#1072#1090#1072' '#1087#1088#1080#1082#1072#1079#1072
+          EditKind = ekDateEdit
+          Table = PKDBTable2
+          TableField = 'ORDERDATE'
+          EditLabel.Width = 70
+          EditLabel.Height = 13
+          EditLabel.Caption = #1044#1072#1090#1072' '#1087#1088#1080#1082#1072#1079#1072
+        end
+      end
+    end
+  end
+  inherited PKDBTable1: TPKDBTable
+    Fields = <
+      item
+        FieldName = 'CITEZENID'
+        FieldLabel = #1043#1088#1072#1078#1076#1072#1085#1080#1085
+        Nullable = True
+        FieldType = ftsNumber
+        ReferencingTable = 'HR_CITEZEN'
+        ReferencingColumn = 'ID'
+        DisplayName = 'CITEZENID'
+      end
+      item
+        FieldName = 'REASON'
+        FieldLabel = #1054#1089#1085#1086#1074#1072#1085#1080#1077
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'REASON'
+      end
+      item
+        FieldName = 'OUTDATE'
+        FieldLabel = #1044#1072#1090#1072' '#1082#1086#1085#1094#1072' '#1086#1090#1087#1091#1089#1082#1072
+        Nullable = True
+        FieldType = ftsDate
+        DisplayName = 'OUTDATE'
+      end
+      item
+        FieldName = 'HOLIDAYTYPEID'
+        FieldLabel = #1058#1080#1087' '#1086#1090#1087#1091#1089#1082#1072
+        Nullable = False
+        FieldType = ftsNumber
+        ReferencingTable = 'HR_FACETCONTENT'
+        ReferencingColumn = 'ID'
+        LookUpRool = 'rowcontent'
+        DisplayName = 'HOLIDAYTYPEID'
+      end
+      item
+        FieldName = 'WORKDATE2'
+        FieldLabel = #1055#1077#1088#1080#1086#1076' '#1088#1072#1073#1086#1090#1099' ('#1082#1086#1085#1077#1094')'
+        Nullable = False
+        FieldType = ftsDate
+        DisplayName = 'WORKDATE2'
+      end
+      item
+        FieldName = 'ID'
+        Nullable = False
+        FieldType = ftsNumber
+        IsPrimaryKey = True
+        DisplayName = 'ID'
+      end
+      item
+        FieldName = 'WORKDATE1'
+        FieldLabel = #1055#1077#1088#1080#1086#1076' '#1088#1072#1073#1086#1090#1099' ('#1085#1072#1095#1072#1083#1086')'
+        Nullable = False
+        FieldType = ftsDate
+        DisplayName = 'WORKDATE1'
+      end
+      item
+        FieldName = 'EMPLOYEEID'
+        FieldLabel = #1057#1086#1090#1088#1091#1076#1085#1080#1082
+        Nullable = True
+        FieldType = ftsNumber
+        ReferencingTable = 'HR_EMPLOYEE'
+        ReferencingColumn = 'ID'
+        IsParentKey = True
+        DisplayName = 'EMPLOYEEID'
+      end
+      item
+        FieldName = 'INDATE'
+        FieldLabel = #1044#1072#1090#1072' '#1085#1072#1095#1072#1083#1072' '#1086#1090#1087#1089#1082#1072
+        Nullable = True
+        FieldType = ftsDate
+        DisplayName = 'INDATE'
+      end
+      item
+        FieldName = 'UNUSEDAYS'
+        FieldLabel = #1053#1077#1080#1089#1087#1086#1083#1100#1079#1086#1074#1072#1085#1085#1099#1077' '#1076#1085#1080
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'UNUSEDAYS'
+      end
+      item
+        FieldName = 'HOLDAYS'
+        FieldLabel = #1053#1072#1095#1080#1089#1083#1077#1085#1085#1099#1077' '#1076#1085#1080
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'HOLDAYS'
+      end>
+    TableName = 'HR_HOLIDAY'
+    NeedGenPrimaryKey = True
+    Connection = DataModule1.ADConnection1
+    PrimaryKeySeq = 'AE_IDSEQ'
+    Left = 608
+    Top = 104
+  end
+  object PKDBTable2: TPKDBTable
+    Fields = <
+      item
+        FieldName = 'HOLIDAYID'
+        FieldLabel = #1054#1090#1087#1091#1089#1082
+        Nullable = True
+        FieldType = ftsNumber
+        ReferencingTable = 'HR_HOLIDAY'
+        ReferencingColumn = 'ID'
+        LookUpRool = ' id'
+        DisplayName = 'HOLIDAYID'
+      end
+      item
+        FieldName = 'ORDERDATE'
+        FieldLabel = #1044#1072#1090#1072' '#1087#1088#1080#1082#1072#1079#1072
+        Nullable = True
+        FieldType = ftsDate
+        DisplayName = 'ORDERDATE'
+      end
+      item
+        FieldName = 'ID'
+        Nullable = False
+        FieldType = ftsNumber
+        IsPrimaryKey = True
+        DisplayName = 'ID'
+      end
+      item
+        FieldName = 'ORDERNUMB'
+        FieldLabel = #1053#1086#1084#1077#1088' '#1087#1088#1080#1082#1072#1079#1072
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'ORDERNUMB'
+      end>
+    TableName = 'HR_HOLIDAY_ORDER'
+    NeedGenPrimaryKey = True
+    Connection = DataModule1.ADConnection1
+    PrimaryKeySeq = 'AE_IDSEQ'
+    Left = 640
+    Top = 104
+  end
+  object ADQuery1: TADQuery
+    Connection = DataModule1.ADConnection1
+    SQL.Strings = (
+      'SELECT t.id FROM HR_HOLIDAY_ORDER t WHERE t.holidayid= :xholiday')
+    Left = 608
+    Top = 136
+    ParamData = <
+      item
+        Name = 'XHOLIDAY'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object ADQuery1ID: TFMTBCDField
+      FieldName = 'ID'
+      Required = True
+      Precision = 38
+      Size = 38
+    end
+  end
+end

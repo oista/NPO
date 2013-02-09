@@ -1,0 +1,34 @@
+unit ORDERUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DictUnit, uADStanIntf, uADStanOption, uADStanParam, uADStanError,
+  uADDatSManager, uADPhysIntf, uADDAptIntf, uADStanAsync, uADDAptManager, DB,
+  uADCompDataSet, uADCompClient, PKDBFindPanel, PKDBEditButtons, ExtCtrls,
+  Grids, DBGrids, VrDbGrid, ComCtrls, StdCtrls;
+
+type
+  TORDER = class(TDictForm)
+    MainQueryID: TFMTBCDField;
+    MainQueryORDERDATE: TDateTimeField;
+    MainQueryORDERTITLE: TStringField;
+    MainQueryORDERNUMB: TStringField;
+    MainQueryORDERTYPE: TStringField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ORDER: TORDER;
+
+implementation
+uses DM, MainUnit;
+{$R *.dfm}
+initialization
+
+RegisterClasses([TORDER]);
+end.

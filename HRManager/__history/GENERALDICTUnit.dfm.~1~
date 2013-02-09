@@ -1,0 +1,199 @@
+inherited GENERALDICT: TGENERALDICT
+  Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1089#1083#1086#1074#1072#1088#1077#1081'     '
+  ExplicitWidth = 320
+  ExplicitHeight = 240
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel2: TPanel
+    inherited Panel3: TPanel
+      inherited Panel5: TPanel
+        inherited PageControl2: TPageControl
+          inherited TabSheet2: TTabSheet
+            Caption = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077' '#1089#1083#1086#1074#1072#1088#1103'       '
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
+            inherited VrDbGrid1: TVrDbGrid
+              Columns = <
+                item
+                  Expanded = False
+                  FieldName = 'ID'
+                  Visible = False
+                  SortMode = smNone
+                end
+                item
+                  Expanded = False
+                  FieldName = 'FACETID'
+                  Visible = False
+                  SortMode = smNone
+                end
+                item
+                  Expanded = False
+                  FieldName = 'ROWNUMB'
+                  Width = 112
+                  Visible = True
+                  SortMode = smNone
+                end
+                item
+                  Expanded = False
+                  FieldName = 'ROWCONTENT'
+                  Visible = True
+                  SortMode = smNone
+                end>
+            end
+            inherited GridPanel2: TGridPanel
+              inherited PKDBEditButtons2: TPKDBEditButtons
+                TableName = 'HR_FACETCONTENT'
+                Connection = DataModule1.ADConnection1
+                EditDialogClassName = 'TDICTCONTENTEDIT'
+              end
+              inherited PKDBFindPanel2: TPKDBFindPanel
+                QuerysCollection = <
+                  item
+                    Query = ADQuery1
+                    QueryCaption = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077' '#1089#1083#1086#1074#1072#1088#1103
+                    MainQuery = True
+                    KeyFieldName = 'ID'
+                    FieldList = <
+                      item
+                        FieldName = 'ROWNUMB'
+                        FieldCaption = #1050#1086#1076' '#1089#1090#1088#1086#1082#1080' '#1089#1083#1086#1074#1072#1088#1103
+                        FieldType = ffNumber
+                        DisplayName = 'ROWNUMB'
+                      end
+                      item
+                        FieldName = 'ROWCONTENT'
+                        FieldCaption = #1047#1085#1072#1095#1077#1085#1080#1077' '
+                        FieldType = ffString
+                        DisplayName = 'ROWCONTENT'
+                      end>
+                  end>
+              end
+            end
+          end
+        end
+      end
+      inherited PageControl1: TPageControl
+        inherited TabSheet1: TTabSheet
+          Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1089#1083#1086#1074#1072#1088#1077#1081'              '
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
+          inherited Grid: TVrDbGrid
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'ID'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'DICTNUMB'
+                Width = 74
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'DICTNAME'
+                Width = 639
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'PARENTDICT'
+                Visible = True
+                SortMode = smNone
+              end>
+          end
+          inherited GridPanel1: TGridPanel
+            inherited PKDBEditButtons1: TPKDBEditButtons
+              TableName = 'HR_FACET'
+              Connection = DataModule1.ADConnection1
+              EditDialogClassName = 'TGENERALDICTEDIT'
+            end
+            inherited PKDBFindPanel1: TPKDBFindPanel
+              QuerysCollection = <
+                item
+                  Query = MainQuery
+                  QueryCaption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1089#1083#1086#1074#1072#1088#1077#1081
+                  MainQuery = True
+                  FieldList = <
+                    item
+                      FieldName = 'DICTNUMB'
+                      FieldCaption = #8470' '#1057#1083#1086#1074#1072#1088#1103
+                      FieldType = ffString
+                      DisplayName = 'DICTNUMB'
+                    end
+                    item
+                      FieldName = 'DICTNAME'
+                      FieldCaption = #1053#1072#1079#1074#1072#1085#1080#1077' '#1089#1083#1086#1074#1072#1088#1103
+                      FieldType = ffString
+                      DisplayName = 'DICTNAME'
+                    end
+                    item
+                      FieldName = 'PARENTDICT'
+                      FieldCaption = #1056#1086#1076#1080#1090#1077#1083#1100#1089#1082#1080#1081' '#1089#1083#1086#1074#1072#1088#1100
+                      FieldType = ffString
+                      DisplayName = 'PARENTDICT'
+                    end>
+                end>
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited MainQuery: TADQuery
+    Connection = DataModule1.ADConnection1
+    SQL.Strings = (
+      'select * from HR_V_FACET')
+    object MainQueryID: TFMTBCDField
+      FieldName = 'ID'
+    end
+    object MainQueryDICTNUMB: TStringField
+      DisplayLabel = #8470' '#1057#1083#1086#1074#1072#1088#1103
+      FieldName = 'DICTNUMB'
+      Size = 200
+    end
+    object MainQueryDICTNAME: TStringField
+      DisplayLabel = #1053#1072#1079#1074#1072#1085#1080#1077' '#1089#1083#1086#1074#1072#1088#1103
+      FieldName = 'DICTNAME'
+      Size = 200
+    end
+    object MainQueryPARENTDICT: TStringField
+      DisplayLabel = #1056#1086#1076#1080#1090#1077#1083#1100#1089#1082#1080#1081' '#1089#1083#1086#1074#1072#1088#1100
+      FieldName = 'PARENTDICT'
+      Size = 200
+    end
+  end
+  inherited ADQuery1: TADQuery
+    Connection = DataModule1.ADConnection1
+    SQL.Strings = (
+      'select * from HR_FACETCONTENT t'
+      'where FACETID=:ID'
+      'order by t.rownumb, t.rowcontent')
+    object ADQuery1ID: TFMTBCDField
+      FieldName = 'ID'
+      Required = True
+      Visible = False
+    end
+    object ADQuery1FACETID: TFMTBCDField
+      FieldName = 'FACETID'
+      Visible = False
+    end
+    object ADQuery1ROWNUMB: TFMTBCDField
+      DisplayLabel = #1050#1086#1076' '#1089#1090#1088#1086#1082#1080' '#1089#1083#1086#1074#1072#1088#1103
+      FieldName = 'ROWNUMB'
+    end
+    object ADQuery1ROWCONTENT: TStringField
+      DisplayLabel = #1047#1085#1072#1095#1077#1085#1080#1077' '
+      FieldName = 'ROWCONTENT'
+      Size = 500
+    end
+  end
+end

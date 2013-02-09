@@ -1,0 +1,152 @@
+unit ADDRESSEDIT;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, PKDBTable, ComCtrls, StdCtrls, ExtCtrls, PKDBEdit,
+  PKDBBBaseComboBox, PKDBDictEdit, DictUnit;
+
+type
+  TADDRESS = class(TEditDialog)
+    PKDBLabelEdit1: TPKDBLabelEdit;
+    PKDBDictLabelEdit3: TPKDBDictLabelEdit;
+    PKDBBLabelComboBox1: TPKDBBLabelComboBox;
+    PKDBBLabelComboBox2: TPKDBBLabelComboBox;
+    PKDBLabelEdit2: TPKDBLabelEdit;
+    PKDBLabelEdit3: TPKDBLabelEdit;
+    PKDBLabelEdit4: TPKDBLabelEdit;
+    PKDBBLabelComboBox3: TPKDBBLabelComboBox;
+    PKDBBLabelComboBox4: TPKDBBLabelComboBox;
+    procedure open; override;
+    procedure CitySelect(Sender: TObject);
+    procedure PKDBBLabelComboBox2Change(Sender: TObject);
+    procedure PKDBDictLabelEdit3AfterOpenButtonClick(Sender: TObject;
+      Form: TDictForm);
+    procedure PKDBBLabelComboBox4Select(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  EditDialog1: TADDRESS;
+
+implementation
+  uses DM;
+{$R *.dfm}
+
+
+{ TADDRESS }
+
+procedure TADDRESS.open;
+begin
+  PKDBDictLabelEdit3.SetValue('1996842');      // Московская обл
+
+  // Химки
+  PKDBBLabelComboBox3.selectid:='';
+  PKDBBLabelComboBox3.constraint:= ' townid=1996842';
+  PKDBBLabelComboBox3.prepearedate;
+  PKDBBLabelComboBox3.getDBdata;
+
+  //районы МО
+  PKDBBLabelComboBox4.selectid:='';
+  PKDBBLabelComboBox4.constraint:= ' townid=1996842';
+  PKDBBLabelComboBox4.prepearedate;
+  PKDBBLabelComboBox4.getDBdata;
+  inherited;
+end;
+
+procedure TADDRESS.PKDBBLabelComboBox2Change(Sender: TObject);
+begin      // ПОСЛЕ ВЫБОРА РАЙОНА ГОРОДА
+inherited;
+  if PKDBBLabelComboBox2.Text='' then
+   begin
+   showmessage('del');
+     PKDBBLabelComboBox2.selectid:='';
+     PKDBBLabelComboBox1.selectid:='';
+     PKDBBLabelComboBox1.constraint:= ' townid=000';
+     PKDBBLabelComboBox1.prepearedate;
+     PKDBBLabelComboBox1.getDBdata;
+   end
+  // меняем список улиц
+  else
+  if (PKDBBLabelComboBox2.selectid<>'')then
+   begin
+   PKDBBLabelComboBox1.selectid:='';
+   PKDBBLabelComboBox1.constraint:= ' townid='+PKDBBLabelComboBox2.selectid;
+   PKDBBLabelComboBox1.prepearedate;
+   PKDBBLabelComboBox1.getDBdata;
+   end;
+end;
+
+procedure TADDRESS.PKDBBLabelComboBox4Select(Sender: TObject);
+begin
+   // ПОСЛЕ СМЕНЫ РАЙОНА
+   // обновляем города
+ if (PKDBBLabelComboBox4.selectid<>'')then
+  begin
+   PKDBBLabelComboBox3.selectid:='';
+   PKDBBLabelComboBox3.constraint:= ' townid='+PKDBBLabelComboBox4.selectid;
+   PKDBBLabelComboBox3.prepearedate;
+   PKDBBLabelComboBox3.getDBdata;
+   // обновляем районы города (на всякий)
+   PKDBBLabelComboBox2.selectid:='';
+   PKDBBLabelComboBox2.constraint:=' townid='+PKDBBLabelComboBox4.selectid;
+   PKDBBLabelComboBox2.prepearedate;
+   PKDBBLabelComboBox2.getDBdata;
+   // меняем список улиц города
+   PKDBBLabelComboBox1.selectid:='';
+   PKDBBLabelComboBox1.constraint:= ' townid='+PKDBBLabelComboBox4.selectid;
+   PKDBBLabelComboBox1.prepearedate;
+   PKDBBLabelComboBox1.getDBdata;
+  end;
+end;
+
+procedure TADDRESS.CitySelect(Sender: TObject);       // ПОСЛЕ ВЫБОРА ГОРОДА
+begin
+  if (PKDBBLabelComboBox3.selectid<>'') then
+   begin
+   // меняем список районов города
+   PKDBBLabelComboBox2.selectid:='';
+   PKDBBLabelComboBox2.constraint:=' townid='+PKDBBLabelComboBox3.selectid;
+   PKDBBLabelComboBox2.prepearedate;
+   PKDBBLabelComboBox2.getDBdata;
+
+   // меняем список улиц города
+   PKDBBLabelComboBox1.selectid:='';
+   PKDBBLabelComboBox1.constraint:= ' townid='+PKDBBLabelComboBox3.selectid;
+   PKDBBLabelComboBox1.prepearedate;
+   PKDBBLabelComboBox1.getDBdata;
+   end;
+end;
+
+
+
+procedure TADDRESS.PKDBDictLabelEdit3AfterOpenButtonClick(Sender: TObject;
+  Form: TDictForm);
+begin   // ПОСЛЕ СМЕНЫ РЕГИОНА
+
+   // обновляем районы/области
+   PKDBBLabelComboBox4.selectid:='';
+   PKDBBLabelComboBox4.constraint:= ' townid='+PKDBDictLabelEdit3.DictionaryValue;
+   PKDBBLabelComboBox4.prepearedate;
+   PKDBBLabelComboBox4.getDBdata;
+   // обновляем города
+   PKDBBLabelComboBox3.selectid:='';
+   PKDBBLabelComboBox3.constraint:= ' townid='+PKDBDictLabelEdit3.DictionaryValue;
+   PKDBBLabelComboBox3.prepearedate;
+   PKDBBLabelComboBox3.getDBdata;
+   // меняем список улиц города (тк есть подчиненные непосредственно Мосве и тд)
+   PKDBBLabelComboBox1.selectid:='';
+   PKDBBLabelComboBox1.constraint:= ' townid='+PKDBDictLabelEdit3.DictionaryValue;
+   PKDBBLabelComboBox1.prepearedate;
+   PKDBBLabelComboBox1.getDBdata;
+end;
+
+initialization
+
+RegisterClasses([TADDRESS]);
+
+end.

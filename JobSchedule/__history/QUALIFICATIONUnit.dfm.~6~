@@ -1,0 +1,94 @@
+inherited QUALIFICATION: TQUALIFICATION
+  Caption = #1050#1074#1072#1083#1080#1092#1080#1082#1072#1094#1080#1080'    '
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel2: TPanel
+    Left = 17
+    Width = 664
+    inherited Panel3: TPanel
+      Width = 661
+      inherited Splitter2: TSplitter
+        Width = 661
+      end
+      inherited Panel5: TPanel
+        Width = 661
+        Visible = False
+      end
+      inherited PageControl1: TPageControl
+        Width = 661
+        ExplicitWidth = 661
+        inherited TabSheet1: TTabSheet
+          Caption = #1050#1074#1072#1083#1080#1092#1080#1082#1072#1094#1080#1080
+          inherited Grid: TVrDbGrid
+            Width = 647
+            CheckFieldName = 'ID'
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'ID'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'CATEGORYID'
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'DEGREE'
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'DESCRIPTION'
+                Visible = True
+                SortMode = smNone
+              end>
+          end
+          inherited GridPanel1: TGridPanel
+            Width = 647
+            inherited PKDBEditButtons1: TPKDBEditButtons
+              TableName = 'CS_select * from CS_QUALIFICATION'
+              PrimaryFieldName = 'ID'
+              Grid = Grid
+              Connection = DataModule2.Conn
+              EditDialogClassName = 'TQUALIFICATIONEDIT'
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited Panel6: TPanel
+    Width = 17
+    Visible = False
+    ExplicitWidth = 17
+  end
+  inherited MainQuery: TADQuery
+    Connection = DataModule2.Conn
+    Prepared = True
+    SQL.Strings = (
+      'select * from CS_QUALIFICATION t'
+      'order by t.categoryid, t.degree')
+    object MainQueryID: TFloatField
+      FieldName = 'ID'
+      Required = True
+    end
+    object MainQueryCATEGORYID: TFloatField
+      DisplayLabel = #1050#1072#1090#1077#1075'. '#1087#1077#1088#1089'.'
+      FieldName = 'CATEGORYID'
+    end
+    object MainQueryDEGREE: TFloatField
+      DisplayLabel = #1057#1090#1077#1087#1077#1085#1100' '#1082#1074#1072#1083'.'
+      FieldName = 'DEGREE'
+    end
+    object MainQueryDESCRIPTION: TStringField
+      DisplayLabel = #1050#1072#1090#1077#1075#1086#1088#1080#1103' '#1082#1074#1072#1083#1080#1092#1080#1082#1072#1094#1080#1080
+      FieldName = 'DESCRIPTION'
+      Size = 200
+    end
+  end
+end

@@ -1,0 +1,135 @@
+unit DISMISSUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DictUnit, DB, PKDBFindPanel, PKDBEditButtons, ExtCtrls, Grids, DBGrids,
+  VrDbGrid, ComCtrls, StdCtrls, Menus, uADStanIntf, uADStanOption, uADStanParam,
+  uADStanError, uADDatSManager, uADPhysIntf, uADDAptIntf, uADStanAsync,
+  uADDAptManager, uADCompClient, uADCompDataSet, DISMISSOREDERUnit;
+
+type
+  TDISMISS = class(TDictForm)
+    MainQueryID: TFMTBCDField;
+    MainQueryCITEZENID: TFMTBCDField;
+    MainQuerySTRUCTUREID: TFMTBCDField;
+    MainQueryLASTNAME: TStringField;
+    MainQueryNAME: TStringField;
+    MainQueryFATHERSHIP: TStringField;
+    MainQueryJOBTITLE: TStringField;
+    MainQueryQUALIFICATION: TStringField;
+    MainQueryCATEGORYNUMB: TFMTBCDField;
+    MainQueryAMOUNT: TFMTBCDField;
+    MainQuerySALARY: TFMTBCDField;
+    MainQueryDCODE: TStringField;
+    MainQueryCONTRACT: TStringField;
+    MainQueryCODE: TStringField;
+    MainQueryCONDITION: TStringField;
+    MainQueryWORKTYPE: TStringField;
+    MainQueryRATECODE: TStringField;
+    MainQueryAGREEMENTNUMB: TStringField;
+    MainQueryAGREEMENTDATE: TDateTimeField;
+    MainQueryTABNUMB: TStringField;
+    MainQueryFIRSTINDATE: TDateTimeField;
+    MainQueryINDATE: TDateTimeField;
+    MainQueryPASSPORTSERIES: TStringField;
+    MainQueryPASSPORTNUMB: TStringField;
+    MainQueryPASSINST: TStringField;
+    MainQueryBIRTHDATE: TDateTimeField;
+    MainQueryADRESS: TStringField;
+    MainQuerySTATUS: TStringField;
+    MainQueryEDUCATION: TStringField;
+    ADStoredProc2: TADStoredProc;
+    PopupMenu1: TPopupMenu;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    MainQueryDISMISSDATE: TDateTimeField;
+    MainQueryORDERDATE: TDateTimeField;
+    MainQueryORDERNUMB: TStringField;
+    MainQueryREASONE: TStringField;
+    ADQuery1: TADQuery;
+    FMTBCDField1: TFMTBCDField;
+    FMTBCDField2: TFMTBCDField;
+    FMTBCDField3: TFMTBCDField;
+    StringField1: TStringField;
+    StringField2: TStringField;
+    StringField3: TStringField;
+    StringField4: TStringField;
+    StringField5: TStringField;
+    FMTBCDField4: TFMTBCDField;
+    FMTBCDField5: TFMTBCDField;
+    FMTBCDField6: TFMTBCDField;
+    StringField6: TStringField;
+    StringField7: TStringField;
+    StringField8: TStringField;
+    StringField9: TStringField;
+    StringField10: TStringField;
+    StringField11: TStringField;
+    StringField12: TStringField;
+    DateTimeField1: TDateTimeField;
+    StringField13: TStringField;
+    DateTimeField2: TDateTimeField;
+    DateTimeField3: TDateTimeField;
+    StringField14: TStringField;
+    StringField15: TStringField;
+    StringField16: TStringField;
+    DateTimeField4: TDateTimeField;
+    StringField17: TStringField;
+    StringField18: TStringField;
+    StringField19: TStringField;
+    DateTimeField5: TDateTimeField;
+    DateTimeField6: TDateTimeField;
+    StringField20: TStringField;
+    StringField21: TStringField;
+    procedure N2Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure PKDBEditButtons1BeforeOpenEditClick(Sender: TObject;
+      Form: TDISMISSORDER);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DISMISS : TDISMISS;
+
+implementation
+  uses DM;
+{$R *.dfm}
+procedure TDISMISS.FormShow(Sender: TObject);
+begin
+  inherited;
+  self.WindowState:=wsMaximized;
+end;
+
+procedure TDISMISS.N2Click(Sender: TObject);
+  begin
+if  Application.MessageBox('Изменить статус сотрудника на "АКТИВНЫЙ"? Сотрудник восстановится на предидущей должности.','Смена статуса',MB_YESNO)=IDYES then
+ begin
+  ADStoredProc2.Params[0].Value:=MainQueryID.AsInteger;
+  ADStoredProc2.ExecProc;
+ end;
+ MainQuery.Refresh;
+ Grid.Refresh;
+end;
+
+procedure TDISMISS.PKDBEditButtons1BeforeOpenEditClick(Sender: TObject;
+  Form: TDISMISSORDER);
+begin   // приредактированиие ставим уволенного(УЖЕ сотрудника). по словарю выбирает активных
+  //form.PKDBDictLabelEdit1.SetValue(MainQueryID.asstring);
+  ADQuery1.Params[0].Value:=MainQueryID.asstring;
+  form.PKDBTable1.ReadFromDB(MainQueryID.asstring);
+//   form.PKDBTable1.r
+
+  showmessage(form.PKDBTable1.Fields.FieldByName('REASONEID').FieldVal);
+  form.PKDBBLabelComboBox1.SetValue(form.PKDBTable1.Fields.FieldByName('REASONEID').FieldVal);
+  form.PKDBBLabelComboBox1.getDBdata;
+   form.Refresh;
+end;
+
+initialization
+
+RegisterClasses([TDISMISS]);
+end.

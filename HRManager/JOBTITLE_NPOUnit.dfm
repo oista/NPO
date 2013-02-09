@@ -1,0 +1,157 @@
+inherited JOBTITLENPO: TJOBTITLENPO
+  Caption = #1044#1086#1083#1078#1085#1086#1089#1090#1080' '#1085#1072' '#1087#1088#1077#1076#1087#1088#1080#1103#1090#1080#1080
+  ClientHeight = 629
+  ClientWidth = 890
+  ExplicitWidth = 898
+  ExplicitHeight = 663
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Top = 588
+    Width = 890
+    ExplicitTop = 588
+    ExplicitWidth = 890
+    inherited Button1: TButton
+      Left = 727
+      ExplicitLeft = 727
+    end
+    inherited Button2: TButton
+      Left = 808
+      ExplicitLeft = 808
+    end
+  end
+  inherited Panel2: TPanel
+    Left = 25
+    Width = 865
+    Height = 588
+    ExplicitWidth = 825
+    ExplicitHeight = 588
+    inherited Splitter1: TSplitter
+      Height = 588
+      ExplicitHeight = 588
+    end
+    inherited Panel3: TPanel
+      Width = 862
+      Height = 588
+      ExplicitWidth = 822
+      ExplicitHeight = 588
+      inherited Splitter2: TSplitter
+        Top = 554
+        Width = 862
+        ExplicitTop = 554
+        ExplicitWidth = 822
+      end
+      inherited Panel5: TPanel
+        Top = 557
+        Width = 862
+        Visible = False
+        ExplicitTop = 557
+        ExplicitWidth = 822
+      end
+      inherited PageControl1: TPageControl
+        Width = 862
+        Height = 554
+        ExplicitWidth = 822
+        ExplicitHeight = 554
+        inherited TabSheet1: TTabSheet
+          Caption = #1044#1086#1083#1078#1085#1086#1089#1090#1080' '
+          ExplicitWidth = 814
+          ExplicitHeight = 526
+          inherited Grid: TVrDbGrid
+            Width = 848
+            Height = 489
+            CheckFieldName = 'ID'
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'ID'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'JOBTITLE'
+                Width = 404
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'JOBTITLE_HR'
+                Visible = True
+                SortMode = smNone
+              end>
+          end
+          inherited GridPanel1: TGridPanel
+            Width = 848
+            ExplicitWidth = 808
+            inherited PKDBEditButtons1: TPKDBEditButtons
+              TableName = 'CS_JOBTITLE'
+              PrimaryFieldName = 'ID'
+              Grid = Grid
+              Connection = DataModule1.ADConnection1
+              EditDialogClassName = 'TEDITJOBTITLENPO'
+            end
+            inherited PKDBFindPanel1: TPKDBFindPanel
+              Width = 696
+              QuerysCollection = <
+                item
+                  Query = MainQuery
+                  QueryCaption = #1044#1086#1083#1078#1085#1086#1089#1090#1100
+                  MainQuery = True
+                  FieldList = <
+                    item
+                      FieldName = 'JOBTITLE'
+                      FieldCaption = #1044#1086#1083#1078#1085#1086#1089#1090#1100
+                      FieldType = ffString
+                      DisplayName = 'JOBTITLE'
+                    end
+                    item
+                      FieldName = 'JOBTITLE_HR'
+                      FieldCaption = #1055#1086#1083#1085#1072#1103' '#1076#1086#1083#1078#1085#1086#1089#1090#1100
+                      FieldType = ffString
+                      DisplayName = 'JOBTITLE_HR'
+                    end>
+                end>
+              ExplicitWidth = 656
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited Panel6: TPanel
+    Width = 25
+    Height = 588
+    Visible = False
+    ExplicitWidth = 25
+    ExplicitHeight = 588
+  end
+  inherited MainQuery: TADQuery
+    Connection = DataModule1.ADConnection1
+    SQL.Strings = (
+      'select distinct  '
+      'id,jobtitle , jobtitle_hr'
+      'from CS_JOBTITLE')
+    Top = 0
+    object MainQueryID: TFMTBCDField
+      FieldName = 'ID'
+      Required = True
+      Precision = 38
+      Size = 38
+    end
+    object MainQueryJOBTITLE: TStringField
+      DisplayLabel = #1044#1086#1083#1078#1085#1086#1089#1090#1100
+      FieldName = 'JOBTITLE'
+      Size = 200
+    end
+    object MainQueryJOBTITLE_HR: TStringField
+      DisplayLabel = #1055#1086#1083#1085#1072#1103' '#1076#1086#1083#1078#1085#1086#1089#1090#1100
+      FieldName = 'JOBTITLE_HR'
+      Size = 200
+    end
+  end
+  inherited DataSource1: TDataSource
+    Top = 0
+  end
+end

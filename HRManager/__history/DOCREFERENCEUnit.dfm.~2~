@@ -1,0 +1,55 @@
+inherited DOCREFERENCE: TDOCREFERENCE
+  Caption = #1057#1087#1088#1072#1074#1082#1072' '
+  ClientWidth = 478
+  ExplicitWidth = 484
+  ExplicitHeight = 443
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Left = 387
+  end
+  inherited PageControl1: TPageControl
+    Width = 381
+    inherited TabSheet1: TTabSheet
+      Caption = #1057#1087#1088#1072#1074#1082#1072'  '
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 356
+      ExplicitHeight = 385
+    end
+  end
+  inherited PKDBTable1: TPKDBTable
+    Fields = <
+      item
+        FieldName = 'DOCDATE'
+        FieldLabel = #1044#1072#1090#1072' '#1074#1099#1076#1072#1095#1080
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'DOCDATE'
+      end
+      item
+        FieldName = 'EMPLOYEEID'
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'EMPLOYEEID'
+      end
+      item
+        FieldName = 'HREMPLOYEE'
+        FieldLabel = #1057#1086#1090#1088#1091#1076#1085#1080#1082' '#1054'.'#1050'.'
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'HREMPLOYEE'
+      end
+      item
+        FieldName = 'ID'
+        Nullable = False
+        FieldType = ftsNumber
+        IsPrimaryKey = True
+        DisplayName = 'ID'
+      end>
+    TableName = 'HR_DOCREFERENCE'
+    Connection = DataModule1.ADConnection1
+    Left = 400
+    Top = 88
+  end
+end

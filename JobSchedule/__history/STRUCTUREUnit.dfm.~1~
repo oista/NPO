@@ -1,0 +1,47 @@
+inherited STRUCTURE: TSTRUCTURE
+  Caption = #1057#1090#1088#1091#1082#1090#1091#1088#1072' '#1096#1090#1072#1090#1085#1099#1093' '#1088#1072#1089#1087#1080#1089#1072#1085#1080#1081
+  ExplicitWidth = 689
+  ExplicitHeight = 498
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel2: TPanel
+    Left = 25
+    Width = 656
+    inherited Panel3: TPanel
+      Width = 653
+      inherited Splitter2: TSplitter
+        Top = 381
+        Width = 653
+      end
+      inherited Panel5: TPanel
+        Top = 384
+        Width = 653
+        Height = 39
+        Visible = False
+        ExplicitTop = 384
+        ExplicitHeight = 39
+      end
+      inherited PageControl1: TPageControl
+        Width = 653
+        Height = 381
+        inherited TabSheet1: TTabSheet
+          inherited Grid: TVrDbGrid
+            Width = 639
+            Height = 316
+          end
+          inherited GridPanel1: TGridPanel
+            Width = 639
+            inherited PKDBFindPanel1: TPKDBFindPanel
+              Width = 487
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited Panel6: TPanel
+    Width = 25
+    Visible = False
+    ExplicitWidth = 25
+  end
+end

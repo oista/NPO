@@ -1,0 +1,392 @@
+unit CITEZENUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DictUnit, DB, PKDBFindPanel, PKDBEditButtons, ExtCtrls, Grids, DBGrids,
+  VrDbGrid, ComCtrls, StdCtrls, PKDBDictEdit, PKDBEdit, PKDBBBaseComboBox,
+  PKDBTable, reportunit, Menus, uADStanIntf, uADStanOption, uADStanParam,
+  uADStanError, uADDatSManager, uADPhysIntf, uADDAptIntf, uADStanAsync,
+  uADDAptManager, uADCompDataSet, uADCompClient;
+
+type
+  TCITEZEN = class(TDictForm)
+    PageControl2: TPageControl;
+    TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
+    TabSheet4: TTabSheet;
+    TabSheet5: TTabSheet;
+    ADQuery2: TADQuery;
+    ADQuery3: TADQuery;
+    ADQuery4: TADQuery;
+    DataSource3: TDataSource;
+    DataSource4: TDataSource;
+    DataSource5: TDataSource;
+    GridPanel2: TGridPanel;
+    PKDBEditButtons2: TPKDBEditButtons;
+    PKDBFindPanel2: TPKDBFindPanel;
+    VrDbGrid1: TVrDbGrid;
+    TabSheet6: TTabSheet;
+    TabSheet7: TTabSheet;
+    ADQuery6: TADQuery;
+    DataSource7: TDataSource;
+    GridPanel4: TGridPanel;
+    PKDBEditButtons4: TPKDBEditButtons;
+    PKDBFindPanel4: TPKDBFindPanel;
+    GridPanel6: TGridPanel;
+    PKDBEditButtons6: TPKDBEditButtons;
+    PKDBFindPanel6: TPKDBFindPanel;
+    GridPanel8: TGridPanel;
+    PKDBEditButtons7: TPKDBEditButtons;
+    PKDBFindPanel7: TPKDBFindPanel;
+    VrDbGrid2: TVrDbGrid;
+    VrDbGrid3: TVrDbGrid;
+    VrDbGrid5: TVrDbGrid;
+    ADQuery4CITEZENID: TFMTBCDField;
+    ADQuery4ID: TFMTBCDField;
+    ADQuery4LANG: TStringField;
+    ADQuery4STEP: TStringField;
+    ADQuery3CITEZENID: TFMTBCDField;
+    ADQuery3ID: TFMTBCDField;
+    ADQuery3DOCSERIA: TStringField;
+    ADQuery3DOCNUMB: TStringField;
+    ADQuery3NAME: TStringField;
+    ADQuery3OUTYEAR: TStringField;
+    ADQuery3DOCTYPE: TStringField;
+    ADQuery3OVEREDUCATION: TStringField;
+    ADQuery3SPECIALITYCODE: TStringField;
+    ADQuery3SPECIALITY: TStringField;
+    ADQuery3CVALIFICATIONCODE: TStringField;
+    ADQuery3CVALIFICATION: TStringField;
+    ADQuery3FIO: TStringField;
+    PKDBTable1: TPKDBTable;
+    PKDBBLabelComboBox2: TPKDBBLabelComboBox;
+    PKDBBLabelComboBox1: TPKDBBLabelComboBox;
+    PKDBLabelEdit1: TPKDBLabelEdit;
+    PKDBLabelEdit2: TPKDBLabelEdit;
+    PKDBBLabelComboBox3: TPKDBBLabelComboBox;
+    Button3: TButton;
+    PKDBBLabelComboBox4: TPKDBBLabelComboBox;
+    MainQueryLASTNAME: TStringField;
+    MainQueryNAME: TStringField;
+    MainQueryFATHERSHIP: TStringField;
+    MainQueryPASSPORTSERIES: TStringField;
+    MainQueryBIRTHDATE: TDateTimeField;
+    MainQueryBIRTHPLACE: TStringField;
+    MainQueryID: TFMTBCDField;
+    MainQuerySNILSDATE: TDateTimeField;
+    MainQueryTAXNUMB: TStringField;
+    TabSheet8: TTabSheet;
+    ADQuery2LASTNAME: TStringField;
+    ADQuery2NAME: TStringField;
+    ADQuery2FATHERSHIP: TStringField;
+    ADQuery2STATUSID: TFMTBCDField;
+    ADQuery2ID: TFMTBCDField;
+    ADQuery2PASSPORTNUMB: TStringField;
+    ADQuery2PASSDATE: TDateTimeField;
+    ADQuery2CITEZENID: TFMTBCDField;
+    ADQuery2ORGNAME: TStringField;
+    ADQuery2PASSPORTSERIES: TStringField;
+    ADQuery2CHANGESTATUSDATE: TDateTimeField;
+    GridPanel3: TGridPanel;
+    PKDBEditButtons3: TPKDBEditButtons;
+    PKDBFindPanel3: TPKDBFindPanel;
+    VrDbGrid4: TVrDbGrid;
+    ADQuery7: TADQuery;
+    DataSource8: TDataSource;
+    ADQuery7ID: TFMTBCDField;
+    ADQuery7CITEZENID: TFMTBCDField;
+    ADQuery7BIRTHDATE: TDateTimeField;
+    ADQuery7BIRTHPLACE: TStringField;
+    ADQuery7STEP: TStringField;
+    ADQuery7LASTNAME: TStringField;
+    ADQuery7NAME: TStringField;
+    ADQuery7FATHERSHIP: TStringField;
+    PKDBLabelEdit4: TPKDBLabelEdit;
+    PKDBLabelEdit6: TPKDBLabelEdit;
+    PKDBTable2: TPKDBTable;
+    PKDBTable3: TPKDBTable;
+    Button4: TButton;
+    MainQueryPASSPORTNUMB: TStringField;
+    MainQueryPOL: TStringField;
+    MainQueryCITEZENSHIP: TStringField;
+    PKDBBLabelComboBox5: TPKDBBLabelComboBox;
+    PKDBLabelEdit3: TPKDBLabelEdit;
+    PKDBLabelEdit7: TPKDBLabelEdit;
+    ADQuery3EDUCATIONFORM: TStringField;
+    PKDBLabelEdit8: TPKDBLabelEdit;
+    PKDBLabelEdit9: TPKDBLabelEdit;
+    PKDBLabelEdit10: TPKDBLabelEdit;
+    PKDBLabelEdit11: TPKDBLabelEdit;
+    PKDBLabelEdit12: TPKDBLabelEdit;
+    PKDBBLabelComboBox6: TPKDBBLabelComboBox;
+    MainQuerySNILSNO: TStringField;
+    MainQueryPENSIONDATE: TDateTimeField;
+    MainQueryPENSIONDOCNUMB: TStringField;
+    MainQueryPENSIONTYPE: TStringField;
+    GroupBox1: TGroupBox;
+    PKDBLabelEdit13: TPKDBLabelEdit;
+    PKDBLabelEdit5: TPKDBLabelEdit;
+    PKDBTable4: TPKDBTable;
+    MainQueryBOOKNUMB: TStringField;
+    TabSheet9: TTabSheet;
+    Memo1: TMemo;
+    ADQuery1: TADQuery;
+    DataSource2: TDataSource;
+    ADQuery1ID: TFMTBCDField;
+    ADQuery1CITEZENID: TFMTBCDField;
+    ADQuery1OLDDATA: TStringField;
+    PKDBLabelEdit14: TPKDBLabelEdit;
+    ADQuery2COUNTRY: TStringField;
+    TabSheet10: TTabSheet;
+    GridPanel5: TGridPanel;
+    PKDBEditButtons5: TPKDBEditButtons;
+    PKDBFindPanel5: TPKDBFindPanel;
+    VrDbGrid6: TVrDbGrid;
+    ADQuery5: TADQuery;
+    DataSource6: TDataSource;
+    ADQuery5ID: TFMTBCDField;
+    ADQuery5CODE: TStringField;
+    ADQuery5KATEG: TStringField;
+    ADQuery5JOBTITLE: TStringField;
+    ADQuery5FIELD: TStringField;
+    ADQuery5OKZCODE: TStringField;
+    ADQuery5STARTCODE: TStringField;
+    ADQuery5CITEZENID: TFMTBCDField;
+    ADQuery5LASTNAME: TStringField;
+    ADQuery5NAME: TStringField;
+    ADQuery5FATHERSHIP: TStringField;
+    ADQuery5PROFFTYPE: TStringField;
+    MainQueryEDUCATION: TStringField;
+    PopupMenu1: TPopupMenu;
+    N1: TMenuItem;
+    TabSheet11: TTabSheet;
+    GridPanel7: TGridPanel;
+    PKDBEditButtons8: TPKDBEditButtons;
+    PKDBFindPanel8: TPKDBFindPanel;
+    VrDbGrid7: TVrDbGrid;
+    ADQuery8: TADQuery;
+    DataSource9: TDataSource;
+    ADQuery8CITEZENID: TFMTBCDField;
+    ADQuery8INDATE: TDateTimeField;
+    ADQuery8OUTDATE: TDateTimeField;
+    ADQuery8DEPT_NO: TStringField;
+    ADQuery8AGREEMENTNUMB: TStringField;
+    ADQuery8AGREEMENTDATE: TDateTimeField;
+    ADQuery8JOBTITLE: TStringField;
+    ADQuery8SUMSAL: TFMTBCDField;
+    ADQuery8REASON: TStringField;
+    ADQuery8ID: TFMTBCDField;
+    TabSheet12: TTabSheet;
+    GridPanel9: TGridPanel;
+    PKDBEditButtons9: TPKDBEditButtons;
+    PKDBFindPanel9: TPKDBFindPanel;
+    VrDbGrid8: TVrDbGrid;
+    ADQuery9: TADQuery;
+    FloatField1: TFMTBCDField;
+    FloatField2: TFMTBCDField;
+    ADQuery3STATUSID: TFMTBCDField;
+    ADQuery3DESRIPTION: TStringField;
+    ADQuery3PHONENUMBER: TStringField;
+    ADQuery3PHONETYPE: TStringField;
+    ADQuery3STATUS: TStringField;
+    DataSource10: TDataSource;
+    PKDBBLabelComboBox7: TPKDBBLabelComboBox;
+    ADQuery6ID: TFMTBCDField;
+    ADQuery6CITEZENID: TFMTBCDField;
+    ADQuery6REGDATE: TDateTimeField;
+    ADQuery6STATUS: TFMTBCDField;
+    ADQuery6REGION: TStringField;
+    ADQuery6AREA: TStringField;
+    ADQuery6TOWNNAME: TStringField;
+    ADQuery6SUBTOWN: TStringField;
+    ADQuery6STRRETHOUSE: TStringField;
+    TabSheet13: TTabSheet;
+    GridPanel10: TGridPanel;
+    PKDBEditButtons10: TPKDBEditButtons;
+    PKDBFindPanel10: TPKDBFindPanel;
+    VrDbGrid9: TVrDbGrid;
+    ADQuery10: TADQuery;
+    DataSource11: TDataSource;
+    ADQuery10ID: TFMTBCDField;
+    ADQuery10AGREEMENTNUMB: TStringField;
+    ADQuery10AGREEMENTDATE: TDateTimeField;
+    ADQuery10STATUSID: TFMTBCDField;
+    ADQuery10INDATE: TDateTimeField;
+    ADQuery10OUTDATE: TDateTimeField;
+    ADQuery10TESTPERIOD: TDateTimeField;
+    ADQuery10EMPLOYEEID: TFMTBCDField;
+    ADQuery10SOURCETYPE: TStringField;
+    ADQuery10LASTNAME: TStringField;
+    ADQuery10NAME: TStringField;
+    ADQuery10FATHERSHIP: TStringField;
+    ADQuery10CITEZENID: TFMTBCDField;
+    ADQuery10STATUSNAME: TStringField;
+    ADQuery10JOBTITLE: TStringField;
+    ADQuery10STATUS: TStringField;
+    ADQuery10WORKTYPE: TStringField;
+    TabSheet14: TTabSheet;
+    GridPanel11: TGridPanel;
+    PKDBEditButtons11: TPKDBEditButtons;
+    PKDBFindPanel11: TPKDBFindPanel;
+    VrDbGrid10: TVrDbGrid;
+    ADQuery11: TADQuery;
+    DataSource12: TDataSource;
+    ADQuery11ID: TFMTBCDField;
+    ADQuery11ORDERDATE: TDateTimeField;
+    ADQuery11ORDERNUMB: TStringField;
+    ADQuery11ORDTYPE: TStringField;
+    ADQuery11DESCR: TStringField;
+    ADQuery11JOBTITLE: TStringField;
+    ADQuery11QUALIFICATION: TStringField;
+    ADQuery11CITEZENID: TFMTBCDField;
+    PKDBLabelEdit15: TPKDBLabelEdit;
+    procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure GridCellClick(Column: TColumn);
+    procedure clearboxes;
+    procedure GridKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure GridKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure anotherrow;
+    procedure otherdata;
+    procedure N1Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure DataSource1DataChange(Sender: TObject; Field: TField);
+    procedure MenuItem1Click(Sender: TObject);
+
+  private
+      procedure InitForm();  override;
+  public
+    { Public declarations }
+  end;
+
+var
+  CITEZEN : TCITEZEN ;
+  Cform: TWREPORT;
+implementation
+{$R *.dfm}
+
+
+uses DM, MainUnit;
+
+procedure TCITEZEN.Button3Click(Sender: TObject);
+begin
+  PKDBTable1.Update;
+  inherited;
+end;
+
+procedure TCITEZEN.Button4Click(Sender: TObject);
+begin
+  inherited;
+  PKDBTable2.Update;
+  PKDBTable3.Update;
+  PKDBTable4.Update;
+end;
+
+procedure TCITEZEN.Button5Click(Sender: TObject);
+begin
+  inherited;
+   Cform := TWREPORT.Create(self);
+   Cform.madereportT2(MainQuery.FieldByName('ID').AsFloat);
+end;
+
+procedure TCITEZEN.GridCellClick(Column: TColumn);
+begin
+  inherited;
+  anotherrow;
+end;
+
+procedure TCITEZEN.GridKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+  anotherrow;
+end;
+procedure TCITEZEN.GridKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+  anotherrow;
+end;
+
+procedure TCITEZEN.InitForm;
+begin
+  inherited;
+  ADQuery2.Open;
+  ADQuery3.Open;
+  ADQuery4.Open;
+  ADQuery5.Open;
+  ADQuery6.Open; 
+  ADQuery7.Open;
+  ADQuery8.Open;
+  ADQuery9.Open;
+  ADQuery10.Open;
+  ADQuery11.Open;
+  PKDBTable1.ReadFromDB(MainQueryID.Asstring);
+  PKDBTable2.ReadFromDB(MainQueryID.Asstring);
+  PKDBTable3.ReadFromDB(MainQueryID.Asstring);
+  PKDBTable4.ReadFromDB(MainQueryID.Asstring);
+  otherdata;
+  mainform.WindowState:= wsMaximized;
+  PageControl1.Height:=150;
+end;
+
+procedure TCITEZEN.MenuItem1Click(Sender: TObject);
+begin // меняет сотруднику трудовой договор на заданный
+ //  ADStoredProc1.Params[0].Value:=ADQuery10ID.AsInteger;
+ //  ADStoredProc1.ExecProc;
+end;
+
+procedure TCITEZEN.N1Click(Sender: TObject);
+begin
+Cform := TWREPORT.Create(self);
+Cform.madereportT2(MainQuery.FieldByName('ID').AsFloat);
+end;
+
+
+
+procedure  TCITEZEN.clearboxes;
+begin
+ PKDBBLabelComboBox1.Text:='';
+ PKDBBLabelComboBox2.Text:='';
+ PKDBBLabelComboBox3.Text:='';
+ PKDBBLabelComboBox4.Text:='';
+ PKDBBLabelComboBox5.Text:='';
+ PKDBBLabelComboBox6.Text:='';
+ PKDBBLabelComboBox7.Text:='';
+end;
+
+procedure TCITEZEN.DataSource1DataChange(Sender: TObject; Field: TField);
+begin
+  inherited;
+
+end;
+
+// переход на другую запись
+procedure TCITEZEN.anotherrow;
+begin
+  clearboxes;
+  PKDBTable1.ReadFromDB(MainQueryID.Asstring);
+  PKDBTable2.ReadFromDB(MainQueryID.Asstring);
+  PKDBTable3.ReadFromDB(MainQueryID.Asstring);
+  PKDBTable4.ReadFromDB(MainQueryID.Asstring);
+  PKDBTable1.Update;
+  PKDBTable2.Update;
+  PKDBTable3.Update;
+  PKDBTable4.Update;
+  otherdata;
+end;
+
+// чтение прочих данных
+procedure TCITEZEN.otherdata;
+begin
+  ADQuery1.Open;
+  memo1.Text:= ADQuery1olddata.AsString;
+  ADQuery1.Close;
+end;
+
+initialization
+
+RegisterClasses([TCITEZEN]);
+end.

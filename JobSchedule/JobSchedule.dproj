@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{1c0c1897-ea61-414c-bc00-0e79c0ea6c69}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+    <DCC_DependencyCheckOutputName>JobSchedule.exe</DCC_DependencyCheckOutputName>
+    <MainSource>JobSchedule.dpr</MainSource>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_DebugInformation>False</DCC_DebugInformation>
+    <DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+    <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+    <DCC_Define>RELEASE</DCC_Define>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_Define>DEBUG</DCC_Define>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Delphi.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+<BorlandProject><Delphi.Personality><Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><VersionInfo><VersionInfo Name="IncludeVerInfo">False</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">1049</VersionInfo><VersionInfo Name="CodePage">1251</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\bcboffice2k100.bpl">CodeGear C++Builder Office 2000 Servers Package</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\bcbofficexp100.bpl">CodeGear C++Builder Office XP Servers Package</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\dcloffice2k100.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\dclofficexp100.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+    </Excluded_Packages><Source><Source Name="MainSource">JobSchedule.dpr</Source></Source></Delphi.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Delphi.Targets" />
+  <ItemGroup>
+    <DelphiCompile Include="JobSchedule.dpr">
+      <MainSource>MainSource</MainSource>
+    </DelphiCompile>
+    <DCCReference Include="..\PKDBSoft\DictUnit.pas">
+      <Form>DictForm</Form>
+    </DCCReference>
+    <DCCReference Include="..\PKDBSoft\EditDialogUnit.pas">
+      <Form>EditDialog</Form>
+    </DCCReference>
+    <DCCReference Include="CATEGORYEDITUnit.pas">
+      <Form>CATEGORYEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="CATEGORYUnit.pas">
+      <Form>CATEGORY</Form>
+    </DCCReference>
+    <DCCReference Include="DEPTSUnit.pas">
+      <Form>DEPTS</Form>
+    </DCCReference>
+    <DCCReference Include="DMUnit.pas">
+      <Form>DataModule2</Form>
+      <DesignClass>TDataModule</DesignClass>
+    </DCCReference>
+    <DCCReference Include="HISTORYUnit.pas">
+      <Form>HISTORY</Form>
+    </DCCReference>
+    <DCCReference Include="JOBSCHEDULEDITUnit.pas">
+      <Form>JOBSCHEDULEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="JOBSCHEDULEUnit.pas">
+      <Form>JOBSCHEDULE</Form>
+    </DCCReference>
+    <DCCReference Include="JOBTITLEDITUnit.pas">
+      <Form>JOBTITLEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="JOBTITLEUnit.pas">
+      <Form>JOBTITLE</Form>
+    </DCCReference>
+    <DCCReference Include="MainUnit.pas">
+      <Form>MainForm</Form>
+    </DCCReference>
+    <DCCReference Include="MenuUnit.pas">
+      <Form>MenuForm</Form>
+    </DCCReference>
+    <DCCReference Include="QUALIFICATIONEDITUnit.pas">
+      <Form>QUALIFICATIONEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="QUALIFICATIONUnit.pas">
+      <Form>QUALIFICATION</Form>
+    </DCCReference>
+    <DCCReference Include="RATECONDITIONEDITUnit.pas">
+      <Form>RATECONDITIONEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="RATECONDITIONUnit.pas">
+      <Form>RATECONDITION</Form>
+    </DCCReference>
+    <DCCReference Include="RATEDITUnit.pas">
+      <Form>RATEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="RATEUnit.pas">
+      <Form>RATE</Form>
+    </DCCReference>
+    <DCCReference Include="REPORTUnit.pas">
+      <Form>WREPORT</Form>
+    </DCCReference>
+    <DCCReference Include="SALARYEDITUnit.pas">
+      <Form>SALARYEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="SALARYUnit.pas">
+      <Form>SALARY</Form>
+    </DCCReference>
+    <DCCReference Include="STRUCTUREDITUnit.pas">
+      <Form>STRUCTUREDIT</Form>
+    </DCCReference>
+    <DCCReference Include="STRUCTUREUnit.pas">
+      <Form>STRUCTURE</Form>
+    </DCCReference>
+  </ItemGroup>
+</Project>

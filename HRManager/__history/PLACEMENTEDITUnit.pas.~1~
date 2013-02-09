@@ -1,0 +1,28 @@
+unit PLACEMENTEDITUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, PKDBTable, ComCtrls, StdCtrls, ExtCtrls;
+
+type
+  TPLACEMENT = class(TEditDialog)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  PLACEMENT: TPLACEMENT;
+
+implementation
+{$R *.dfm}
+
+
+
+initialization
+
+RegisterClasses([TPLACEMENT]);
+end.

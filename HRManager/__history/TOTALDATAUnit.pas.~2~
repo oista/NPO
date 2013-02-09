@@ -1,0 +1,69 @@
+unit TOTALDATAUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DictUnit, DB, PKDBFindPanel, PKDBEditButtons, ExtCtrls, Grids, DBGrids,
+  VrDbGrid, ComCtrls, StdCtrls, uADStanIntf, uADStanOption, uADStanParam,
+  uADStanError, uADDatSManager, uADPhysIntf, uADDAptIntf, uADStanAsync,
+  uADDAptManager, uADCompDataSet, uADCompClient, reportunit, Menus;
+
+type
+  TTOTALDATA = class(TDictForm)
+    MainQueryDCODE: TStringField;
+    MainQueryDNAME: TStringField;
+    MainQuerySTATUSID: TFMTBCDField;
+    MainQueryEMP_CNT: TFMTBCDField;
+    MainQueryVAC_CNT: TFMTBCDField;
+    PopupMenu1: TPopupMenu;
+    DataSource2: TDataSource;
+    N1: TMenuItem;
+    ADQuery1: TADQuery;
+    StringField1: TStringField;
+    StringField2: TStringField;
+    FMTBCDField1: TFMTBCDField;
+    FMTBCDField2: TFMTBCDField;
+    FMTBCDField3: TFMTBCDField;
+    MainQueryDEPTID: TFMTBCDField;
+    procedure Button1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure N1Click(Sender: TObject);
+  private
+    ass: boolean;
+    a,b: integer;
+  public
+    { Public declarations }
+  end;
+
+var
+  TOTALDATA: TTOTALDATA;
+  Cform: TWREPORT;
+
+implementation
+ uses DM;
+{$R *.dfm}
+
+procedure TTOTALDATA.Button1Click(Sender: TObject);
+begin
+  ass:=(a>0) and (b>0);
+  inherited;
+end;
+
+procedure TTOTALDATA.FormShow(Sender: TObject);
+begin
+  inherited;
+  self.WindowState:=wsMaximized;
+end;
+
+procedure TTOTALDATA.N1Click(Sender: TObject);
+begin     // узнаем активную штатку отдела и выводим форму её состава
+  ADQuery1.Params[0].Value:=MainQueryDEPTID.AsInteger;
+  Cform := TWREPORT.Create(self);
+  Cform.madeStructureReport(MainQuery.FieldByName('ID').AsFloat);
+end;
+
+initialization
+
+RegisterClasses([TTOTALDATA]);
+end.

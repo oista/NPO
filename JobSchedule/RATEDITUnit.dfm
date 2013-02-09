@@ -1,0 +1,113 @@
+inherited RATEDIT: TRATEDIT
+  Caption = #1058#1072#1088#1080#1092#1085#1099#1077' '#1089#1090#1072#1074#1082#1080
+  ClientHeight = 191
+  ClientWidth = 580
+  ExplicitWidth = 586
+  ExplicitHeight = 215
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Left = 489
+    Height = 191
+    ExplicitLeft = 489
+    ExplicitHeight = 191
+  end
+  inherited PageControl1: TPageControl
+    Width = 483
+    Height = 185
+    ExplicitWidth = 483
+    ExplicitHeight = 185
+    inherited TabSheet1: TTabSheet
+      Caption = #1058#1072#1088#1080#1092#1085#1072#1103' '#1089#1090#1072#1074#1082#1072'    '
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 475
+      ExplicitHeight = 157
+      object Label1: TLabel
+        Left = 15
+        Top = 97
+        Width = 76
+        Height = 13
+        Caption = #1059#1089#1083#1086#1074#1080#1103' '#1090#1088#1091#1076#1072
+      end
+      object PKDBLabelEdit1: TPKDBLabelEdit
+        Left = 15
+        Top = 25
+        Width = 434
+        Height = 21
+        TabOrder = 0
+        Text = #1050#1086#1076' '#1089#1090#1072#1074#1082#1080
+        Table = PKDBTable1
+        TableField = 'CODE'
+        EditLabel.Width = 58
+        EditLabel.Height = 13
+        EditLabel.Caption = #1050#1086#1076' '#1089#1090#1072#1074#1082#1080
+      end
+      object PKDBLabelEdit2: TPKDBLabelEdit
+        Left = 15
+        Top = 70
+        Width = 434
+        Height = 21
+        TabOrder = 1
+        Text = #1055#1086#1095#1072#1089#1086#1074#1072#1103' '#1089#1090#1072#1074#1082#1072
+        EditKind = ekNumberEdit
+        Table = PKDBTable1
+        TableField = 'RATE'
+        EditLabel.Width = 92
+        EditLabel.Height = 13
+        EditLabel.Caption = #1055#1086#1095#1072#1089#1086#1074#1072#1103' '#1089#1090#1072#1074#1082#1072
+      end
+      object PKDBDictEdit1: TPKDBDictEdit
+        Left = 15
+        Top = 115
+        Width = 434
+        Height = 21
+        Table = PKDBTable1
+        TableField = 'CONDITIONID'
+        LookUpRool = 'CONDITION'
+        DictionaryClass = 'TRATECONDITION'
+        DesignSize = (
+          434
+          21)
+      end
+    end
+  end
+  inherited PKDBTable1: TPKDBTable
+    Fields = <
+      item
+        FieldName = 'ID'
+        FieldLabel = 'ID'
+        Nullable = False
+        FieldType = ftsNumber
+        IsPrimaryKey = True
+        DisplayName = 'ID'
+      end
+      item
+        FieldName = 'CONDITIONID'
+        FieldLabel = 'ID '#1091#1089#1083#1086#1074#1080#1081' '#1090#1088#1091#1076#1072
+        Nullable = True
+        FieldType = ftsNumber
+        ReferencingTable = 'CS_RATECONDITION'
+        ReferencingColumn = 'ID'
+        DisplayName = 'CONDITIONID'
+      end
+      item
+        FieldName = 'CODE'
+        FieldLabel = #1050#1086#1076' '#1089#1090#1072#1074#1082#1080
+        Nullable = False
+        FieldType = ftsString
+        DisplayName = 'CODE'
+      end
+      item
+        FieldName = 'RATE'
+        FieldLabel = #1055#1086#1095#1072#1089#1086#1074#1072#1103' '#1089#1090#1072#1074#1082#1072
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'RATE'
+      end>
+    TableName = 'CS_RATE'
+    Connection = DataModule2.Conn
+    Left = 520
+    Top = 96
+  end
+end

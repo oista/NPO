@@ -1,0 +1,27 @@
+unit REPORTUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, CRAXDRT_TLB, OleServer, OleCtrls, CRVIEWER9Lib_TLB;
+
+type
+  TREPORT = class(TForm)
+    CRViewer91: TCRViewer9;
+    CS_workschedule: TReport;
+    Application1: TApplication;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  REPORT: TREPORT;
+
+implementation
+
+{$R *.dfm}
+
+end.

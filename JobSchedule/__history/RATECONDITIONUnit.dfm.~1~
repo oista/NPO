@@ -1,0 +1,20 @@
+inherited RATECONDITION: TRATECONDITION
+  Caption = #1059#1089#1083#1086#1074#1080#1103' '#1090#1088#1091#1076#1072
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel2: TPanel
+    inherited Panel3: TPanel
+      inherited Panel5: TPanel
+        Visible = False
+      end
+      inherited PageControl1: TPageControl
+        inherited TabSheet1: TTabSheet
+          Caption = #1059#1089#1083#1086#1074#1080#1103' '#1090#1088#1091#1076#1072'   '
+        end
+      end
+    end
+  end
+  inherited Panel6: TPanel
+    Visible = False
+  end
+end

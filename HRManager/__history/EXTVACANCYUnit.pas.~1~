@@ -1,0 +1,32 @@
+unit EXTVACANCYUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DictUnit, uADStanIntf, uADStanOption, uADStanParam, uADStanError,
+  uADDatSManager, uADPhysIntf, uADDAptIntf, uADStanAsync, uADDAptManager, DB,
+  uADCompDataSet, uADCompClient, PKDBFindPanel, PKDBEditButtons, ExtCtrls,
+  Grids, DBGrids, VrDbGrid, ComCtrls, StdCtrls;
+
+type
+  TEXTVACANCY = class(TDictForm)
+  // вакансии для доп соглашений по переходу на новые оклады
+    procedure DataSource1DataChange(Sender: TObject; Field: TField);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  EXTVACANCY: TEXTVACANCY;
+
+implementation
+ uses DM;
+{$R *.dfm}
+ initialization
+
+RegisterClasses([TEXTVACANCY]);
+
+end.

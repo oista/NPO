@@ -1,0 +1,28 @@
+unit EDITJOBTITLENPOUnitpas;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, PKDBTable, ComCtrls, StdCtrls, ExtCtrls;
+
+type
+  TEDITJOBTITLENPO = class(TEDITJOBTITLENPO)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  EDITJOBTITLENPO: TEDITJOBTITLENPO;
+
+implementation
+  uses DM;
+{$R *.dfm}
+
+ initialization
+RegisterClasses([TEDITJOBTITLENPO]);
+
+end.
+

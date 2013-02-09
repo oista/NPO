@@ -1,0 +1,489 @@
+inherited JOBHISTORYEDIT: TJOBHISTORYEDIT
+  Caption = #1048#1089#1090#1086#1088#1080#1103' '#1076#1086#1083#1078#1085#1086#1089#1090#1077#1081
+  ClientHeight = 284
+  ClientWidth = 507
+  ExplicitWidth = 513
+  ExplicitHeight = 308
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Left = 416
+    Height = 284
+    ExplicitLeft = 416
+    ExplicitHeight = 284
+    object PKDBDictEdit2: TPKDBDictEdit
+      Left = 40
+      Top = 224
+      Width = 1
+      Height = 1
+      Connection = DataModule1.ADConnection1
+      Table = PKDBTable3
+      TableField = 'EMPLOYEEID'
+      WithoutTable = False
+      DesignSize = (
+        1
+        1)
+    end
+  end
+  inherited PageControl1: TPageControl
+    Width = 410
+    Height = 278
+    ExplicitWidth = 410
+    ExplicitHeight = 278
+    inherited TabSheet1: TTabSheet
+      Caption = #1048#1089#1090#1086#1088#1080#1103' '#1076#1086#1083#1078#1085#1086#1089#1090#1077#1081' '
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 402
+      ExplicitHeight = 250
+      object Label1: TLabel
+        Left = 32
+        Top = 6
+        Width = 84
+        Height = 13
+        Caption = #1055#1086#1076#1088#1072#1079#1076#1077#1083#1077#1085#1080#1077':'
+      end
+      object Label2: TLabel
+        Left = 32
+        Top = 187
+        Width = 94
+        Height = 13
+        Caption = #1054#1089#1085#1086#1074#1072#1085#1080#1077' '#1087#1088#1080#1077#1084#1072
+      end
+      object PKDBDictLabelEdit2: TPKDBDictLabelEdit
+        Left = 32
+        Top = 68
+        Width = 353
+        Height = 21
+        Table = PKDBTable2
+        TableField = 'SALARYID'
+        LookUpRool = 'jobtitle||'#39' '#39'||qual'
+        DictionaryClass = 'TSALARY'
+        WithoutTable = False
+        EditLabel.Width = 57
+        EditLabel.Height = 13
+        EditLabel.Caption = #1044#1086#1083#1078#1085#1086#1089#1090#1100
+        DesignSize = (
+          353
+          21)
+      end
+      object PKDBDictEdit1: TPKDBDictEdit
+        Left = 32
+        Top = 25
+        Width = 353
+        Height = 21
+        Table = PKDBTable2
+        TableField = 'SCHEDULEID'
+        LookUpRool = 'DEPT_NO||'#39' '#39'||DNAME'
+        DictionaryClass = 'THISTORYSCHED'
+        WithoutTable = False
+        DesignSize = (
+          353
+          21)
+      end
+      object PKDBLabelEdit1: TPKDBLabelEdit
+        Left = 32
+        Top = 115
+        Width = 161
+        Height = 21
+        TabOrder = 2
+        Text = #1044#1072#1090#1072' '#1087#1088#1080#1093#1086#1076#1072' '#1085#1072#1076#1086#1083#1078#1085#1086#1089#1090#1100
+        EditKind = ekDateEdit
+        Table = PKDBTable1
+        TableField = 'INDATE'
+        EditLabel.Width = 143
+        EditLabel.Height = 13
+        EditLabel.Caption = #1044#1072#1090#1072' '#1087#1088#1080#1093#1086#1076#1072' '#1085#1072#1076#1086#1083#1078#1085#1086#1089#1090#1100
+      end
+      object PKDBLabelEdit2: TPKDBLabelEdit
+        Left = 216
+        Top = 115
+        Width = 169
+        Height = 21
+        TabOrder = 3
+        Text = #1044#1072#1090#1072' '#1091#1074#1086#1083#1100#1085#1077#1085#1080#1103' '#1089' '#1076#1086#1083#1078#1085#1086#1089#1090#1080
+        EditKind = ekDateEdit
+        Table = PKDBTable1
+        TableField = 'OUTDATE'
+        EditLabel.Width = 156
+        EditLabel.Height = 13
+        EditLabel.Caption = #1044#1072#1090#1072' '#1091#1074#1086#1083#1100#1085#1077#1085#1080#1103' '#1089' '#1076#1086#1083#1078#1085#1086#1089#1090#1080
+      end
+      object PKDBLabelEdit3: TPKDBLabelEdit
+        Left = 32
+        Top = 160
+        Width = 161
+        Height = 21
+        TabOrder = 4
+        Text = #1044#1072#1090#1072' '#1090#1088#1091#1076#1086#1074#1086#1075#1086' '#1076#1086#1075#1086#1074#1086#1088#1072
+        EditKind = ekDateEdit
+        Table = PKDBTable1
+        TableField = 'AGREEMENTDATE'
+        EditLabel.Width = 134
+        EditLabel.Height = 13
+        EditLabel.Caption = #1044#1072#1090#1072' '#1090#1088#1091#1076#1086#1074#1086#1075#1086' '#1076#1086#1075#1086#1074#1086#1088#1072
+      end
+      object PKDBLabelEdit4: TPKDBLabelEdit
+        Left = 216
+        Top = 160
+        Width = 169
+        Height = 21
+        TabOrder = 5
+        Text = #8470' '#1058#1088#1091#1076#1086#1074#1086#1075#1086' '#1076#1086#1075#1086#1074#1086#1088#1072
+        Table = PKDBTable1
+        TableField = 'AGREEMENTNUMB'
+        EditLabel.Width = 121
+        EditLabel.Height = 13
+        EditLabel.Caption = #8470' '#1058#1088#1091#1076#1086#1074#1086#1075#1086' '#1076#1086#1075#1086#1074#1086#1088#1072
+      end
+      object PKDBBaseEdit1: TPKDBBaseEdit
+        Left = 32
+        Top = 205
+        Width = 353
+        Height = 21
+        TabOrder = 6
+        Text = #1053#1086#1084#1077#1088' '#1087#1088#1080#1082#1072#1079#1072
+        Table = PKDBTable3
+        TableField = 'ORDERNUMB'
+      end
+    end
+  end
+  inherited PKDBTable1: TPKDBTable
+    Fields = <
+      item
+        FieldName = 'CITEZENID'
+        FieldLabel = #1043#1088#1072#1078#1076#1072#1085#1080#1085
+        Nullable = False
+        FieldType = ftsNumber
+        ReferencingTable = 'HR_CITEZEN'
+        ReferencingColumn = 'ID'
+        IsParentKey = True
+        DisplayName = 'CITEZENID'
+      end
+      item
+        FieldName = 'STRUCTUREID'
+        FieldLabel = #1044#1086#1083#1078#1085#1086#1089#1090#1100
+        Nullable = True
+        FieldType = ftsNumber
+        ReferencingTable = 'CS_SCHEDULE_STRUCTURE'
+        ReferencingColumn = 'ID'
+        DisplayName = 'STRUCTUREID'
+      end
+      item
+        FieldName = 'AGREEMENTNUMB'
+        FieldLabel = #8470' '#1058#1088#1091#1076#1086#1074#1086#1075#1086' '#1076#1086#1075#1086#1074#1086#1088#1072
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'AGREEMENTNUMB'
+      end
+      item
+        FieldName = 'OUTDATE'
+        FieldLabel = #1044#1072#1090#1072' '#1091#1074#1086#1083#1100#1085#1077#1085#1080#1103' '#1089' '#1076#1086#1083#1078#1085#1086#1089#1090#1080
+        Nullable = True
+        FieldType = ftsDate
+        DisplayName = 'OUTDATE'
+      end
+      item
+        FieldName = 'TABNUMB'
+        FieldLabel = #1058#1072#1073#1077#1083#1100#1085#1099#1081' '#1085#1086#1084#1077#1088
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'TABNUMB'
+      end
+      item
+        FieldName = 'ID'
+        Nullable = True
+        FieldType = ftsNumber
+        IsPrimaryKey = True
+        DisplayName = 'ID'
+      end
+      item
+        FieldName = 'CHANGESTATUSDATE'
+        FieldLabel = #1044#1072#1090#1072' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1089#1090#1072#1090#1091#1089#1072
+        Nullable = True
+        FieldType = ftsDate
+        DisplayName = 'CHANGESTATUSDATE'
+      end
+      item
+        FieldName = 'AGREEMENTDATE'
+        FieldLabel = #1044#1072#1090#1072' '#1090#1088#1091#1076#1086#1074#1086#1075#1086' '#1076#1086#1075#1086#1074#1086#1088#1072
+        Nullable = True
+        FieldType = ftsDate
+        DisplayName = 'AGREEMENTDATE'
+      end
+      item
+        FieldName = 'INDATE'
+        FieldLabel = #1044#1072#1090#1072' '#1087#1088#1080#1093#1086#1076#1072' '#1085#1072#1076#1086#1083#1078#1085#1086#1089#1090#1100
+        Nullable = True
+        FieldType = ftsDate
+        DisplayName = 'INDATE'
+      end
+      item
+        FieldName = 'STATUS'
+        FieldLabel = #1057#1090#1072#1090#1091#1089
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'STATUS'
+        FieldVal = '1806639'
+      end
+      item
+        FieldName = 'DESCR'
+        Nullable = False
+        FieldType = ftsString
+        DisplayName = 'DESCR'
+      end>
+    TableName = 'HR_EMPLOYEE'
+    NeedGenPrimaryKey = True
+    Connection = DataModule1.ADConnection1
+    PrimaryKeySeq = 'AE_IDSEQ'
+    Left = 432
+    Top = 104
+  end
+  object PKDBTable2: TPKDBTable
+    Fields = <
+      item
+        FieldName = 'SCHEDULEID'
+        FieldLabel = 'ID '#1096#1090#1072#1090#1085#1086#1075#1086' '#1088#1072#1089#1087#1080#1089#1072#1085#1080#1103
+        Nullable = False
+        FieldType = ftsNumber
+        ReferencingTable = 'CS_V_HISTORY_SCHEDULE'
+        ReferencingColumn = 'ID'
+        LookUpRool = 'DEPT_NO||'#39' '#39'||DNAME'
+        DisplayName = 'SCHEDULEID'
+      end
+      item
+        FieldName = 'SALARYID'
+        FieldLabel = #1044#1086#1083#1078#1085#1086#1089#1090#1100
+        Nullable = False
+        FieldType = ftsNumber
+        ReferencingTable = 'CS_V_SALARY_ALL'
+        ReferencingColumn = 'ID'
+        LookUpRool = 't.jobtitle||'#39' '#39'||t.qual'
+        DisplayName = 'SALARYID'
+      end
+      item
+        FieldName = 'DEPTID'
+        FieldLabel = #1055#1086#1076#1088#1072#1079#1076#1077#1083#1077#1085#1080#1077
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'DEPTID'
+      end
+      item
+        FieldName = 'DESCRIPTION'
+        FieldLabel = #1055#1088#1080#1084#1077#1095#1072#1085#1080#1103
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'DESCRIPTION'
+      end
+      item
+        FieldName = 'INDOCUMENTID'
+        FieldLabel = #1044#1086#1082#1091#1084#1077#1085#1090' '#1074#1074#1086#1076#1072' '#1074' '#1088#1072#1089#1087#1080#1089#1072#1085#1080#1077
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'INDOCUMENTID'
+      end
+      item
+        FieldName = 'SUBORDINATIONID'
+        FieldLabel = #1055#1086#1076#1095#1080#1085#1077#1085#1085#1086#1089#1090#1100
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'SUBORDINATIONID'
+      end
+      item
+        FieldName = 'STATUSID'
+        FieldLabel = #1057#1090#1072#1090#1091#1089' '#1096#1090#1072#1090#1085#1086#1081' '#1077#1076#1080#1085#1080#1094#1099
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'STATUSID'
+      end
+      item
+        FieldName = 'CHANGESTATUSDATE'
+        FieldLabel = #1044#1072#1090#1072' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1089#1090#1072#1090#1091#1089#1072
+        Nullable = True
+        FieldType = ftsDate
+        DisplayName = 'CHANGESTATUSDATE'
+      end
+      item
+        FieldName = 'ADDITIONOTHER'
+        FieldLabel = #1053#1072#1076#1073#1072#1074#1082#1072' '#1079#1072' '#1087#1088#1086#1095#1077#1077
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'ADDITIONOTHER'
+      end
+      item
+        FieldName = 'ALONESALARY'
+        FieldLabel = #1048#1085#1076#1080#1074#1080#1076#1091#1072#1083#1100#1085#1099#1081' '#1086#1082#1083#1072#1076
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'ALONESALARY'
+      end
+      item
+        FieldName = 'OCCUPIED'
+        FieldLabel = #1057#1086#1089#1090#1086#1103#1085#1080#1077' '#1079#1072#1085#1103#1090#1086#1089#1090#1080' '#1096#1090#1072#1090#1085#1086#1075#1086' '#1084#1077#1089#1090#1072
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'OCCUPIED'
+      end
+      item
+        FieldName = 'ID'
+        FieldLabel = 'ID'
+        Nullable = True
+        FieldType = ftsNumber
+        IsPrimaryKey = True
+        DisplayName = 'ID'
+      end
+      item
+        FieldName = 'AMOUNT'
+        FieldLabel = #1050#1086#1083#1080#1095#1077#1089#1090#1074#1086' '#1096#1090#1072#1090#1085#1099#1093' '#1077#1076#1080#1085#1080#1094
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'AMOUNT'
+      end
+      item
+        FieldName = 'OUTDOCUMENTID'
+        FieldLabel = #1044#1086#1082#1091#1084#1077#1085#1090' '#1074#1099#1074#1086#1076#1072' '#1080#1079' '#1088#1072#1089#1087#1080#1089#1072#1085#1080#1103
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'OUTDOCUMENTID'
+      end
+      item
+        FieldName = 'ADDITIONHARM'
+        FieldLabel = #1053#1072#1076#1073#1072#1074#1082#1072' '#1079#1072' '#1074#1088#1077#1076#1085#1086#1089#1090#1100
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'ADDITIONHARM'
+      end
+      item
+        FieldName = 'ADDITIONSECRET'
+        FieldLabel = #1053#1072#1076#1073#1072#1074#1082#1072' '#1079#1072' '#1089#1077#1082#1088#1077#1090#1085#1086#1089#1090#1100
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'ADDITIONSECRET'
+      end>
+    TableName = 'CS_SCHEDULE_STRUCTURE'
+    NeedGenPrimaryKey = True
+    Connection = DataModule1.ADConnection1
+    PrimaryKeySeq = 'AE_IDSEQ'
+    Left = 432
+    Top = 136
+  end
+  object PKDBTable3: TPKDBTable
+    Fields = <
+      item
+        FieldName = 'EMPLOYEEID'
+        FieldLabel = #1057#1086#1090#1088#1091#1076#1085#1080#1082
+        Nullable = True
+        FieldType = ftsNumber
+        ReferencingTable = 'HR_EMPLOYEE'
+        ReferencingColumn = 'ID'
+        DisplayName = 'EMPLOYEEID'
+      end
+      item
+        FieldName = 'STATUSID'
+        FieldLabel = #1057#1090#1072#1090#1091#1089
+        Nullable = True
+        FieldType = ftsNumber
+        ReferencingTable = 'AE_STATUS'
+        ReferencingColumn = 'ID'
+        DisplayName = 'STATUSID'
+      end
+      item
+        FieldName = 'ORDERTYPE'
+        FieldLabel = #1058#1080#1087' '#1087#1088#1080#1082#1072#1079#1072
+        Nullable = True
+        FieldType = ftsNumber
+        ReferencingTable = 'HR_FACETCONTENT'
+        ReferencingColumn = 'ID'
+        DisplayName = 'ORDERTYPE'
+      end
+      item
+        FieldName = 'ID'
+        Nullable = False
+        FieldType = ftsNumber
+        IsPrimaryKey = True
+        DisplayName = 'ID'
+      end
+      item
+        FieldName = 'ORDERNUMB'
+        FieldLabel = #1053#1086#1084#1077#1088' '#1087#1088#1080#1082#1072#1079#1072
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'ORDERNUMB'
+      end
+      item
+        FieldName = 'CHANGESTATUSDATE'
+        Nullable = True
+        FieldType = ftsDate
+        DisplayName = 'CHANGESTATUSDATE'
+      end
+      item
+        FieldName = 'ORDERDATE'
+        FieldLabel = #1044#1072#1090#1072' '#1087#1088#1080#1082#1072#1079#1072
+        Nullable = True
+        FieldType = ftsDate
+        DisplayName = 'ORDERDATE'
+      end
+      item
+        FieldName = 'ORDERTITLE'
+        FieldLabel = #1047#1072#1075#1086#1083#1086#1074#1086#1082
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'ORDERTITLE'
+      end
+      item
+        FieldName = 'WORKCONTRACTID'
+        FieldLabel = #1058#1088#1091#1076#1086#1074#1086#1081' '#1076#1086#1075#1086#1074#1086#1088
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'WORKCONTRACTID'
+      end>
+    TableName = 'HR_ORDER'
+    NeedGenPrimaryKey = True
+    Connection = DataModule1.ADConnection1
+    PrimaryKeySeq = 'AE_IDSEQ'
+    Left = 432
+    Top = 168
+  end
+  object ADQuery2: TADQuery
+    Connection = DataModule1.ADConnection1
+    SQL.Strings = (
+      'select o.id orderid from  HR_ORDER o'
+      'where o.employeeid=:ID')
+    Left = 464
+    Top = 168
+    ParamData = <
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object ADQuery2ORDERID: TFMTBCDField
+      FieldName = 'ORDERID'
+      Required = True
+      Precision = 38
+      Size = 38
+    end
+  end
+  object ADQuery1: TADQuery
+    Connection = DataModule1.ADConnection1
+    SQL.Strings = (
+      'select o.id unitid from  CS_SCHEDULE_STRUCTURE o'
+      'where o.id=:ID')
+    Left = 464
+    Top = 136
+    ParamData = <
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object ADQuery1UNITID: TFMTBCDField
+      FieldName = 'UNITID'
+      Required = True
+      Precision = 38
+      Size = 38
+    end
+  end
+end

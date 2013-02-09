@@ -1,0 +1,58 @@
+unit JOBSCHEDULEUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DictUnit, daADStanIntf, daADDatSManager, daADStanOption,
+  daADStanParam, daADPhysIntf, daADDAptIntf, DB, daADCompDataSet,
+  daADCompClient, PKDBEditButtons, ExtCtrls, Grids, DBGrids, VrDbGrid, ComCtrls,
+  StdCtrls;
+
+type
+  TJOBSCHEDULE = class(TDictForm)
+    MainQueryID: TFloatField;
+    MainQuerySCHEDULENAME: TStringField;
+    MainQuerySTATUS: TStringField;
+    MainQueryORDER1: TStringField;
+    MainQueryORDER2: TStringField;
+    MainQueryPERIOD1: TStringField;
+    MainQueryPERIOD2: TStringField;
+    MainQueryCREATIONDATE: TSQLTimeStampField;
+    MainQueryDEPT_NO: TStringField;
+    PageControl2: TPageControl;
+    TabSheet2: TTabSheet;
+    ADQuery1: TADQuery;
+    VrDbGrid1: TVrDbGrid;
+    DataSource2: TDataSource;
+    ADQuery1ID: TFloatField;
+    ADQuery1SALARYID: TFloatField;
+    ADQuery1SCHEDULEID: TFloatField;
+    ADQuery1AMOUNT: TFloatField;
+    ADQuery1OCCUPIED: TFloatField;
+    ADQuery1ADDITIONHARM: TFloatField;
+    ADQuery1ADDITIONSECRET: TFloatField;
+    ADQuery1ADDITIONOTHER: TFloatField;
+    ADQuery1ALONESALARY: TFloatField;
+    ADQuery1DESCRIPTION: TStringField;
+    ADQuery1SUBORDINATIONID: TFloatField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  JOBSCHEDULE : TJOBSCHEDULE ;
+
+implementation
+
+uses DMUnit;
+
+{$R *.dfm}
+
+initialization
+
+  RegisterClasses([TJOBSCHEDULE]);
+
+end.

@@ -1,0 +1,75 @@
+inherited JOBTITLE: TJOBTITLE
+  Caption = #1057#1087#1077#1094#1080#1072#1083#1100#1085#1086#1089#1090#1100
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel2: TPanel
+    inherited Panel3: TPanel
+      inherited Splitter2: TSplitter
+        Top = 373
+      end
+      inherited Panel5: TPanel
+        Top = 376
+        Height = 47
+        ExplicitTop = 376
+        ExplicitHeight = 47
+      end
+      inherited PageControl1: TPageControl
+        Height = 373
+        inherited TabSheet1: TTabSheet
+          inherited Grid: TVrDbGrid
+            Height = 308
+            CheckFieldName = 'ID'
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'ID'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'CATEGORYID'
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'JOBTITLE'
+                Visible = True
+                SortMode = smNone
+              end>
+          end
+          inherited GridPanel1: TGridPanel
+            inherited PKDBEditButtons1: TPKDBEditButtons
+              TableName = 'CS_JOBTITLE'
+              PrimaryFieldName = 'ID'
+              Grid = Grid
+              Connection = DataModule2.Conn
+              EditDialogClassName = 'TJOBTITLEDIT'
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited MainQuery: TADQuery
+    Connection = DataModule2.Conn
+    Prepared = True
+    SQL.Strings = (
+      'select * from CS_JOBTITLE t'
+      'ORDER BY t.categoryid, t.jobtitle')
+    object MainQueryID: TFloatField
+      FieldName = 'ID'
+      Required = True
+    end
+    object MainQueryCATEGORYID: TFloatField
+      DisplayLabel = #1050#1072#1090#1077#1075'. '#1089#1087#1077#1094'.'
+      FieldName = 'CATEGORYID'
+    end
+    object MainQueryJOBTITLE: TStringField
+      DisplayLabel = #1057#1087#1077#1094#1080#1072#1083#1100#1085#1086#1089#1090#1100
+      FieldName = 'JOBTITLE'
+      Size = 200
+    end
+  end
+end

@@ -1,0 +1,39 @@
+inherited JOBHISTORY: TJOBHISTORY
+  Caption = #1048#1089#1090#1086#1088#1080#1103' '#1088#1072#1073#1086#1090#1099'  '
+  ExplicitWidth = 689
+  ExplicitHeight = 498
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel2: TPanel
+    inherited Panel3: TPanel
+      inherited Panel5: TPanel
+        Visible = False
+      end
+      inherited PageControl1: TPageControl
+        inherited TabSheet1: TTabSheet
+          Caption = #1048#1089#1090#1086#1088#1080#1103' '#1088#1072#1073#1086#1090#1099'     '
+          inherited GridPanel1: TGridPanel
+            inherited PKDBFindPanel1: TPKDBFindPanel
+              QuerysCollection = <
+                item
+                  Query = MainQuery
+                  MainQuery = False
+                  FieldList = <>
+                end>
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited Panel6: TPanel
+    Visible = False
+  end
+  inherited MainQuery: TADQuery
+    Left = 8
+    Top = 24
+  end
+  inherited DataSource1: TDataSource
+    Left = 8
+  end
+end

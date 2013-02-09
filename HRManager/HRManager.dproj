@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{5e50b35f-cba4-4202-a8d8-36be3c9005d7}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+    <DCC_DependencyCheckOutputName>HRManager.exe</DCC_DependencyCheckOutputName>
+    <MainSource>HRManager.dpr</MainSource>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_DebugInformation>False</DCC_DebugInformation>
+    <DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+    <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+    <DCC_Define>RELEASE</DCC_Define>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_Define>DEBUG</DCC_Define>
+    <DCC_IntegerOverflowCheck>True</DCC_IntegerOverflowCheck>
+    <DCC_RangeChecking>True</DCC_RangeChecking>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Delphi.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+<BorlandProject><Delphi.Personality><Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><VersionInfo><VersionInfo Name="IncludeVerInfo">False</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">1049</VersionInfo><VersionInfo Name="CodePage">1251</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><Source><Source Name="MainSource">HRManager.dpr</Source></Source></Delphi.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Delphi.Targets" />
+  <ItemGroup>
+    <DelphiCompile Include="HRManager.dpr">
+      <MainSource>MainSource</MainSource>
+    </DelphiCompile>
+    <DCCReference Include="ADDRESSEDIT.pas">
+      <Form>ADDRESS</Form>
+    </DCCReference>
+    <DCCReference Include="APPOINTMENTEDITUnit.pas">
+      <Form>APPOINTMENTEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="AREAUnit.pas">
+      <Form>AREA</Form>
+    </DCCReference>
+    <DCCReference Include="ATESTATIONEDITUnit.pas">
+      <Form>ATESTATIONEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="AWARDEDITUnit.pas">
+      <Form>AWARDEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="CITEZENEDITUnit.pas">
+      <Form>CITEZENEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="CITEZENLISTUnit.pas">
+      <Form>CITEZENLIST</Form>
+    </DCCReference>
+    <DCCReference Include="CITEZENUnit.pas">
+      <Form>CITEZEN</Form>
+    </DCCReference>
+    <DCCReference Include="CONJUCTIONEDITUnit.pas">
+      <Form>CONJUCTIONEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="CONJUCTIONUnit.pas">
+      <Form>CONJUCTION</Form>
+    </DCCReference>
+    <DCCReference Include="CONTWORKEREDITUnit.pas">
+      <Form>CONTWORKEREDIT</Form>
+    </DCCReference>
+    <DCCReference Include="CONTWORKERUnit.pas">
+      <Form>CONTWORKER</Form>
+    </DCCReference>
+    <DCCReference Include="DEPTSEDITUnit.pas">
+      <Form>DEPTSEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="DICTCONTENTEDITUnit.pas">
+      <Form>DICTCONTENTEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="DICTIONARY1Unit.pas">
+      <Form>DICTIONARY</Form>
+    </DCCReference>
+    <DCCReference Include="DictUnit.pas">
+      <Form>DictForm</Form>
+    </DCCReference>
+    <DCCReference Include="DISCIPLINEEDITUnit.pas">
+      <Form>DISCIPLINEEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="DISMISSOREDERUnit.pas">
+      <Form>DISMISSORDER</Form>
+    </DCCReference>
+    <DCCReference Include="DISMISSUnit.pas">
+      <Form>DISMISS</Form>
+    </DCCReference>
+    <DCCReference Include="DM.pas">
+      <Form>DataModule1</Form>
+      <DesignClass>TDataModule</DesignClass>
+    </DCCReference>
+    <DCCReference Include="DOCAGREEMENTCONFUnit.pas">
+      <Form>DOCAGREEMENTCONF</Form>
+    </DCCReference>
+    <DCCReference Include="DOCEDUCATIONEDITUnit.pas">
+      <Form>DOCEDUCATIONEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="DOCEDUCATIONUnit.pas">
+      <Form>DOCEDUCATION</Form>
+    </DCCReference>
+    <DCCReference Include="DOCPASSPORTEDITUnit.pas">
+      <Form>DOCPASSPORTEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="DOCPASSPORTUnit.pas">
+      <Form>DOCPASSPORT</Form>
+    </DCCReference>
+    <DCCReference Include="DOCREFERENCEUnit.pas">
+      <Form>DOCREFERENCE</Form>
+    </DCCReference>
+    <DCCReference Include="DOCWORKCONTRACTEDITUnit.pas">
+      <Form>DOCWORKCONTRACTEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="DoubleDicUnit.pas">
+      <Form>DoubleDic</Form>
+    </DCCReference>
+    <DCCReference Include="EditDialogUnit.pas">
+      <Form>EditDialog</Form>
+    </DCCReference>
+    <DCCReference Include="EDITJOBTITLENPOUnit.pas">
+      <Form>EDITJOBTITLENPO</Form>
+    </DCCReference>
+    <DCCReference Include="EDUCATIONORGSUnit.pas">
+      <Form>EDUCATIONORGS</Form>
+    </DCCReference>
+    <DCCReference Include="EMPLOYEEDITUnit.pas">
+      <Form>EMPLOYEEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="EMPLOYEEUnit.pas">
+      <Form>EMPLOYEE</Form>
+    </DCCReference>
+    <DCCReference Include="EXTAGREEMENTUnit.pas">
+      <Form>EXTAGREEMENT</Form>
+    </DCCReference>
+    <DCCReference Include="EXTVACANCYUnit.pas">
+      <Form>EXTVACANCY</Form>
+    </DCCReference>
+    <DCCReference Include="FAMILYCITEZENEDITUnit.pas">
+      <Form>FAMILYCITEZENEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="FAMILYCITEZENUnit.pas">
+      <Form>FAMILYCITEZEN</Form>
+    </DCCReference>
+    <DCCReference Include="FAMILYEDITUnit.pas">
+      <Form>FAMILYEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="FIASCITYUnit.pas">
+      <Form>FIASCITY</Form>
+    </DCCReference>
+    <DCCReference Include="GENERALDICTEDITUnit.pas">
+      <Form>GENERALDICTEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="GENERALDICTUnit.pas">
+      <Form>GENERALDICT</Form>
+    </DCCReference>
+    <DCCReference Include="HISTORYSCHEDUnit.pas">
+      <Form>HISTORYSCHED</Form>
+    </DCCReference>
+    <DCCReference Include="HOLIDAYEDITUnit.pas">
+      <Form>HOLIDAYEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="INEMPLOYEEUnit.pas">
+      <Form>INEMPLOYEE</Form>
+    </DCCReference>
+    <DCCReference Include="INSURANCEUnit.pas">
+      <Form>INSURANCEEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="JOBHISTORYEDITUnit.pas">
+      <Form>JOBHISTORYEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="JOBHISTORYUnit.pas">
+      <Form>JOBHISTORY</Form>
+    </DCCReference>
+    <DCCReference Include="JOBTITLEDITUnit.pas">
+      <Form>EDITJOBTITLE</Form>
+    </DCCReference>
+    <DCCReference Include="JOBTITLEUnit.pas">
+      <Form>JOBTITLE</Form>
+    </DCCReference>
+    <DCCReference Include="JOBTITLE_NPOUnit.pas">
+      <Form>JOBTITLENPO</Form>
+    </DCCReference>
+    <DCCReference Include="LANGUAGEEDITUnit.pas">
+      <Form>LANGUAGEEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="MainUnit.pas">
+      <Form>MainForm</Form>
+    </DCCReference>
+    <DCCReference Include="MenuUnit.pas">
+      <Form>MenuForm</Form>
+    </DCCReference>
+    <DCCReference Include="MILITARYEDITUnit.pas">
+      <Form>MILITARYEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="OKPDTRUnit.pas">
+      <Form>OKPDTR</Form>
+    </DCCReference>
+    <DCCReference Include="OKSOEDITUnitUnit.pas">
+      <Form>OKSOEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="OKSOUnit.pas">
+      <Form>OKSO</Form>
+    </DCCReference>
+    <DCCReference Include="ORDEREDITUnit.pas">
+      <Form>ORDEREDIT</Form>
+    </DCCReference>
+    <DCCReference Include="ORDERUnit.pas">
+      <Form>ORDER</Form>
+    </DCCReference>
+    <DCCReference Include="ORGANISATIONEDITUnit.pas">
+      <Form>ORGANISATIONEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="ORGANISATIONUnit.pas">
+      <Form>ORGANISATION</Form>
+    </DCCReference>
+    <DCCReference Include="PHONENUMBEREDITUnit.pas">
+      <Form>PHONENUMBEREDIT</Form>
+    </DCCReference>
+    <DCCReference Include="PROFESSIONEDITUnit.pas">
+      <Form>PROFFESIONEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="PROFESSIONUnit.pas">
+      <Form>PROFFESION</Form>
+    </DCCReference>
+    <DCCReference Include="QUALIFICATIONUnit.pas">
+      <Form>QUALIFICATION</Form>
+    </DCCReference>
+    <DCCReference Include="REGIONUnit.pas">
+      <Form>REGION</Form>
+    </DCCReference>
+    <DCCReference Include="REPORTUnit.pas">
+      <Form>WREPORT</Form>
+    </DCCReference>
+    <DCCReference Include="RETRAININGEDITUnit.pas">
+      <Form>RETRAININGEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="SALARYEDITUnit.pas">
+      <Form>SALARYEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="SALARYUnit.pas">
+      <Form>SALARY</Form>
+    </DCCReference>
+    <DCCReference Include="SKILLUPUnit.pas">
+      <Form>SKILLUPEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="SOCIALEDITUnit.pas">
+      <Form>SOCIALEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="TOTALDATAUnit.pas">
+      <Form>TOTALDATA</Form>
+    </DCCReference>
+    <DCCReference Include="TOWNUnit.pas">
+      <Form>TOWN</Form>
+    </DCCReference>
+    <DCCReference Include="VACANCYEDITUnit.pas">
+      <Form>VACANCYEDIT</Form>
+    </DCCReference>
+    <DCCReference Include="VACANCYUnit.pas">
+      <Form>VACANCY</Form>
+    </DCCReference>
+    <DCCReference Include="VACANCY_CONJUCTIONUnit.pas">
+      <Form>VACANCY_CONJUCTION</Form>
+    </DCCReference>
+    <DCCReference Include="WORKCALENDARUnit.pas">
+      <Form>WORKCALENDAR</Form>
+    </DCCReference>
+  </ItemGroup>
+</Project>

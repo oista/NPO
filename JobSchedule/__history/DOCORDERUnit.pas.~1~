@@ -1,0 +1,29 @@
+unit DOCORDERUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DictUnit, daADStanIntf, daADDatSManager, daADStanOption,
+  daADStanParam, daADPhysIntf, daADDAptIntf, DB, daADCompDataSet,
+  daADCompClient, PKDBFindPanel, PKDBEditButtons, ExtCtrls, Grids, DBGrids,
+  VrDbGrid, ComCtrls, StdCtrls;
+
+type
+  TDOCORDER = class(TDictForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DOCORDER: TDOCORDER;
+
+implementation
+
+{$R *.dfm}
+initialization
+
+  RegisterClasses([TDOCORDER]);
+end.

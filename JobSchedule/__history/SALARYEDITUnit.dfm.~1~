@@ -1,0 +1,22 @@
+inherited SALARYEDIT: TSALARYEDIT
+  Caption = #1047#1072#1088#1072#1073#1086#1090#1085#1099#1077' '#1087#1083#1072#1090#1099
+  ClientWidth = 564
+  ExplicitWidth = 570
+  ExplicitHeight = 443
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Left = 473
+  end
+  inherited PageControl1: TPageControl
+    Width = 467
+    ExplicitWidth = 467
+    inherited TabSheet1: TTabSheet
+      Caption = #1047#1072#1088#1072#1073#1086#1090#1085#1072#1103' '#1087#1083#1072#1090#1072
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 356
+      ExplicitHeight = 385
+    end
+  end
+end

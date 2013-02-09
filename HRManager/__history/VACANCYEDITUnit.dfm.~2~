@@ -1,0 +1,198 @@
+inherited VACANCYEDIT: TVACANCYEDIT
+  Caption = #1042#1072#1082#1072#1085#1089#1080#1080'   '
+  ClientHeight = 176
+  ClientWidth = 528
+  ExplicitWidth = 534
+  ExplicitHeight = 200
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Left = 437
+    Height = 176
+  end
+  inherited PageControl1: TPageControl
+    Width = 431
+    Height = 170
+    inherited TabSheet1: TTabSheet
+      Caption = #1042#1072#1082#1072#1085#1089#1080#1080
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 356
+      ExplicitHeight = 385
+      object Label1: TLabel
+        Left = 15
+        Top = 16
+        Width = 84
+        Height = 13
+        Caption = #1055#1086#1076#1088#1072#1079#1076#1077#1083#1077#1085#1080#1077':'
+      end
+      object PKDBDictEdit1: TPKDBDictEdit
+        Left = 15
+        Top = 35
+        Width = 353
+        Height = 21
+        Connection = DataModule1.ADConnection1
+        Table = PKDBTable1
+        TableField = 'SCHEDULEID'
+        LookUpRool = 'DEPT_NO||'#39' '#39'||DNAME'
+        DictionaryClass = 'THISTORYSCHED'
+        OnAfterOpenButtonClick = PKDBDictEdit1AfterOpenButtonClick
+        WithoutTable = False
+        DesignSize = (
+          353
+          21)
+      end
+      object PKDBDictLabelEdit2: TPKDBDictLabelEdit
+        Left = 15
+        Top = 78
+        Width = 353
+        Height = 21
+        Connection = DataModule1.ADConnection1
+        Table = PKDBTable1
+        TableField = 'SALARYID'
+        LookUpRool = 'jobtitle||'#39' '#39'||qual'
+        DictionaryClass = 'TSALARY'
+        WithoutTable = False
+        EditLabel.Width = 57
+        EditLabel.Height = 13
+        EditLabel.Caption = #1044#1086#1083#1078#1085#1086#1089#1090#1100
+        DesignSize = (
+          353
+          21)
+      end
+    end
+  end
+  inherited PKDBTable1: TPKDBTable
+    Fields = <
+      item
+        FieldName = 'SCHEDULEID'
+        FieldLabel = #1064#1090#1072#1090#1085#1086#1077' '#1088#1072#1089#1087#1080#1089#1072#1085#1080#1077
+        Nullable = True
+        FieldType = ftsNumber
+        ReferencingTable = 'HR_V_OUT_SCHEDULE'
+        ReferencingColumn = 'ID'
+        LookUpRool = 'DEPT_NO||'#39' '#39'||DNAME'
+        DisplayName = 'SCHEDULEID'
+      end
+      item
+        FieldName = 'SALARYID'
+        FieldLabel = #1044#1086#1083#1078#1085#1086#1089#1090#1100
+        Nullable = True
+        FieldType = ftsNumber
+        ReferencingTable = 'CS_SALARY'
+        ReferencingColumn = 'ID'
+        DisplayName = 'SALARYID'
+      end
+      item
+        FieldName = 'DEPTID'
+        FieldLabel = #1055#1086#1076#1088#1072#1079#1076#1077#1083#1077#1085#1080#1077
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'DEPTID'
+      end
+      item
+        FieldName = 'EXTHOLYDAYS'
+        FieldLabel = #1044#1085#1080' '#1076#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1086#1075#1086' '#1086#1090#1087#1091#1089#1082#1072
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'EXTHOLYDAYS'
+      end
+      item
+        FieldName = 'DESCRIPTION'
+        FieldLabel = #1055#1088#1080#1084#1077#1095#1072#1085#1080#1103
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'DESCRIPTION'
+      end
+      item
+        FieldName = 'INDOCUMENTID'
+        FieldLabel = #1055#1088#1077#1076#1080#1076#1091#1097#1077#1077' SALARYID '#1077#1076#1080#1085#1080#1094#1099' '
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'INDOCUMENTID'
+      end
+      item
+        FieldName = 'SUBORDINATIONID'
+        FieldLabel = #1055#1086#1076#1095#1080#1085#1077#1085#1085#1086#1089#1090#1100
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'SUBORDINATIONID'
+      end
+      item
+        FieldName = 'STATUSID'
+        FieldLabel = #1057#1090#1072#1090#1091#1089' '#1096#1090#1072#1090#1085#1086#1081' '#1077#1076#1080#1085#1080#1094#1099
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'STATUSID'
+      end
+      item
+        FieldName = 'CHANGESTATUSDATE'
+        FieldLabel = #1044#1072#1090#1072' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1089#1090#1072#1090#1091#1089#1072
+        Nullable = True
+        FieldType = ftsDate
+        DisplayName = 'CHANGESTATUSDATE'
+      end
+      item
+        FieldName = 'ADDITIONOTHER'
+        FieldLabel = #1053#1072#1076#1073#1072#1074#1082#1072' '#1079#1072' '#1087#1088#1086#1095#1077#1077
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'ADDITIONOTHER'
+      end
+      item
+        FieldName = 'ALONESALARY'
+        FieldLabel = #1048#1085#1076#1080#1074#1080#1076#1091#1072#1083#1100#1085#1099#1081' '#1086#1082#1083#1072#1076
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'ALONESALARY'
+      end
+      item
+        FieldName = 'OCCUPIED'
+        FieldLabel = #1053#1086#1084#1077#1088' '#1074#1099#1074#1086#1076#1072' '#1074' '#1096#1090#1072#1090#1082#1077
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'OCCUPIED'
+      end
+      item
+        FieldName = 'ID'
+        FieldLabel = 'ID'
+        Nullable = False
+        FieldType = ftsNumber
+        IsPrimaryKey = True
+        DisplayName = 'ID'
+      end
+      item
+        FieldName = 'AMOUNT'
+        FieldLabel = #1050#1086#1083#1080#1095#1077#1089#1090#1074#1086' '#1096#1090#1072#1090#1085#1099#1093' '#1077#1076#1080#1085#1080#1094
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'AMOUNT'
+      end
+      item
+        FieldName = 'OUTDOCUMENTID'
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'OUTDOCUMENTID'
+      end
+      item
+        FieldName = 'ADDITIONHARM'
+        FieldLabel = #1053#1072#1076#1073#1072#1074#1082#1072' '#1079#1072' '#1074#1088#1077#1076#1085#1086#1089#1090#1100
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'ADDITIONHARM'
+      end
+      item
+        FieldName = 'ADDITIONSECRET'
+        FieldLabel = #1053#1072#1076#1073#1072#1074#1082#1072' '#1079#1072' '#1089#1077#1082#1088#1077#1090#1085#1086#1089#1090#1100
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'ADDITIONSECRET'
+      end>
+    TableName = 'CS_SCHEDULE_STRUCTURE'
+    NeedGenPrimaryKey = True
+    Connection = DataModule1.ADConnection1
+    PrimaryKeySeq = 'AE_IDSEQ'
+    Left = 464
+    Top = 88
+  end
+end

@@ -1,0 +1,59 @@
+inherited DEPTS: TDEPTS
+  Caption = #1055#1086#1076#1088#1072#1079#1076#1077#1083#1077#1085#1080#1103'     '
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel2: TPanel
+    inherited Panel3: TPanel
+      inherited Panel5: TPanel
+        Visible = False
+      end
+      inherited PageControl1: TPageControl
+        inherited TabSheet1: TTabSheet
+          Caption = #1055#1086#1076#1088#1072#1079#1076#1077#1083#1077#1085#1080#1103
+          inherited Grid: TVrDbGrid
+            CheckFieldName = 'ID'
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'DCODE'
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'DNAME'
+                Visible = True
+                SortMode = smNone
+              end>
+          end
+          inherited GridPanel1: TGridPanel
+            inherited PKDBEditButtons1: TPKDBEditButtons
+              Grid = Grid
+              Connection = DataModule2.Conn
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited Panel6: TPanel
+    Visible = False
+  end
+  inherited MainQuery: TADQuery
+    Connection = DataModule2.Conn
+    SQL.Strings = (
+      'select * from pk_v_dept')
+    object MainQueryID: TFloatField
+      FieldName = 'ID'
+    end
+    object MainQueryDCODE: TStringField
+      DisplayLabel = #1050#1086#1076
+      FieldName = 'DCODE'
+    end
+    object MainQueryDNAME: TStringField
+      DisplayLabel = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+      FieldName = 'DNAME'
+      Size = 200
+    end
+  end
+end

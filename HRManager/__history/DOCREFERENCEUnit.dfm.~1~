@@ -1,0 +1,20 @@
+inherited DOCREFERENCE: TDOCREFERENCE
+  Caption = #1057#1087#1088#1072#1074#1082#1072' '
+  ExplicitWidth = 467
+  ExplicitHeight = 443
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited PageControl1: TPageControl
+    inherited TabSheet1: TTabSheet
+      Caption = #1057#1087#1088#1072#1074#1082#1072'  '
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 356
+      ExplicitHeight = 385
+    end
+  end
+  inherited PKDBTable1: TPKDBTable
+    Left = 376
+    Top = 88
+  end
+end

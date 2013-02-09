@@ -1,0 +1,269 @@
+unit APPOINTMENTEDITUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, StdCtrls, ExtCtrls, PKDBDictEdit, PKDBTable, ComCtrls,
+  PKDBEdit, PKDBBBaseComboBox,dictunit, DB, uADStanIntf, uADStanOption,
+  uADStanParam, uADStanError, uADDatSManager, uADPhysIntf, uADDAptIntf,
+  uADStanAsync, uADDAptManager, uADCompClient, uADCompDataSet, reportunit;
+
+type
+  TAPPOINTMENTEDIT = class(TEditDialog)
+    PKDBDictEdit2: TPKDBDictEdit;
+    Label2: TLabel;
+    PKDBLabelEdit3: TPKDBLabelEdit;
+    PKDBLabelEdit4: TPKDBLabelEdit;
+    PKDBLabelEdit5: TPKDBLabelEdit;
+    PKDBDictEdit3: TPKDBDictEdit;
+    ADStoredProc2: TADStoredProc;
+    PKDBDictLabelEdit1: TPKDBDictLabelEdit;
+    ADQuery1: TADQuery;
+    PKDBTable2: TPKDBTable;
+    PKDBDictEdit1: TPKDBDictEdit;
+    ADQuery1ID: TFMTBCDField;
+    Label1: TLabel;
+    PKDBDictEdit4: TPKDBDictEdit;
+    PKDBDictEdit5: TPKDBDictEdit;
+    PKDBDictEdit6: TPKDBDictEdit;
+    ADQuery1WORKCONTRACTID: TFMTBCDField;
+    PKDBTable3: TPKDBTable;
+    GroupBox1: TGroupBox;
+    PKDBLabelEdit2: TPKDBLabelEdit;
+    PKDBLabelEdit1: TPKDBLabelEdit;
+    PKDBLabelEdit6: TPKDBLabelEdit;
+    CheckBox1: TCheckBox;
+    PKDBDictEdit7: TPKDBDictEdit;
+    PKDBDictEdit8: TPKDBDictEdit;
+    PKDBDictEdit9: TPKDBDictEdit;
+    PKDBLabelEdit7: TPKDBLabelEdit;
+    PKDBLabelEdit8: TPKDBLabelEdit;
+    PKDBLabelEdit9: TPKDBLabelEdit;
+    CheckBox2: TCheckBox;
+    PKDBTable4: TPKDBTable;
+    GroupBox2: TGroupBox;
+    PKDBLabelEdit10: TPKDBLabelEdit;
+    PKDBLabelEdit11: TPKDBLabelEdit;
+    PKDBDictEdit10: TPKDBDictEdit;
+    PKDBDictEdit11: TPKDBDictEdit;
+    PKDBDictEdit12: TPKDBDictEdit;
+    procedure PKDBDictEdit1BeforeOpenButtonClick(Sender: TObject;
+      Form: TDictForm);
+    procedure Button1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure open; override;
+    procedure runcommand; override;
+    function finderrors:boolean;  override;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  APPOINTMENTEDIT : TAPPOINTMENTEDIT ;
+    Cform : TWREPORT;
+
+implementation
+ uses DM, EMPLOYEEUnit;
+
+{$R *.dfm}
+
+
+procedure TAPPOINTMENTEDIT.Button1Click(Sender: TObject);
+begin
+    inherited;
+//  проверка(дата прихода < дата увольнения)
+if  (PKDBLabelEdit5.text<>'') and (strtodate(PKDBLabelEdit4.text) > strtodate(PKDBLabelEdit5.text)) then
+   begin
+     showmessage('Дата прихода на должность должна быть меньше даты ухода(значения задаются для новой должности).');
+     exit;
+   end
+  else
+   begin
+    ADStoredProc2.Params[0].Value:= PKDBTable2.Fields.PrimaryKey.FieldVal; // сотрудник
+    ADStoredProc2.Params[1].Value:= strtodate(PKDBLabelEdit4.Text); // дата рихода/увольнения
+    ADStoredProc2.ExecProc;
+   end;
+end;
+
+procedure TAPPOINTMENTEDIT.FormShow(Sender: TObject);
+begin
+  inherited; // передаем значение гражданина компоненту
+  PKDBDictLabelEdit1.SetValue(PKDBTable1.Fields.ParentKey.FieldVal);
+
+  // тащим старую должность.
+  // если у сотр. больше 2х основных (ОШИБКА)
+  ADQuery1.Params[0].Value:=PKDBTable1.Fields.ParentKey.FieldVal;
+  ADQuery1.Open;
+
+  if (ADQuery1.RecordCount>1) then
+   begin
+     showmessage('У сотрудника больше 1 постоянного места работы. Удалите лишние данные.');
+     self.CloseModal;
+   end
+  else
+   begin
+    //  передаем значение старой должности на компонент
+    PKDBTable2.Fields.PrimaryKey.FieldVal:= ADQuery1ID.asstring;
+    PKDBTable2.ReadFromDB(PKDBTable2.Fields.PrimaryKey.FieldVal);
+
+    PKDBDictEdit5.DictionaryValue:= '''ПЕРЕВОД''';
+    // связываем сотрудника и приказ
+    PKDBTable4.Fields.ParentKey.FieldVal:= ADQuery1ID.asstring;;
+    // присваем новому сотруднику старый договор
+    PKDBDictEdit6.DictionaryValue:= ADQuery1WORKCONTRACTID.asstring;
+   end;
+  ADQuery1.Close;
+end;
+
+procedure TAPPOINTMENTEDIT.PKDBDictEdit1BeforeOpenButtonClick(Sender: TObject;
+  Form: TDictForm);
+begin
+  inherited;
+ // из этой формы можно создать только сотрудника на полную ставку
+ PKDBDictEdit3.DictionaryValue:= '3009016';
+end;
+
+procedure TAPPOINTMENTEDIT.Open;
+begin
+
+  case CommandType of
+    tcInsert:
+      begin
+       Caption := Caption + ': Добавление';
+       if PKDBTable1.NeedGenPrimaryKey then PKDBTable1.GetTempPrimarykey;
+       if PKDBTable3.NeedGenPrimaryKey then PKDBTable3.GetTempPrimarykey;
+       if PKDBTable4.NeedGenPrimaryKey then PKDBTable4.GetTempPrimarykey;
+
+       // прикрепляем соглашение к сотруднику
+       PKDBTable3.Fields.ParentKey.FieldVal:= PKDBTable1.Fields.PrimaryKey.FieldVal;
+       // прикрепляем нового сотрудника к приказу
+       PKDBDictEdit12.DictionaryValue:= PKDBTable1.Fields.PrimaryKey.FieldVal;
+       // прикрепляем соглашение к приказу
+       PKDBDictEdit11.DictionaryValue:= PKDBTable3.Fields.PrimaryKey.FieldVal;
+
+      end;
+    tcUpdate:
+      Begin
+        Caption := Caption + ': Изменение';
+        self.Button1.Enabled:=false;
+        // редактирование здесь невозможно,тк оформляется перевод
+      End;
+    tcCopy:
+      Begin
+        Caption := Caption + ': Копирование';
+        self.Button1.Enabled:=false;
+         // копирование здесь невозможно,тк оформляется перевод
+      End;
+    tcView:
+      Begin
+        Caption := Caption + ': Просмотр';
+         self.Button1.Enabled:=false;
+      end;
+  end;
+  if CommandType <> tcInsert then
+   begin
+    // передаем компонентам сотрудника и ТД
+    PKDBTable1.ReadFromDB(PrimaryKey);
+   end;
+  if PKDBTable1.Fields.ParentKey <> nil then
+    begin
+     PKDBTable1.Fields.ParentKey.FieldVal := ParentKey;
+    end;
+  if CommandType = tcView then
+    Begin
+      Button1.Enabled := false;
+    End;
+end;
+
+procedure TAPPOINTMENTEDIT.RunCommand;
+begin
+
+  case CommandType of
+    tcInsert:
+     begin
+      PrimaryKey := PKDBTable1.Insert;
+      PKDBTable3.Insert;
+      PKDBTable4.Insert;
+     end;
+    tcCopy:
+     begin
+     // копирование не поддерживается в данном контексте
+     end;
+    tcUpdate:
+     begin
+     // редактирование не поддерживается в данном контексте
+     end;
+  end;
+
+  if CheckBox1.Checked then    // если надо вывести форму СОГЛАШЕНИЯ после "ОК"
+   begin
+      Cform := TWREPORT.Create(EMPLOYEE);
+      Cform.madeExtAgreement(strtofloat(PKDBTable3.Fields.PrimaryKey.FieldVal));
+   end;
+
+ if CheckBox2.Checked then    // если надо вывести форму ПРИКАЗА после "ОК"
+   begin
+      Cform := TWREPORT.Create(EMPLOYEE);
+      Cform.madeOrderAppoint(strtofloat(PKDBTable4.Fields.PrimaryKey.FieldVal));
+   end;
+end;
+
+function TAPPOINTMENTEDIT.FindErrors: Boolean;
+Var
+  i: integer;
+begin
+  // старая должность  в соглашении
+  PKDBDictEdit7.DictionaryValue:= PKDBDictEdit1.DictionaryValue;
+  // новая должность  в соглашении
+  PKDBDictEdit8.DictionaryValue:= PKDBDictEdit2.DictionaryValue;
+  // тип соглашения = о переводе
+  PKDBDictEdit9.DictionaryValue:='4136894';
+  // тип приказа = о переводе
+  PKDBDictEdit10.DictionaryValue:='4180888';
+
+  // дата соглашения = дата прихода на должность
+  if PKDBLabelEdit2.Text='' then PKDBLabelEdit2.Text:= PKDBLabelEdit4.Text;
+  // дата начала действия = дата прихода на должность
+  if PKDBLabelEdit6.Text='' then PKDBLabelEdit6.Text:= PKDBLabelEdit4.Text;
+  // дата конца действия = дата ухода с должности
+  if PKDBLabelEdit9.Text='' then PKDBLabelEdit9.Text:= PKDBLabelEdit5.Text;
+
+  Result := False;
+  for i := 0 to PKDBTable1.Fields.Count - 1 do
+    Begin
+      if (PKDBTable1.Fields.Items[i].Nullable = false) and
+         (PKDBTable1.Fields.Items[i].IsEmpty) then
+        Begin
+          if (PKDBTable1.Fields.Items[i].IsPrimaryKey = false) then
+               Result := True;
+        End;
+    End;
+  for i := 0 to PKDBTable3.Fields.Count - 1 do
+    Begin
+      if (PKDBTable3.Fields.Items[i].Nullable = false) and
+         (PKDBTable3.Fields.Items[i].IsEmpty) then
+        Begin
+          if (PKDBTable3.Fields.Items[i].IsPrimaryKey = false) then
+               Result := True;
+        End;
+    End;
+      for i := 0 to PKDBTable4.Fields.Count - 1 do
+    Begin
+      if (PKDBTable4.Fields.Items[i].Nullable = false) and
+         (PKDBTable4.Fields.Items[i].IsEmpty) then
+        Begin
+          if (PKDBTable4.Fields.Items[i].IsPrimaryKey = false) then
+               Result := True;
+        End;
+    End;
+  if Result then
+    ShowMessage('Не заполнены обязательные поля');
+end;
+
+initialization
+
+RegisterClasses([TAPPOINTMENTEDIT]);
+end.

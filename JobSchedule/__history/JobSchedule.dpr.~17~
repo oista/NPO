@@ -1,0 +1,47 @@
+program JobSchedule;
+
+uses
+  Forms,
+  DMUnit in 'DMUnit.pas' {DataModule2: TDataModule},
+  MainUnit in 'MainUnit.pas' {MainForm},
+  MenuUnit in 'MenuUnit.pas' {MenuForm},
+  DEPTSUnit in 'DEPTSUnit.pas' {DEPTS},
+  DictUnit in '..\PKDBSoft\DictUnit.pas' {DictForm},
+  EditDialogUnit in '..\PKDBSoft\EditDialogUnit.pas' {EditDialog},
+  CATEGORYUnit in 'CATEGORYUnit.pas' {CATEGORY},
+  CATEGORYEDITUnit in 'CATEGORYEDITUnit.pas' {CATEGORYEDIT},
+  JOBTITLEUnit in 'JOBTITLEUnit.pas' {JOBTITLE},
+  JOBTITLEDITUnit in 'JOBTITLEDITUnit.pas' {JOBTITLEDIT},
+  QUALIFICATIONUnit in 'QUALIFICATIONUnit.pas' {QUALIFICATION},
+  QUALIFICATIONEDITUnit in 'QUALIFICATIONEDITUnit.pas' {QUALIFICATIONEDIT},
+  SALARYUnit in 'SALARYUnit.pas' {SALARY},
+  SALARYEDITUnit in 'SALARYEDITUnit.pas' {SALARYEDIT},
+  RATEUnit in 'RATEUnit.pas' {RATE},
+  RATEDITUnit in 'RATEDITUnit.pas' {RATEDIT},
+  RATECONDITIONUnit in 'RATECONDITIONUnit.pas' {RATECONDITION},
+  RATECONDITIONEDITUnit in 'RATECONDITIONEDITUnit.pas' {RATECONDITIONEDIT},
+  JOBSCHEDULEUnit in 'JOBSCHEDULEUnit.pas' {JOBSCHEDULE};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TDataModule2, DataModule2);
+  Application.CreateForm(TMainForm, MainForm);
+  Application.CreateForm(TMenuForm, MenuForm);
+  Application.CreateForm(TCATEGORY, CATEGORY);
+  Application.CreateForm(TCATEGORYEDIT, CATEGORYEDIT);
+  Application.CreateForm(TJOBTITLE, JOBTITLE);
+  Application.CreateForm(TJOBTITLEDIT, JOBTITLEDIT);
+  Application.CreateForm(TQUALIFICATION, QUALIFICATION);
+  Application.CreateForm(TQUALIFICATIONEDIT, QUALIFICATIONEDIT);
+  Application.CreateForm(TSALARY, SALARY);
+  Application.CreateForm(TSALARYEDIT, SALARYEDIT);
+  Application.CreateForm(TRATE, RATE);
+  Application.CreateForm(TRATEDIT, RATEDIT);
+  Application.CreateForm(TRATECONDITION, RATECONDITION);
+  Application.CreateForm(TRATECONDITIONEDIT, RATECONDITIONEDIT);
+  //Application.CreateForm(TJOBSCHEDULE, JOBSCHEDULE);
+  Application.Run;
+end.

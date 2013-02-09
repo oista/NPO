@@ -1,0 +1,61 @@
+unit HOLIDAYEDITUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, StdCtrls, PKDBEdit, PKDBBBaseComboBox, PKDBTable,
+  ComCtrls, ExtCtrls;
+
+type
+  THOLIDAYEDIT = class(TEditDialog)
+    PKDBBLabelComboBox1: TPKDBBLabelComboBox;
+    PKDBLabelEdit1: TPKDBLabelEdit;
+    PKDBLabelEdit2: TPKDBLabelEdit;
+    PKDBLabelEdit3: TPKDBLabelEdit;
+    PKDBLabelEdit4: TPKDBLabelEdit;
+    PKDBLabelEdit6: TPKDBLabelEdit;
+    PKDBLabelEdit5: TPKDBLabelEdit;
+    PKDBLabelEdit7: TPKDBLabelEdit;
+    GroupBox1: TGroupBox;
+    CheckBox1: TCheckBox;
+    PKDBTable2: TPKDBTable;
+    GroupBox2: TGroupBox;
+    PKDBLabelEdit8: TPKDBLabelEdit;
+    PKDBLabelEdit9: TPKDBLabelEdit;
+    procedure open; override;
+    procedure PKDBBLabelComboBox1Change(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  HOLIDAYEDIT : THOLIDAYEDIT;
+
+implementation
+ uses DM;
+{$R *.dfm}
+
+{ THOLIDAYEDIT }
+
+procedure THOLIDAYEDIT.open;
+begin
+  inherited;
+  if (PKDBTable1.Fields.FieldByName('HOLIDAYTYPEID').FieldVal<>'4182528') then
+   GroupBox1.Visible:=false;
+end;
+
+procedure THOLIDAYEDIT.PKDBBLabelComboBox1Change(Sender: TObject);
+begin
+  PKDBBLabelComboBox1.getid(self);
+  if (PKDBBLabelComboBox1.selectid<>'4182528') then  GroupBox1.Visible:=false
+   else
+   GroupBox1.Visible:= true;
+end;
+
+initialization
+
+RegisterClasses([THOLIDAYEDIT]);
+end.

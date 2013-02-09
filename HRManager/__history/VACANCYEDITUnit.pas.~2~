@@ -1,0 +1,27 @@
+unit VACANCYEDITUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, PKDBTable, ComCtrls, StdCtrls, ExtCtrls;
+
+type
+  TVACANCYEDIT = class(TEditDialog)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  VACANCYEDIT: TVACANCYEDIT;
+
+implementation
+uses DM;
+{$R *.dfm}
+
+
+initialization
+RegisterClasses([TVACANCYEDIT]);
+end.

@@ -1,0 +1,38 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 246
+  Width = 284
+  object PKDBLogin1: TPKDBLogin
+    Connection = ADConnection1
+    Left = 64
+    Top = 144
+  end
+  object ADGUIxFormsErrorDialog1: TADGUIxFormsErrorDialog
+    Left = 64
+    Top = 88
+  end
+  object ADGUIxWaitCursor1: TADGUIxWaitCursor
+    Left = 64
+    Top = 32
+  end
+  object ADPhysOraclDriverLink1: TADPhysOraclDriverLink
+    Left = 184
+    Top = 32
+  end
+  object ADConnection1: TADConnection
+    Params.Strings = (
+      'Database=PARUS'
+      'User_Name=APPROOT'
+      'Password=approot'
+      'DriverID=Ora')
+    Left = 184
+    Top = 88
+  end
+  object PKApplicationUpdate1: TPKApplicationUpdate
+    VersionNumber = 81
+    Connection = ADConnection1
+    ProjectName = '698038'
+    Left = 184
+    Top = 144
+  end
+end

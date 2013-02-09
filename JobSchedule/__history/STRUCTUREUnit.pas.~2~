@@ -1,0 +1,70 @@
+unit STRUCTUREUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DictUnit, daADStanIntf, daADDatSManager, daADStanOption,
+  daADStanParam, daADPhysIntf, daADDAptIntf, DB, daADCompDataSet,
+  daADCompClient, PKDBFindPanel, PKDBEditButtons, ExtCtrls, Grids, DBGrids,
+  VrDbGrid, ComCtrls, StdCtrls;
+
+type
+  TSTRUCTURE = class(TDictForm)
+    MainQueryID: TFloatField;
+    MainQueryJOBTITLE: TStringField;
+    MainQueryQUALIFICATION: TStringField;
+    MainQueryCATEGORYNUMB: TFloatField;
+    MainQueryAMOUNT: TFloatField;
+    MainQuerySALARY: TFloatField;
+    MainQueryADDITIONHARM: TFloatField;
+    MainQueryADDITIONSECRET: TFloatField;
+    MainQueryADDITIONOTHER: TFloatField;
+    MainQueryDESCRIPTION: TStringField;
+    MainQuerySCHEDULEID: TFloatField;
+    MainQuerySALID: TFloatField;
+    MainQueryJOBTITLEID: TFloatField;
+    MainQueryQUALIFICATIONID: TFloatField;
+    MainQueryRATEID: TFloatField;
+    MainQueryALONESALARY: TFloatField;
+    MainQueryOCCUPIED: TFloatField;
+    MainQuerySUBORDINATIONID: TFloatField;
+    ADQuery1: TADQuery;
+    ADQuery1ID: TFloatField;
+    ADQuery1JOBTITLE: TStringField;
+    ADQuery1CATEGORYNUMB: TFloatField;
+    ADQuery1AMOUNT: TFloatField;
+    ADQuery1SALARY: TFloatField;
+    ADQuery1ADDITIONHARM: TFloatField;
+    ADQuery1ADDITIONSECRET: TFloatField;
+    ADQuery1ADDITIONOTHER: TFloatField;
+    ADQuery1DESCRIPTION: TStringField;
+    ADQuery1SCHEDULEID: TFloatField;
+    ADQuery1SALID: TFloatField;
+    ADQuery1JOBTITLEID: TFloatField;
+    ADQuery1QUALIFICATIONID: TFloatField;
+    ADQuery1RATEID: TFloatField;
+    ADQuery1ALONESALARY: TFloatField;
+    ADQuery1OCCUPIED: TFloatField;
+    ADQuery1SUBORDINATIONID: TFloatField;
+    ADQuery1QUALIFICATION: TStringField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  STRUCTURE: TSTRUCTURE;
+
+implementation
+
+uses DMUnit;
+
+{$R *.dfm}
+
+initialization
+
+  RegisterClasses([TSTRUCTURE]);
+
+end.

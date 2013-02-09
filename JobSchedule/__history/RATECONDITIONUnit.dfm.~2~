@@ -1,0 +1,124 @@
+inherited RATECONDITION: TRATECONDITION
+  Caption = #1059#1089#1083#1086#1074#1080#1103' '#1090#1088#1091#1076#1072
+  ClientWidth = 847
+  ExplicitLeft = -16
+  ExplicitWidth = 855
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Width = 847
+    inherited Button1: TButton
+      Left = 684
+    end
+    inherited Button2: TButton
+      Left = 765
+    end
+  end
+  inherited Panel2: TPanel
+    Left = 33
+    Width = 814
+    inherited Panel3: TPanel
+      Width = 811
+      inherited Splitter2: TSplitter
+        Top = 365
+        Width = 811
+      end
+      inherited Panel5: TPanel
+        Top = 368
+        Width = 811
+        Height = 55
+        Visible = False
+        ExplicitTop = 368
+        ExplicitWidth = 635
+        ExplicitHeight = 55
+      end
+      inherited PageControl1: TPageControl
+        Width = 811
+        Height = 365
+        inherited TabSheet1: TTabSheet
+          Caption = #1059#1089#1083#1086#1074#1080#1103' '#1090#1088#1091#1076#1072'   '
+          inherited Grid: TVrDbGrid
+            Width = 797
+            Height = 300
+            CheckFieldName = 'ID'
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'ID'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'CONDITION'
+                Width = 450
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'MONTHTIME'
+                Width = 76
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'QUALIFICATION'
+                Width = 45
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'WORKTYPE'
+                Visible = True
+                SortMode = smNone
+              end>
+          end
+          inherited GridPanel1: TGridPanel
+            Width = 797
+            inherited PKDBEditButtons1: TPKDBEditButtons
+              Grid = Grid
+              Connection = DataModule2.Conn
+              EditDialogClassName = 'TRATECONDITIONEDIT'
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited Panel6: TPanel
+    Width = 33
+    Visible = False
+    ExplicitWidth = 33
+  end
+  inherited MainQuery: TADQuery
+    Connection = DataModule2.Conn
+    SQL.Strings = (
+      'select * from CS_RATECONDITION'
+      'order by worktype, qualification')
+    object MainQueryID: TFloatField
+      FieldName = 'ID'
+      Required = True
+    end
+    object MainQueryCONDITION: TStringField
+      DisplayLabel = #1059#1089#1083#1086#1074#1080#1103' '#1090#1088#1091#1076#1072
+      FieldName = 'CONDITION'
+      Size = 200
+    end
+    object MainQueryMONTHTIME: TFloatField
+      DisplayLabel = #1052#1077#1089#1103#1095'. '#1074#1088#1077#1084#1103
+      FieldName = 'MONTHTIME'
+    end
+    object MainQueryQUALIFICATION: TFloatField
+      DisplayLabel = #1056#1072#1079#1088#1103#1076
+      FieldName = 'QUALIFICATION'
+    end
+    object MainQueryWORKTYPE: TStringField
+      DisplayLabel = #1058#1080#1087' '#1088#1072#1073#1086#1090#1099
+      FieldName = 'WORKTYPE'
+      Size = 200
+    end
+  end
+end

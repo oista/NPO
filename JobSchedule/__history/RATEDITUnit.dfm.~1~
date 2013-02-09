@@ -1,0 +1,16 @@
+inherited RATEDIT: TRATEDIT
+  Caption = #1055#1086#1074#1088#1077#1084#1077#1085#1085#1099#1077' '#1089#1090#1072#1074#1082#1080
+  ExplicitWidth = 467
+  ExplicitHeight = 443
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited PageControl1: TPageControl
+    inherited TabSheet1: TTabSheet
+      Caption = #1055#1086#1074#1088#1077#1084#1077#1085#1085#1072#1103' '#1089#1090#1072#1074#1082#1072'    '
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 356
+      ExplicitHeight = 385
+    end
+  end
+end

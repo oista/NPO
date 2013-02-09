@@ -1,0 +1,61 @@
+inherited QUALIFICATIONEDIT: TQUALIFICATIONEDIT
+  Caption = #1050#1074#1072#1083#1080#1092#1080#1082#1072#1094#1080#1080
+  ExplicitWidth = 467
+  ExplicitHeight = 443
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited PageControl1: TPageControl
+    inherited TabSheet1: TTabSheet
+      Caption = #1050#1074#1072#1083#1080#1092#1080#1082#1072#1094#1080#1103
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 356
+      ExplicitHeight = 385
+    end
+  end
+  object PKDBDictEdit1: TPKDBDictEdit [2]
+    Left = 24
+    Top = 72
+    Width = 185
+    Height = 21
+    DesignSize = (
+      185
+      21)
+  end
+  inherited PKDBTable1: TPKDBTable
+    Fields = <
+      item
+        FieldName = 'ID'
+        FieldLabel = 'ID'
+        Nullable = False
+        FieldType = ftsNumber
+        IsPrimaryKey = True
+        DisplayName = 'ID'
+      end
+      item
+        FieldName = 'DEGREE'
+        FieldLabel = #1057#1090#1077#1087#1077#1085#1100' '#1082#1074#1072#1083#1080#1092#1080#1082#1072#1094#1080#1080
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'DEGREE'
+      end
+      item
+        FieldName = 'CATEGORYID'
+        FieldLabel = 'ID '#1082#1072#1090#1077#1075#1086#1088#1080#1080' '#1087#1077#1088#1089#1086#1085#1072#1083#1072
+        Nullable = True
+        FieldType = ftsNumber
+        ReferencingTable = 'CS_CATEGORY'
+        ReferencingColumn = 'ID'
+        DisplayName = 'CATEGORYID'
+      end
+      item
+        FieldName = 'DESCRIPTION'
+        FieldLabel = #1054#1087#1080#1089#1072#1085#1080#1077' '#1089#1090#1077#1087#1077#1085#1080' '#1082#1074#1072#1083#1080#1092#1080#1082#1072#1094#1080#1080
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'DESCRIPTION'
+      end>
+    TableName = 'CS_QUALIFICATION'
+    Connection = DataModule2.Conn
+  end
+end

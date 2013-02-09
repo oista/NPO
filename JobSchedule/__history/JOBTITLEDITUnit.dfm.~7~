@@ -1,0 +1,83 @@
+inherited JOBTITLEDIT: TJOBTITLEDIT
+  Caption = #1057#1087#1077#1094#1080#1072#1083#1100#1085#1086#1089#1090#1080
+  ClientHeight = 147
+  ClientWidth = 491
+  ExplicitWidth = 497
+  ExplicitHeight = 171
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Left = 400
+    Height = 147
+  end
+  inherited PageControl1: TPageControl
+    Width = 394
+    Height = 141
+    ExplicitWidth = 394
+    ExplicitHeight = 141
+    inherited TabSheet1: TTabSheet
+      Caption = #1057#1087#1077#1094#1080#1072#1083#1100#1085#1086#1089#1090#1100
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 356
+      ExplicitHeight = 385
+      object PKDBLabelEdit2: TPKDBLabelEdit
+        Left = 15
+        Top = 70
+        Width = 330
+        Height = 21
+        TabOrder = 0
+        Text = #1053#1072#1079#1074#1072#1085#1080#1077' '#1089#1087#1077#1094#1080#1072#1083#1100#1085#1086#1089#1090#1080
+        Table = PKDBTable1
+        TableField = 'JOBTITLE'
+        EditLabel.Width = 127
+        EditLabel.Height = 13
+        EditLabel.Caption = #1053#1072#1079#1074#1072#1085#1080#1077' '#1089#1087#1077#1094#1080#1072#1083#1100#1085#1086#1089#1090#1080
+      end
+      object PKDBDictEdit1: TPKDBDictEdit
+        Left = 15
+        Top = 25
+        Width = 330
+        Height = 21
+        Table = PKDBTable1
+        TableField = 'CATEGORYID'
+        LookUpRool = 'CATEGORYNUMB'
+        DictionaryClass = 'TCATEGORY'
+        DesignSize = (
+          330
+          21)
+      end
+    end
+  end
+  inherited PKDBTable1: TPKDBTable
+    Fields = <
+      item
+        FieldName = 'ID'
+        FieldLabel = 'ID'
+        Nullable = False
+        FieldType = ftsNumber
+        IsPrimaryKey = True
+        DisplayName = 'ID'
+      end
+      item
+        FieldName = 'JOBTITLE'
+        FieldLabel = #1053#1072#1079#1074#1072#1085#1080#1077' '#1089#1087#1077#1094#1080#1072#1083#1100#1085#1086#1089#1090#1080
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'JOBTITLE'
+      end
+      item
+        FieldName = 'CATEGORYID'
+        FieldLabel = 'ID '#1082#1072#1090#1077#1075#1086#1088#1080#1080' '#1087#1077#1088#1089#1086#1085#1072#1083#1072
+        Nullable = True
+        FieldType = ftsNumber
+        ReferencingTable = 'CS_CATEGORY'
+        ReferencingColumn = 'ID'
+        DisplayName = 'CATEGORYID'
+      end>
+    TableName = 'CS_JOBTITLE'
+    Connection = DataModule2.Conn
+    Left = 408
+    Top = 96
+  end
+end

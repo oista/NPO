@@ -1,0 +1,88 @@
+inherited RATEDIT: TRATEDIT
+  Caption = #1058#1072#1088#1080#1092#1085#1099#1077' '#1089#1090#1072#1074#1082#1080
+  ClientHeight = 153
+  ExplicitWidth = 467
+  ExplicitHeight = 177
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Height = 153
+    ExplicitLeft = 369
+    ExplicitTop = -3
+  end
+  inherited PageControl1: TPageControl
+    Height = 147
+    inherited TabSheet1: TTabSheet
+      Caption = #1055#1086#1074#1088#1077#1084#1077#1085#1085#1072#1103' '#1089#1090#1072#1074#1082#1072'    '
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 356
+      ExplicitHeight = 385
+      object PKDBLabelEdit1: TPKDBLabelEdit
+        Left = 15
+        Top = 25
+        Width = 330
+        Height = 21
+        TabOrder = 0
+        Text = #1050#1086#1076' '#1089#1090#1072#1074#1082#1080
+        Table = PKDBTable1
+        TableField = 'CODE'
+        EditLabel.Width = 58
+        EditLabel.Height = 13
+        EditLabel.Caption = #1050#1086#1076' '#1089#1090#1072#1074#1082#1080
+      end
+      object PKDBLabelEdit2: TPKDBLabelEdit
+        Left = 15
+        Top = 70
+        Width = 330
+        Height = 21
+        TabOrder = 1
+        Text = #1055#1086#1095#1072#1089#1086#1074#1072#1103' '#1089#1090#1072#1074#1082#1072
+        EditKind = ekNumberEdit
+        Table = PKDBTable1
+        TableField = 'RATE'
+        EditLabel.Width = 92
+        EditLabel.Height = 13
+        EditLabel.Caption = #1055#1086#1095#1072#1089#1086#1074#1072#1103' '#1089#1090#1072#1074#1082#1072
+      end
+    end
+  end
+  inherited PKDBTable1: TPKDBTable
+    Fields = <
+      item
+        FieldName = 'ID'
+        FieldLabel = 'ID'
+        Nullable = False
+        FieldType = ftsNumber
+        IsPrimaryKey = True
+        DisplayName = 'ID'
+      end
+      item
+        FieldName = 'CONDITIONID'
+        FieldLabel = 'ID '#1091#1089#1083#1086#1074#1080#1081' '#1090#1088#1091#1076#1072
+        Nullable = True
+        FieldType = ftsNumber
+        ReferencingTable = 'CS_RATECONDITION'
+        ReferencingColumn = 'ID'
+        DisplayName = 'CONDITIONID'
+      end
+      item
+        FieldName = 'CODE'
+        FieldLabel = #1050#1086#1076' '#1089#1090#1072#1074#1082#1080
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'CODE'
+      end
+      item
+        FieldName = 'RATE'
+        FieldLabel = #1055#1086#1095#1072#1089#1086#1074#1072#1103' '#1089#1090#1072#1074#1082#1072
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'RATE'
+      end>
+    TableName = 'CS_RATE'
+    Connection = DataModule2.Conn
+    Left = 400
+    Top = 96
+  end
+end

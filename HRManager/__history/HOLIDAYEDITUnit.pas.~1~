@@ -1,0 +1,34 @@
+unit HOLIDAYEDITUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, StdCtrls, PKDBEdit, PKDBBBaseComboBox, PKDBTable,
+  ComCtrls, ExtCtrls;
+
+type
+  THOLIDAYEDIT = class(TEditDialog)
+    PKDBBLabelComboBox1: TPKDBBLabelComboBox;
+    PKDBLabelEdit1: TPKDBLabelEdit;
+    PKDBLabelEdit2: TPKDBLabelEdit;
+    PKDBLabelEdit3: TPKDBLabelEdit;
+    PKDBLabelEdit4: TPKDBLabelEdit;
+    PKDBLabelEdit6: TPKDBLabelEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  HOLIDAYEDIT : THOLIDAYEDIT;
+
+implementation
+ uses DM;
+{$R *.dfm}
+
+initialization
+
+RegisterClasses([THOLIDAYEDIT]);
+end.

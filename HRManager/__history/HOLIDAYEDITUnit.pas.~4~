@@ -1,0 +1,107 @@
+unit HOLIDAYEDITUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, StdCtrls, PKDBEdit, PKDBBBaseComboBox, PKDBTable,
+  ComCtrls, ExtCtrls, reportunit;
+
+type
+  THOLIDAYEDIT = class(TEditDialog)
+    PKDBBLabelComboBox1: TPKDBBLabelComboBox;
+    PKDBLabelEdit1: TPKDBLabelEdit;
+    PKDBLabelEdit2: TPKDBLabelEdit;
+    PKDBLabelEdit3: TPKDBLabelEdit;
+    PKDBLabelEdit4: TPKDBLabelEdit;
+    PKDBLabelEdit6: TPKDBLabelEdit;
+    PKDBLabelEdit5: TPKDBLabelEdit;
+    PKDBLabelEdit7: TPKDBLabelEdit;
+    GroupBox1: TGroupBox;
+    CheckBox1: TCheckBox;
+    PKDBTable2: TPKDBTable;
+    GroupBox2: TGroupBox;
+    PKDBLabelEdit8: TPKDBLabelEdit;
+    PKDBLabelEdit9: TPKDBLabelEdit;
+    procedure open; override;
+    procedure PKDBBLabelComboBox1Change(Sender: TObject);
+    procedure runcommand; override;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  HOLIDAYEDIT : THOLIDAYEDIT;
+  cform: TWREPORT;
+
+implementation
+ uses DM;
+{$R *.dfm}
+
+{ THOLIDAYEDIT }
+
+procedure THOLIDAYEDIT.open;
+begin
+  inherited;
+  if (PKDBTable1.Fields.FieldByName('HOLIDAYTYPEID').FieldVal<>'4182528') then
+   begin
+     GroupBox1.Visible:= false;
+     GroupBox2.Visible:= true;
+   end;
+end;
+
+procedure THOLIDAYEDIT.PKDBBLabelComboBox1Change(Sender: TObject);
+begin
+  PKDBBLabelComboBox1.getid(self);
+  if (PKDBBLabelComboBox1.selectid<>'4182528') then
+   begin
+    GroupBox1.Visible:= false;
+    GroupBox2.Visible:= true;
+   end
+  else
+   begin
+    GroupBox1.Visible:= true;
+    GroupBox2.Visible:= false;
+   end;
+end;
+
+procedure THOLIDAYEDIT.runcommand;
+begin
+   case CommandType of
+    tcInsert:
+     begin
+      begin  // дополнение данных
+       // дату начала и конца договора берем из даты прихода на должность
+       if (PKDBLabelEdit6.Text='') then
+          (PKDBLabelEdit6.Text:=PKDBLabelEdit4.Text);
+       if (PKDBLabelEdit7.Text='') then
+          (PKDBLabelEdit7.Text:=PKDBLabelEdit5.Text);
+      end;
+
+      PrimaryKey := PKDBTable1.Insert;
+      PKDBTable2.Insert;
+     end;
+    tcCopy:
+     begin
+      // копирование не поддерживается в данном контексте
+     end;
+    tcUpdate:
+     begin
+      PKDBTable1.Update;
+      PKDBTable2.Update;
+     end;
+  end;
+
+  if CheckBox1.Checked then    // если надо вывести форму  после "ОК"
+     begin
+      Cform := TWREPORT.Create(THOLIDAYEDIT);
+      Cform.madeOrderHoliday(strtofloat(PKDBTable2.Fields.PrimaryKey.FieldVal));
+     end;
+end;
+
+initialization
+
+RegisterClasses([THOLIDAYEDIT]);
+end.

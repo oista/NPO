@@ -1,0 +1,208 @@
+inherited SALARY: TSALARY
+  Caption = #1047#1072#1088#1072#1087#1083#1072#1090#1099'     '
+  ClientWidth = 623
+  ExplicitWidth = 631
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Width = 623
+    inherited Button1: TButton
+      Left = 460
+    end
+    inherited Button2: TButton
+      Left = 541
+    end
+  end
+  inherited Panel2: TPanel
+    Left = 33
+    Width = 590
+    inherited Panel3: TPanel
+      Width = 587
+      inherited Splitter2: TSplitter
+        Top = 341
+        Width = 587
+      end
+      inherited Panel5: TPanel
+        Top = 344
+        Width = 587
+        Height = 79
+        Visible = False
+        ExplicitTop = 344
+        ExplicitHeight = 79
+      end
+      inherited PageControl1: TPageControl
+        Width = 587
+        Height = 341
+        ExplicitWidth = 722
+        ExplicitHeight = 341
+        inherited TabSheet1: TTabSheet
+          Caption = #1047#1072#1088#1087#1083#1072#1090#1072'    '
+          inherited Grid: TVrDbGrid
+            Width = 573
+            Height = 276
+            CheckFieldName = 'ID'
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'ID'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'CATEGORYNUMB'
+                Width = 38
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'SPEC'
+                Width = 264
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'DEGREE'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'CODE'
+                Width = 80
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'JOBTITLEID'
+                Width = -1
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'QUALIFICATIONID'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'RATEID'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'SALARY'
+                Width = 87
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'CONTRACT'
+                Visible = True
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'JOBTITLE'
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'DESCRIPTION'
+                Width = -1
+                Visible = False
+                SortMode = smNone
+              end
+              item
+                Expanded = False
+                FieldName = 'SALID'
+                Visible = False
+                SortMode = smNone
+              end>
+          end
+          inherited GridPanel1: TGridPanel
+            Width = 573
+            inherited PKDBEditButtons1: TPKDBEditButtons
+              TableName = 'CS_SALARY'
+              PrimaryFieldName = 'ID'
+              Grid = Grid
+              Connection = DataModule2.Conn
+              EditDialogClassName = 'TSALARYEDIT'
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited Panel6: TPanel
+    Width = 33
+    Visible = False
+    ExplicitWidth = 33
+  end
+  inherited MainQuery: TADQuery
+    Connection = DataModule2.Conn
+    Prepared = True
+    SQL.Strings = (
+      'select * from CS_V_SALARY t')
+    Left = 384
+    Top = 8
+    object MainQueryID: TFloatField
+      FieldName = 'ID'
+      Required = True
+    end
+    object MainQueryCATEGORYNUMB: TFloatField
+      DisplayLabel = #1050#1072#1090#1077#1075'.'
+      FieldName = 'CATEGORYNUMB'
+    end
+    object MainQueryJOBTITLE: TStringField
+      DisplayLabel = #1057#1087#1077#1094#1080#1072#1083#1100#1085#1086#1089#1090#1100
+      FieldName = 'JOBTITLE'
+      Size = 200
+    end
+    object MainQueryDEGREE: TFloatField
+      FieldName = 'DEGREE'
+    end
+    object MainQueryDESCRIPTION: TStringField
+      DisplayLabel = #1055#1088#1080#1084#1077#1095#1072#1085#1080#1103
+      FieldName = 'DESCRIPTION'
+      Visible = False
+      Size = 200
+    end
+    object MainQuerySALARY: TFloatField
+      DisplayLabel = #1054#1082#1083#1072#1076'('#1057#1090#1072#1074#1082#1072')'
+      FieldName = 'SALARY'
+    end
+    object MainQueryCODE: TStringField
+      DisplayLabel = #1050#1086#1076' '#1089#1090#1072#1074#1082#1080
+      FieldName = 'CODE'
+      Size = 200
+    end
+    object MainQueryRATEID: TFloatField
+      FieldName = 'RATEID'
+    end
+    object MainQuerySPEC: TStringField
+      DisplayLabel = #1057#1087#1077#1094#1080#1072#1083#1100#1085#1086#1089#1090#1100
+      FieldName = 'SPEC'
+      Size = 442
+    end
+    object MainQuerySALID: TFloatField
+      FieldName = 'SALID'
+      Required = True
+    end
+    object MainQueryCONTRACT: TFloatField
+      DisplayLabel = #1050#1086#1085#1090#1088#1072#1082#1090
+      FieldName = 'CONTRACT'
+    end
+  end
+  inherited DataSource1: TDataSource
+    Left = 424
+    Top = 8
+  end
+end

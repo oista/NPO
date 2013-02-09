@@ -1,0 +1,153 @@
+inherited EDITJOBTITLE: TEDITJOBTITLE
+  Caption = #1055#1088#1086#1092#1077#1089#1089#1080#1080
+  ClientHeight = 296
+  ExplicitHeight = 320
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Height = 296
+    ExplicitHeight = 296
+  end
+  inherited PageControl1: TPageControl
+    Height = 290
+    ExplicitHeight = 290
+    inherited TabSheet1: TTabSheet
+      Caption = #1055#1088#1086#1092#1077#1089#1089#1080#1080
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 356
+      ExplicitHeight = 262
+      object PKDBLabelEdit1: TPKDBLabelEdit
+        Left = 15
+        Top = 25
+        Width = 314
+        Height = 21
+        TabOrder = 0
+        Text = #1053#1072#1079#1074#1072#1085#1080#1077' '#1089#1087#1077#1094#1080#1072#1083#1100#1085#1086#1089#1090#1080
+        Table = PKDBTable1
+        TableField = 'JOBTITLE'
+        EditLabel.Width = 127
+        EditLabel.Height = 13
+        EditLabel.Caption = #1053#1072#1079#1074#1072#1085#1080#1077' '#1089#1087#1077#1094#1080#1072#1083#1100#1085#1086#1089#1090#1080
+      end
+      object PKDBLabelEdit3: TPKDBLabelEdit
+        Left = 15
+        Top = 115
+        Width = 314
+        Height = 21
+        TabOrder = 1
+        Table = PKDBTable1
+        TableField = 'CODE'
+        EditLabel.Width = 65
+        EditLabel.Height = 13
+        EditLabel.Caption = #1050#1086#1076' '#1054#1050#1055#1044#1058#1056
+      end
+      object PKDBLabelEdit4: TPKDBLabelEdit
+        Left = 15
+        Top = 160
+        Width = 314
+        Height = 21
+        TabOrder = 2
+        Table = PKDBTable1
+        TableField = 'OKZCODE'
+        EditLabel.Width = 44
+        EditLabel.Height = 13
+        EditLabel.Caption = #1050#1086#1076' '#1054#1050#1047
+      end
+      object PKDBLabelEdit5: TPKDBLabelEdit
+        Left = 15
+        Top = 205
+        Width = 314
+        Height = 21
+        TabOrder = 3
+        Table = PKDBTable1
+        TableField = 'STARTCODE'
+        EditLabel.Width = 49
+        EditLabel.Height = 13
+        EditLabel.Caption = #1050#1086#1076' '#1045#1058#1050#1057
+      end
+      object PKDBDictEdit1: TPKDBDictEdit
+        Left = 356
+        Top = 200
+        Width = 0
+        Height = 0
+        Table = PKDBTable1
+        TableField = 'CATEGORYID'
+        WithoutTable = False
+        DesignSize = (
+          0
+          0)
+      end
+      object PKDBBLabelComboBox1: TPKDBBLabelComboBox
+        Left = 15
+        Top = 69
+        Width = 314
+        Height = 21
+        ItemHeight = 13
+        TabOrder = 5
+        Text = #1050#1072#1090#1077#1075#1086#1088#1080#1103' '#1087#1077#1088#1089#1086#1085#1072#1083#1072
+        DBTable = 'CS_CATEGORY'
+        PrimaryKey = 'ID'
+        content = 'id'
+        Table = PKDBTable1
+        TableField = 'CATEGORYID'
+        EditLabel.Width = 110
+        EditLabel.Height = 13
+        EditLabel.Caption = #1050#1072#1090#1077#1075#1086#1088#1080#1103' '#1087#1077#1088#1089#1086#1085#1072#1083#1072
+      end
+    end
+  end
+  inherited PKDBTable1: TPKDBTable
+    Fields = <
+      item
+        FieldName = 'CATEGORYID'
+        FieldLabel = #1050#1072#1090#1077#1075#1086#1088#1080#1103' '#1087#1077#1088#1089#1086#1085#1072#1083#1072
+        Nullable = False
+        FieldType = ftsNumber
+        ReferencingTable = 'CS_CATEGORY'
+        ReferencingColumn = 'ID'
+        LookUpRool = ' id'
+        DisplayName = 'CATEGORYID'
+      end
+      item
+        FieldName = 'JOBTITLECODE'
+        FieldLabel = #1051#1086#1082#1072#1083#1100#1085#1099#1081' '#1082#1086#1076' '#1089#1087#1077#1094#1080#1072#1083#1100#1085#1086#1089#1090#1080
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'JOBTITLECODE'
+      end
+      item
+        FieldName = 'STATUSID'
+        FieldLabel = #1057#1090#1072#1090#1091#1089
+        Nullable = True
+        FieldType = ftsNumber
+        DisplayName = 'STATUSID'
+      end
+      item
+        FieldName = 'JOBTITLE'
+        FieldLabel = #1053#1072#1079#1074#1072#1085#1080#1077' '#1089#1087#1077#1094#1080#1072#1083#1100#1085#1086#1089#1090#1080
+        Nullable = False
+        FieldType = ftsString
+        DisplayName = 'JOBTITLE'
+      end
+      item
+        FieldName = 'OKPDTR_CODE'
+        FieldLabel = #1050#1086#1076' '#1054#1050#1055#1044#1058#1056' '
+        Nullable = True
+        FieldType = ftsString
+        DisplayName = 'OKPDTR_CODE'
+      end
+      item
+        FieldName = 'ID'
+        FieldLabel = 'ID'
+        Nullable = False
+        FieldType = ftsNumber
+        IsPrimaryKey = True
+        DisplayName = 'ID'
+      end>
+    TableName = 'CS_JOBTITLE'
+    Connection = DataModule1.ADConnection1
+    Left = 392
+    Top = 96
+  end
+end

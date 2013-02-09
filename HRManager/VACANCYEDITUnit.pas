@@ -1,0 +1,89 @@
+unit VACANCYEDITUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, EditDialogUnit, PKDBTable, ComCtrls, StdCtrls, ExtCtrls, PKDBDictEdit
+  ,HISTORYSCHEDUnit;
+
+type
+  TVACANCYEDIT = class(TEditDialog)
+    Label1: TLabel;
+    PKDBDictEdit1: TPKDBDictEdit;
+    PKDBDictLabelEdit2: TPKDBDictLabelEdit;
+    procedure open; override;
+    procedure PKDBDictEdit1BeforeOpenButtonClick(Sender: TObject;
+      Form: THISTORYSCHED);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  VACANCYEDIT: TVACANCYEDIT;
+
+
+implementation
+uses DM;
+{$R *.dfm}
+
+
+procedure TVACANCYEDIT.open;
+begin
+ 
+  case CommandType of
+    tcInsert:
+      begin
+        Caption := Caption + ': Добавление';
+        if PKDBTable1.NeedGenPrimaryKey then PKDBTable1.GetTempPrimarykey;
+        PKDBTable1.Fields.FieldByName('DESCRIPTION').FieldVal:= 'ВНЕШТАТНЫЙ СОСТАВ';
+      end;
+    tcUpdate:
+      Begin
+        Caption := Caption + ': Изменение';
+        PKDBTable1.Fields.PrimaryKey.FieldVal := PrimaryKey;
+      End;
+    tcCopy:
+      Begin
+        Caption := Caption + ': Копирование';
+        self.Button1.Enabled:=false;
+      End;
+    tcView:
+      Begin
+        Caption := Caption + ': Просмотр';
+        self.Button1.Enabled:=false;
+      end;
+  end;
+  if CommandType <> tcInsert then
+   begin
+    PKDBTable1.ReadFromDB(PrimaryKey);
+   end;
+
+  if PKDBTable1.Fields.ParentKey <> nil then
+    begin
+     PKDBTable1.Fields.ParentKey.FieldVal := ParentKey;
+    end;
+  if CommandType = tcView then
+    Begin
+      Button1.Enabled := false;
+    End;
+end;
+
+
+
+
+procedure TVACANCYEDIT.PKDBDictEdit1BeforeOpenButtonClick(Sender: TObject;
+  Form: THISTORYSCHED);
+begin
+  // меняем спиок штаток истории на список штаток внештатного состава
+  form.MainQuery.SQL.Clear;
+  form.MainQuery.SQL.Text:='select * from HR_V_OUT_SCHEDULE t';
+  form.MainQuery.Open;
+  form.Grid.Refresh;
+end;
+
+initialization
+RegisterClasses([TVACANCYEDIT]);
+end.

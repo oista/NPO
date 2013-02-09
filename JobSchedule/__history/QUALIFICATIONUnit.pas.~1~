@@ -1,0 +1,31 @@
+unit QUALIFICATIONUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DictUnit, daADStanIntf, daADDatSManager, daADStanOption,
+  daADStanParam, daADPhysIntf, daADDAptIntf, DB, daADCompDataSet,
+  daADCompClient, PKDBEditButtons, ExtCtrls, Grids, DBGrids, VrDbGrid, ComCtrls,
+  StdCtrls;
+
+type
+  TQUALIFICATION = class(TDictForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  QUALIFICATION: TQUALIFICATION;
+
+implementation
+
+uses DMUnit;
+
+{$R *.dfm}
+initialization
+
+RegisterClasses([TQUALIFICATION]);
+end.

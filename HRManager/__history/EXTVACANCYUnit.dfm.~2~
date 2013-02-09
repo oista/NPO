@@ -1,0 +1,39 @@
+inherited EXTVACANCY: TEXTVACANCY
+  Caption = #1044#1086#1083#1078#1085#1086#1089#1090#1080' '#1076#1083#1103' '#1076#1086#1087'.'#1089#1086#1075#1083#1072#1096#1077#1085#1080#1081' '#1087#1086' '#1087#1077#1088#1077#1093#1086#1076#1091
+  ExplicitWidth = 689
+  ExplicitHeight = 498
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel2: TPanel
+    inherited Panel3: TPanel
+      inherited Panel5: TPanel
+        Visible = False
+      end
+      inherited PageControl1: TPageControl
+        inherited TabSheet1: TTabSheet
+          Caption = #1044#1086#1083#1078#1085#1086#1089#1090#1080
+          inherited GridPanel1: TGridPanel
+            inherited PKDBFindPanel1: TPKDBFindPanel
+              QuerysCollection = <
+                item
+                  Query = MainQuery
+                  MainQuery = True
+                  FieldList = <>
+                end>
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited Panel6: TPanel
+    Visible = False
+  end
+  inherited MainQuery: TADQuery
+    Connection = DataModule1.ADConnection1
+    Top = 8
+  end
+  inherited DataSource1: TDataSource
+    Top = 8
+  end
+end
